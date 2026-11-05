@@ -1,0 +1,7 @@
+Coleta do IBGE para Tangará da Serra (código 5107958), em 2026-11-05 00:53
+
+OK [200] censo2022_metadados_9514: 1319 bytes, 0 registros
+OK [200] censo2022_populacao_total: 949 bytes, 2 registros
+OK [200] censo2022_populacao_por_idade: 53019 bytes, 135 registros
+OK [200] cempre_metadados_6450: 19864 bytes, 0 registros
+OK [200] cempre_unidades_locais: 3277209 bytes, 8537 registros

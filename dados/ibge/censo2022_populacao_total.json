@@ -1,0 +1,40 @@
+[
+ {
+  "NC": "Nível Territorial (Código)",
+  "NN": "Nível Territorial",
+  "MC": "Unidade de Medida (Código)",
+  "MN": "Unidade de Medida",
+  "V": "Valor",
+  "D1C": "Município (Código)",
+  "D1N": "Município",
+  "D2C": "Variável (Código)",
+  "D2N": "Variável",
+  "D3C": "Ano (Código)",
+  "D3N": "Ano",
+  "D4C": "Sexo (Código)",
+  "D4N": "Sexo",
+  "D5C": "Forma de declaração da idade (Código)",
+  "D5N": "Forma de declaração da idade",
+  "D6C": "Idade (Código)",
+  "D6N": "Idade"
+ },
+ {
+  "NC": "6",
+  "NN": "Município",
+  "MC": "45",
+  "MN": "Pessoas",
+  "V": "106434",
+  "D1C": "5107958",
+  "D1N": "Tangará da Serra (MT)",
+  "D2C": "93",
+  "D2N": "População residente",
+  "D3C": "2022",
+  "D3N": "2022",
+  "D4C": "6794",
+  "D4N": "Total",
+  "D5C": "113635",
+  "D5N": "Total",
+  "D6C": "100362",
+  "D6N": "Total"
+ }
+]
