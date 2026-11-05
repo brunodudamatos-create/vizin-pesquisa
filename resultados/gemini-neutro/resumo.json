@@ -2,29 +2,29 @@
   "_versao": "v1.0",
   "teste_mock": false,
   "aviso": "Dados SINTÉTICOS gerados por IA a partir de personas fictícias. Servem para explorar hipóteses e mapear atritos; não medem a demanda real do mercado.",
-  "total_respostas": 44,
+  "total_respostas": 45,
   "lojista": {
     "titulo": "Questionário para Comerciantes",
-    "n_respostas": 17,
+    "n_respostas": 18,
     "n_personas": 6,
     "perguntas": [
       {
         "id": "Q1",
         "texto": "Sua empresa está presente hoje em alguma plataforma digital de vendas ou divulgação (site, marketplace, redes sociais para vender)?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
             "texto": "Sim — Qual?",
-            "qtd": 11,
-            "pct": 64.7
+            "qtd": 12,
+            "pct": 66.7
           },
           {
             "cod": "b",
             "texto": "Não",
             "qtd": 6,
-            "pct": 35.3
+            "pct": 33.3
           }
         ]
       },
@@ -32,13 +32,13 @@
         "id": "Q2",
         "texto": "Nos últimos 3 meses, com que frequência você percebeu ter perdido uma venda porque o cliente não sabia que sua loja tinha aquele produto?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
             "texto": "Nunca",
             "qtd": 3,
-            "pct": 17.6
+            "pct": 16.7
           },
           {
             "cod": "b",
@@ -49,8 +49,8 @@
           {
             "cod": "c",
             "texto": "Às vezes",
-            "qtd": 14,
-            "pct": 82.4
+            "qtd": 15,
+            "pct": 83.3
           },
           {
             "cod": "d",
@@ -70,19 +70,19 @@
         "id": "Q3",
         "texto": "Você sente que concorre com lojas ou plataformas digitais na hora de vender?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
             "texto": "Sim",
-            "qtd": 14,
-            "pct": 82.4
+            "qtd": 15,
+            "pct": 83.3
           },
           {
             "cod": "b",
             "texto": "Não",
             "qtd": 3,
-            "pct": 17.6
+            "pct": 16.7
           },
           {
             "cod": "c",
@@ -96,19 +96,19 @@
         "id": "Q4",
         "texto": "O quanto você estaria disposto a colocar seus produtos numa plataforma digital que reúne o comércio local da cidade?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
             "texto": "1 — Nada disposto",
             "qtd": 3,
-            "pct": 17.6
+            "pct": 16.7
           },
           {
             "cod": "b",
             "texto": "2 — Pouco disposto",
             "qtd": 4,
-            "pct": 23.5
+            "pct": 22.2
           },
           {
             "cod": "c",
@@ -119,8 +119,8 @@
           {
             "cod": "d",
             "texto": "4 — Disposto",
-            "qtd": 10,
-            "pct": 58.8
+            "qtd": 11,
+            "pct": 61.1
           },
           {
             "cod": "e",
@@ -134,7 +134,7 @@
         "id": "Q5",
         "texto": "O que mais te impede hoje de ter mais presença digital?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
@@ -145,20 +145,20 @@
           {
             "cod": "b",
             "texto": "Falta de tempo",
-            "qtd": 11,
-            "pct": 64.7
+            "qtd": 12,
+            "pct": 66.7
           },
           {
             "cod": "c",
             "texto": "Não sei usar",
             "qtd": 3,
-            "pct": 17.6
+            "pct": 16.7
           },
           {
             "cod": "d",
             "texto": "Não vejo necessidade",
             "qtd": 3,
-            "pct": 17.6
+            "pct": 16.7
           },
           {
             "cod": "e",
@@ -172,25 +172,25 @@
         "id": "Q6",
         "texto": "Quanto você estaria disposto a pagar para vender seus produtos em uma plataforma digital que conecta sua loja a clientes da cidade?",
         "tipo": "unica",
-        "n_respostas": 17,
+        "n_respostas": 18,
         "opcoes": [
           {
             "cod": "a",
             "texto": "Não estaria disposto a pagar",
             "qtd": 4,
-            "pct": 23.5
+            "pct": 22.2
           },
           {
             "cod": "b",
             "texto": "Até 3% do valor de cada venda",
-            "qtd": 12,
-            "pct": 70.6
+            "qtd": 13,
+            "pct": 72.2
           },
           {
             "cod": "c",
             "texto": "De 4% a 6% do valor de cada venda",
             "qtd": 1,
-            "pct": 5.9
+            "pct": 5.6
           },
           {
             "cod": "d",
@@ -215,8 +215,8 @@
       "L05": 100.0,
       "L06": 100.0
     },
-    "indicador_disposicao_pct": 58.8,
-    "indicador_aceita_pagar_pct": 76.5
+    "indicador_disposicao_pct": 61.1,
+    "indicador_aceita_pagar_pct": 77.8
   },
   "consumidor": {
     "titulo": "Questionário do Consumidor",
@@ -787,7 +787,7 @@
     "L05": {
       "nome_ficticio": "Rafael",
       "tipo": "lojista",
-      "rodadas": 2,
+      "rodadas": 3,
       "Q4_media": 4.0,
       "Q6_mais_comum": "b"
     },
