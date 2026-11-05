@@ -1,0 +1,400 @@
+{
+  "_versao": "v1.0",
+  "_changelog": [
+    {
+      "versao": "v1.0",
+      "data": "2026-11-04",
+      "mudanca": "Criação a partir dos questionários originais do grupo (texto das perguntas e alternativas preservado)."
+    }
+  ],
+  "id": "consumidor",
+  "titulo": "Questionário do Consumidor",
+  "perguntas": [
+    {
+      "id": "F0",
+      "secao": "Funil de localidade",
+      "texto": "Você reside em Tangará da Serra (MT)?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Sim"
+        },
+        {
+          "cod": "b",
+          "texto": "Não"
+        }
+      ]
+    },
+    {
+      "id": "Q1",
+      "secao": "Perfil do participante",
+      "texto": "Qual é a sua faixa etária?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "15 a 17 anos"
+        },
+        {
+          "cod": "b",
+          "texto": "18 a 25 anos"
+        },
+        {
+          "cod": "c",
+          "texto": "26 a 35 anos"
+        },
+        {
+          "cod": "d",
+          "texto": "36 a 45 anos"
+        },
+        {
+          "cod": "e",
+          "texto": "46 anos ou mais"
+        }
+      ]
+    },
+    {
+      "id": "Q2",
+      "secao": "Perfil do participante",
+      "texto": "Com que frequência você compra roupas, calçados ou acessórios?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Mais de uma vez por mês"
+        },
+        {
+          "cod": "b",
+          "texto": "Uma vez por mês"
+        },
+        {
+          "cod": "c",
+          "texto": "A cada 2 ou 3 meses"
+        },
+        {
+          "cod": "d",
+          "texto": "Algumas vezes por ano"
+        },
+        {
+          "cod": "e",
+          "texto": "Raramente"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "secao": "Hábitos de compra",
+      "texto": "Onde você costuma realizar suas compras de roupas, calçados ou acessórios?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Apenas em lojas físicas"
+        },
+        {
+          "cod": "b",
+          "texto": "Apenas pela internet"
+        },
+        {
+          "cod": "c",
+          "texto": "Tanto em lojas físicas quanto pela internet"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "secao": "Hábitos de compra",
+      "texto": "Com que frequência você compra em lojas da sua cidade?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Sempre"
+        },
+        {
+          "cod": "b",
+          "texto": "Frequentemente"
+        },
+        {
+          "cod": "c",
+          "texto": "Às vezes"
+        },
+        {
+          "cod": "d",
+          "texto": "Raramente"
+        },
+        {
+          "cod": "e",
+          "texto": "Nunca"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "secao": "Hábitos de compra",
+      "texto": "Quando deseja comprar um produto específico, onde você costuma procurar primeiro? (Pode marcar mais de uma alternativa.)",
+      "tipo": "multipla",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Instagram"
+        },
+        {
+          "cod": "b",
+          "texto": "WhatsApp"
+        },
+        {
+          "cod": "c",
+          "texto": "Google"
+        },
+        {
+          "cod": "d",
+          "texto": "TikTok"
+        },
+        {
+          "cod": "e",
+          "texto": "Marketplace (Shopee, Shein, Mercado Livre etc.)"
+        },
+        {
+          "cod": "f",
+          "texto": "Loja física"
+        },
+        {
+          "cod": "g",
+          "texto": "Indicação de amigos ou familiares"
+        },
+        {
+          "cod": "h",
+          "texto": "Outro"
+        }
+      ],
+      "pede_texto_nas_opcoes": [
+        "h"
+      ]
+    },
+    {
+      "id": "Q6",
+      "secao": "Identificação do problema",
+      "texto": "Com que frequência você encontra dificuldade para localizar uma loja que venda o produto que procura?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Nunca"
+        },
+        {
+          "cod": "b",
+          "texto": "Raramente"
+        },
+        {
+          "cod": "c",
+          "texto": "Às vezes"
+        },
+        {
+          "cod": "d",
+          "texto": "Frequentemente"
+        },
+        {
+          "cod": "e",
+          "texto": "Sempre"
+        }
+      ]
+    },
+    {
+      "id": "Q7",
+      "secao": "Identificação do problema",
+      "texto": "Quanto tempo você costuma gastar procurando um produto específico?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Menos de 10 minutos"
+        },
+        {
+          "cod": "b",
+          "texto": "Entre 10 e 30 minutos"
+        },
+        {
+          "cod": "c",
+          "texto": "Entre 31 minutos e 1 hora"
+        },
+        {
+          "cod": "d",
+          "texto": "Mais de 1 hora"
+        }
+      ]
+    },
+    {
+      "id": "Q8",
+      "secao": "Identificação do problema",
+      "texto": "Quantas lojas você costuma consultar antes de encontrar o produto desejado?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Apenas uma"
+        },
+        {
+          "cod": "b",
+          "texto": "Duas ou três"
+        },
+        {
+          "cod": "c",
+          "texto": "Quatro ou cinco"
+        },
+        {
+          "cod": "d",
+          "texto": "Mais de cinco"
+        }
+      ]
+    },
+    {
+      "id": "Q9",
+      "secao": "Identificação do problema",
+      "texto": "Qual costuma ser a maior dificuldade ao procurar um produto específico?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Não saber quais lojas vendem o produto"
+        },
+        {
+          "cod": "b",
+          "texto": "Não encontrar o modelo desejado"
+        },
+        {
+          "cod": "c",
+          "texto": "Não encontrar meu tamanho"
+        },
+        {
+          "cod": "d",
+          "texto": "Encontrar preços muito diferentes"
+        },
+        {
+          "cod": "e",
+          "texto": "Demorar muito para pesquisar"
+        },
+        {
+          "cod": "f",
+          "texto": "Outra"
+        }
+      ],
+      "pede_texto_nas_opcoes": [
+        "f"
+      ]
+    },
+    {
+      "id": "Q10",
+      "secao": "Consequências da dificuldade",
+      "texto": "O que você normalmente faz quando não encontra rapidamente o produto desejado?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Continuo procurando em outras lojas"
+        },
+        {
+          "cod": "b",
+          "texto": "Compro um produto semelhante"
+        },
+        {
+          "cod": "c",
+          "texto": "Compro pela internet"
+        },
+        {
+          "cod": "d",
+          "texto": "Adio a compra para outro momento"
+        },
+        {
+          "cod": "e",
+          "texto": "Desisto da compra"
+        }
+      ]
+    },
+    {
+      "id": "Q11",
+      "secao": "Percepção sobre o processo atual",
+      "texto": "Como você avalia a facilidade de encontrar lojas que vendam o produto que procura?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Muito fácil"
+        },
+        {
+          "cod": "b",
+          "texto": "Fácil"
+        },
+        {
+          "cod": "c",
+          "texto": "Nem fácil, nem difícil"
+        },
+        {
+          "cod": "d",
+          "texto": "Difícil"
+        },
+        {
+          "cod": "e",
+          "texto": "Muito difícil"
+        }
+      ]
+    },
+    {
+      "id": "Q12",
+      "secao": "Intensidade da dor",
+      "texto": "Em uma escala de 1 a 5, quanto a dificuldade para encontrar uma loja com o produto desejado atrapalha sua experiência de compra?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "1 – Não atrapalha"
+        },
+        {
+          "cod": "b",
+          "texto": "2"
+        },
+        {
+          "cod": "c",
+          "texto": "3"
+        },
+        {
+          "cod": "d",
+          "texto": "4"
+        },
+        {
+          "cod": "e",
+          "texto": "5 – Atrapalha muito"
+        }
+      ]
+    },
+    {
+      "id": "Q13",
+      "secao": "Intensidade da dor",
+      "texto": "Em uma escala de 1 a 5, o quanto a demora para encontrar um produto faz você desistir ou mudar de ideia na hora da compra?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "1 - Não afeta em nada (espero o tempo que for)"
+        },
+        {
+          "cod": "b",
+          "texto": "2 - Afeta pouco"
+        },
+        {
+          "cod": "c",
+          "texto": "3 - Afeta moderadamente"
+        },
+        {
+          "cod": "d",
+          "texto": "4 - Afeta muito"
+        },
+        {
+          "cod": "e",
+          "texto": "5 - Faz desistir imediatamente"
+        }
+      ]
+    }
+  ]
+}

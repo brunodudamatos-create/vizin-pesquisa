@@ -1,0 +1,28 @@
+﻿persona_id,nome_ficticio,rodada,origem,F0,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13
+C01,Beatriz,1,claude-isolado,a,b,d,c,c,a|d|e,d,c,b,a,c,d,d,c
+C02,Lucas,1,claude-isolado,a,b,c,c,c,a|c|e,d,b,b,a,c,d,d,d
+C03,Thaís,1,claude-isolado,a,c,a,c,b,a|b|g,c,b,b,a,d,c,d,d
+C04,Fernanda,1,claude-isolado,a,d,b,c,b,b|f|g,c,b,b,c,a,c,d,c
+C05,Rosângela,1,claude-isolado,a,c,d,c,d,a|b|e,c,b,b,a,c,c,d,c
+C06,Anderson,1,claude-isolado,a,d,d,a,a,b|f|g,c,a,b,c,a,b,c,c
+C07,Dona Marta,1,claude-isolado,a,e,d,a,a,f|g,c,b,b,a,a,c,c,b
+C08,Cláudio,1,claude-isolado,a,d,c,c,c,c|e,c,b,b,d,c,c,c,c
+C09,Gabriel,1,claude-isolado,a,b,c,c,d,a|d|e,c,b,b,a,c,d,d,d
+C01,Beatriz,2,claude-isolado,a,b,c,c,c,a|e|g,d,c,c,a,c,d,d,d
+C01,Beatriz,3,claude-isolado,a,b,c,c,c,a|e|g,d,c,c,d,c,d,d,d
+C02,Lucas,2,claude-isolado,a,b,c,c,c,a|c|e,c,b,b,a,c,c,d,d
+C02,Lucas,3,claude-isolado,a,b,c,c,c,a|c|e,c,b,b,a,c,c,d,d
+C03,Thaís,2,claude-isolado,a,c,a,c,b,a|b|g,d,b,b,a,c,d,d,d
+C03,Thaís,3,claude-isolado,a,c,a,c,b,a|b|g,c,b,b,a,c,c,d,d
+C04,Fernanda,2,claude-isolado,a,d,b,c,b,b|f|g,c,b,b,c,a,c,d,c
+C04,Fernanda,3,claude-isolado,a,d,b,c,b,b|f|g,c,b,b,c,a,c,d,c
+C05,Rosângela,2,claude-isolado,a,c,c,c,d,a|b|e,c,b,b,e,c,c,d,d
+C05,Rosângela,3,claude-isolado,a,c,d,c,d,a|b|e,c,b,b,a,c,c,d,d
+C06,Anderson,2,claude-isolado,a,d,d,a,a,b|f|g,b,a,a,c,a,b,b,c
+C06,Anderson,3,claude-isolado,a,d,d,a,a,b|f|g,b,a,a,c,a,b,c,c
+C07,Dona Marta,2,claude-isolado,a,e,d,a,a,f|g,c,c,c,a,a,d,d,b
+C07,Dona Marta,3,claude-isolado,a,e,d,a,a,f|g,c,c,b,a,a,c,d,b
+C08,Cláudio,2,claude-isolado,a,d,c,c,b,c|e,c,b,b,d,a,c,c,c
+C08,Cláudio,3,claude-isolado,a,d,c,c,b,c|e|f,c,b,b,d,a,c,c,c
+C09,Gabriel,2,claude-isolado,a,b,c,c,d,a|d|e,c,a,b,e,c,d,d,d
+C09,Gabriel,3,claude-isolado,a,b,c,c,d,a|d|e,c,a,b,a,c,d,d,d

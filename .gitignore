@@ -1,0 +1,10 @@
+# Versão v1.0 (2026-11-04) — Histórico: v1.0 criação.
+# NUNCA publicar chaves de API:
+.env
+*.key
+# Python
+__pycache__/
+*.pyc
+.venv/
+# Respostas REAIS dos questionários (dados pessoais) — nunca no repositório público:
+dados_reais/

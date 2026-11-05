@@ -1,0 +1,182 @@
+{
+  "_versao": "v1.0",
+  "_changelog": [
+    {"versao": "v1.0", "data": "2026-11-04", "mudanca": "Criação das 15 personas (6 lojistas, 9 consumidores) de Tangará da Serra, focadas em roupas, calçados e acessórios, conforme os questionários do grupo."}
+  ],
+  "_aviso": "Todas as personas são FICTÍCIAS. Os nomes são inventados e não representam pessoas reais. As premissas marcadas como 'hipótese' ainda precisam ser validadas em campo; a coluna fonte_da_premissa diz de onde veio cada característica.",
+  "lojistas": [
+    {
+      "id": "L01", "tipo": "lojista", "nome_ficticio": "Patrícia", "idade": 38,
+      "negocio": "Boutique de moda feminina na Avenida Brasil, 12 anos de mercado, 4 funcionárias",
+      "faturamento_faixa": "médio para o comércio local", "maturidade_digital": "média",
+      "canais_atuais": "Instagram (posta quando sobra tempo) e WhatsApp Business para clientes antigas",
+      "perfil": "Tem clientela fiel, mas sente que o movimento oscila. Já ouviu histórias de lojas que 'ficaram reféns' de aplicativos. Quer ser encontrada por gente nova sem pagar anúncio.",
+      "dores_principais": ["movimento irregular durante a semana", "cliente nova não sabe o que tem em estoque", "pouco tempo para fotografar e postar"],
+      "medos_e_objecoes": ["comissão que come a margem", "ficar dependente de plataforma", "cliente comparar só preço"],
+      "gatilhos_de_adocao": ["clientes novos sem gastar com anúncio", "entrega por motoboy já resolvida", "cadastro feito pela própria plataforma"],
+      "sensibilidade_a_preco": "média: aceita taxa se vier venda concreta",
+      "fonte_da_premissa": "Contexto informado pelo grupo (comércio de rua na Avenida Brasil); detalhes do perfil são hipótese a validar em campo."
+    },
+    {
+      "id": "L02", "tipo": "lojista", "nome_ficticio": "Seu Ademir", "idade": 57,
+      "negocio": "Loja de calçados no centro, 28 anos de mercado, negócio de família, 3 funcionários",
+      "faturamento_faixa": "médio", "maturidade_digital": "baixa",
+      "canais_atuais": "Nenhum canal de venda digital; usa o WhatsApp pessoal para falar com alguns clientes",
+      "perfil": "Conhece a clientela pelo nome e acredita que o balcão é o que vende. Desconfia de sistema novo e de taxa. Quem mexe no celular da loja é o filho, quando tem tempo.",
+      "dores_principais": ["jovens comprando calçado pela internet", "estoque parado de coleções antigas"],
+      "medos_e_objecoes": ["não saber mexer", "taxa sobre cada venda", "ter que atualizar preço e estoque todo dia"],
+      "gatilhos_de_adocao": ["alguém cadastra tudo por ele", "ver outro lojista conhecido vendendo", "sem mensalidade"],
+      "sensibilidade_a_preco": "alta: só paga se vender",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre lojista tradicional de rua; validar nas conversas de campo."
+    },
+    {
+      "id": "L03", "tipo": "lojista", "nome_ficticio": "Juliana", "idade": 26,
+      "negocio": "Loja de acessórios e bijuterias em galeria comercial, 3 anos, dona e uma ajudante",
+      "faturamento_faixa": "pequeno", "maturidade_digital": "alta",
+      "canais_atuais": "Instagram muito ativo, vende por direct e WhatsApp, entrega ela mesma ou por moto",
+      "perfil": "Já vende online de forma improvisada. Margem apertada. Só entra em outra plataforma se trouxer público novo da cidade e não cobrar caro.",
+      "dores_principais": ["alcance do Instagram caiu", "perde tempo respondendo as mesmas perguntas", "entrega improvisada"],
+      "medos_e_objecoes": ["comissão alta", "ter mais um canal para alimentar", "concorrência direta com lojas parecidas na mesma plataforma"],
+      "gatilhos_de_adocao": ["tráfego novo da cidade", "logística de entrega pronta", "taxa baixa e só quando vende"],
+      "sensibilidade_a_preco": "muito alta",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre lojista jovem já digitalizada; validar em campo."
+    },
+    {
+      "id": "L04", "tipo": "lojista", "nome_ficticio": "Dona Zilda", "idade": 49,
+      "negocio": "Loja de roupas básicas e infantis em bairro residencial afastado do centro, 9 anos, 1 funcionária",
+      "faturamento_faixa": "pequeno", "maturidade_digital": "baixa a média",
+      "canais_atuais": "Só WhatsApp pessoal; divulga para vizinhas e grupos de bairro",
+      "perfil": "A clientela é a vizinhança, que já conhece a loja. Não vê muita necessidade de aparecer para a cidade inteira. Se preocupa com a entrega e com ter que parar o atendimento para mexer em sistema.",
+      "dores_principais": ["clientes comprando no centro por achar que o bairro tem pouca variedade", "vendas caem no fim do mês"],
+      "medos_e_objecoes": ["ter que atender por dois lados ao mesmo tempo", "taxa", "não ter quem entregue"],
+      "gatilhos_de_adocao": ["pedidos chegando prontos no WhatsApp", "pagar só por venda", "indicação de outra lojista de confiança"],
+      "sensibilidade_a_preco": "alta",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre comércio de bairro; validar em campo."
+    },
+    {
+      "id": "L05", "tipo": "lojista", "nome_ficticio": "Rafael", "idade": 31,
+      "negocio": "Loja pequena de moda masculina (estilo urbano), MEI, 2 anos, trabalha sozinho",
+      "faturamento_faixa": "pequeno", "maturidade_digital": "média a alta",
+      "canais_atuais": "Instagram e TikTok; atende no WhatsApp; não tem site",
+      "perfil": "Trabalha sozinho, então tempo é o maior problema: se está atendendo no balcão, não responde ninguém. Gosta de novidade, mas só se for simples e pouco trabalhoso.",
+      "dores_principais": ["falta de tempo", "perde venda quando está fechando outro cliente", "pouco dinheiro para anúncio"],
+      "medos_e_objecoes": ["mais uma plataforma para manter atualizada", "comissão", "entrega que atrase e manche a imagem dele"],
+      "gatilhos_de_adocao": ["cadastro rápido pelo celular", "pedido que chega pronto", "público jovem da cidade e da UNEMAT"],
+      "sensibilidade_a_preco": "alta",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre MEI de produto físico; validar em campo."
+    },
+    {
+      "id": "L06", "tipo": "lojista", "nome_ficticio": "Seu Waldemar", "idade": 63,
+      "negocio": "Loja de botas, jeans e roupas de trabalho voltada ao público do agro, 35 anos de mercado, 5 funcionários",
+      "faturamento_faixa": "médio a alto", "maturidade_digital": "muito baixa",
+      "canais_atuais": "Nenhum; o cliente chega por indicação e pela tradição da loja",
+      "perfil": "Tem clientela cativa do agronegócio e acha que 'quem precisa de bota sabe onde achar'. Não confia em tecnologia que não entende e prefere resolver tudo pessoalmente. O filho insiste em digitalizar a loja.",
+      "dores_principais": ["clientes mais novos buscam tudo no celular", "dificuldade de passar o negócio adiante"],
+      "medos_e_objecoes": ["não vejo necessidade", "não confia em sistema que não conhece", "taxa por venda"],
+      "gatilhos_de_adocao": ["o filho assumir o cadastro", "ver o concorrente da rua vendendo pela plataforma", "uma pessoa de confiança explicando pessoalmente"],
+      "sensibilidade_a_preco": "média: o problema é a confiança, não o valor",
+      "fonte_da_premissa": "Contexto informado pelo grupo (polo do agronegócio em Tangará da Serra); perfil individual é hipótese a validar em campo."
+    }
+  ],
+  "consumidores": [
+    {
+      "id": "C01", "tipo": "consumidor", "nome_ficticio": "Beatriz", "idade": 20,
+      "perfil": "Estudante da UNEMAT, mora na cidade, renda limitada. Compra roupa de vez em quando e pesquisa muito antes. Usa Instagram e Shein; compra em loja local quando acha algo bom e parecido.",
+      "ocupacao": "estudante universitária", "faixa_etaria": "18 a 25 anos",
+      "canais_atuais": "Instagram, TikTok, Shein, WhatsApp",
+      "dores_principais": ["não sabe quais lojas da cidade têm o que ela quer", "preços muito diferentes de uma loja para outra"],
+      "medos_e_objecoes": ["taxa de entrega que encareça a peça", "o produto não ser como na foto"],
+      "gatilhos_de_adocao": ["ver estoque e tamanho antes de sair de casa", "preço claro", "retirada rápida perto da faculdade"],
+      "sensibilidade_a_preco": "muito alta",
+      "fonte_da_premissa": "Contexto informado pelo grupo (público universitário da UNEMAT); detalhes são hipótese a validar."
+    },
+    {
+      "id": "C02", "tipo": "consumidor", "nome_ficticio": "Lucas", "idade": 22,
+      "perfil": "Estudante da UNEMAT que faz estágio meio período e se desloca de moto. Tem pouco tempo livre, compra pela internet com facilidade e só vai à loja quando já sabe o que quer.",
+      "ocupacao": "universitário e estagiário", "faixa_etaria": "18 a 25 anos",
+      "canais_atuais": "Marketplace (Mercado Livre, Shopee), Instagram, Google",
+      "dores_principais": ["perde tempo indo a lojas que não têm o produto", "horário de loja coincide com a aula e o estágio"],
+      "medos_e_objecoes": ["entrega demorada", "app a mais para instalar"],
+      "gatilhos_de_adocao": ["chegar rápido", "ver se tem o produto antes", "pagar no celular"],
+      "sensibilidade_a_preco": "alta",
+      "fonte_da_premissa": "Contexto informado pelo grupo (público universitário da UNEMAT); detalhes são hipótese a validar."
+    },
+    {
+      "id": "C03", "tipo": "consumidor", "nome_ficticio": "Thaís", "idade": 28,
+      "perfil": "Profissional da área da saúde com jornada cheia. Compra roupa com mais frequência que a média, gosta de loja local, mas só tem tempo à noite ou no sábado.",
+      "ocupacao": "técnica de clínica", "faixa_etaria": "26 a 35 anos",
+      "canais_atuais": "Instagram, WhatsApp, indicação de colegas",
+      "dores_principais": ["lojas fechadas no horário em que ela pode ir", "não saber o que a loja tem sem ir lá"],
+      "medos_e_objecoes": ["perder tempo", "peça que não serve e ter que trocar"],
+      "gatilhos_de_adocao": ["reservar a peça e retirar em minutos", "conversar com a loja pelo WhatsApp"],
+      "sensibilidade_a_preco": "média",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre jovem profissional; validar em campo."
+    },
+    {
+      "id": "C04", "tipo": "consumidor", "nome_ficticio": "Fernanda", "idade": 38,
+      "perfil": "Mãe de dois filhos em idade escolar. Compra bastante roupa infantil e confia mais em loja que conhece e em indicação de outras mães em grupos de WhatsApp.",
+      "ocupacao": "comerciária e mãe de família", "faixa_etaria": "36 a 45 anos",
+      "canais_atuais": "Grupos de WhatsApp, Instagram, loja física",
+      "dores_principais": ["tamanho certo das crianças", "gastar a tarde de sábado rodando lojas"],
+      "medos_e_objecoes": ["pagar frete", "insegurança com pagamento no app"],
+      "gatilhos_de_adocao": ["confirmar tamanho antes de sair", "indicação de outras mães", "entrega no mesmo dia"],
+      "sensibilidade_a_preco": "alta",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre mães de família locais; validar em campo."
+    },
+    {
+      "id": "C05", "tipo": "consumidor", "nome_ficticio": "Rosângela", "idade": 33,
+      "perfil": "Mãe de um bebê, sai pouco de casa. Prefere resolver tudo pelo WhatsApp e pelo celular. Compra roupa para a família com menos frequência e valoriza qualquer coisa que economize deslocamento.",
+      "ocupacao": "autônoma, trabalha de casa", "faixa_etaria": "26 a 35 anos",
+      "canais_atuais": "WhatsApp, Instagram, Shein",
+      "dores_principais": ["sair com bebê para procurar loja", "demora para achar o que precisa"],
+      "medos_e_objecoes": ["entregador desconhecido na porta", "demora na entrega"],
+      "gatilhos_de_adocao": ["entrega em casa rápida", "ver a loja pelo celular", "poder falar com a loja"],
+      "sensibilidade_a_preco": "média",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre mães de família locais; validar em campo."
+    },
+    {
+      "id": "C06", "tipo": "consumidor", "nome_ficticio": "Anderson", "idade": 41,
+      "perfil": "Trabalhador do agronegócio, jornada longa e rotina de campo. Compra botas e roupas de trabalho em poucas lojas de confiança, vai pessoalmente e não gosta de perder tempo.",
+      "ocupacao": "operador de máquinas agrícolas", "faixa_etaria": "36 a 45 anos",
+      "canais_atuais": "Loja física, indicação de colegas, WhatsApp",
+      "dores_principais": ["horário de trabalho bate com o da loja", "achar o tamanho de bota certo"],
+      "medos_e_objecoes": ["comprar sem experimentar", "não confiar em loja que não conhece"],
+      "gatilhos_de_adocao": ["loja que ele já conhece aparecendo na plataforma", "separar o produto para ele buscar", "pagar na retirada"],
+      "sensibilidade_a_preco": "média",
+      "fonte_da_premissa": "Contexto informado pelo grupo (polo do agronegócio); perfil individual é hipótese a validar."
+    },
+    {
+      "id": "C07", "tipo": "consumidor", "nome_ficticio": "Dona Marta", "idade": 62,
+      "perfil": "Aposentada que prefere ver e tocar o produto. Usa o WhatsApp para falar com a família e pouco mais. Compra em lojas que já conhece. Tem receio de pagar pela internet.",
+      "ocupacao": "aposentada", "faixa_etaria": "46 anos ou mais",
+      "canais_atuais": "Loja física e indicação de familiares; WhatsApp básico",
+      "dores_principais": ["não sabe quais lojas têm o que procura sem ir ao centro", "caminhar entre várias lojas"],
+      "medos_e_objecoes": ["golpe e pagamento online", "aplicativo difícil de usar"],
+      "gatilhos_de_adocao": ["a filha ou neto configurar", "pagar na entrega ou na loja", "loja conhecida"],
+      "sensibilidade_a_preco": "média",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre consumidora idosa; validar em campo."
+    },
+    {
+      "id": "C08", "tipo": "consumidor", "nome_ficticio": "Cláudio", "idade": 44,
+      "perfil": "Servidor público com horário fixo. Tem uma renda estável e compra com frequência média. Compara preço, compra online às vezes, mas gosta de apoiar o comércio da cidade quando o preço é justo.",
+      "ocupacao": "servidor público", "faixa_etaria": "36 a 45 anos",
+      "canais_atuais": "Google, marketplace, loja física, Instagram",
+      "dores_principais": ["preços muito diferentes entre lojas", "pesquisar demora"],
+      "medos_e_objecoes": ["pagar mais caro que na internet", "qualidade incerta"],
+      "gatilhos_de_adocao": ["comparar preços locais em um só lugar", "entrega rápida sem taxa alta"],
+      "sensibilidade_a_preco": "média",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre servidor público local; validar em campo."
+    },
+    {
+      "id": "C09", "tipo": "consumidor", "nome_ficticio": "Gabriel", "idade": 19,
+      "perfil": "Jovem heavy user de apps de entrega e marketplace. Acostumado a receber tudo rápido no celular. Compra pouco em loja física e tem pouca paciência para pesquisar.",
+      "ocupacao": "universitário e trabalha meio período", "faixa_etaria": "18 a 25 anos",
+      "canais_atuais": "TikTok, Instagram, iFood, Mercado Livre, Shein",
+      "dores_principais": ["lojas locais sem presença online", "ter que ir à loja para saber se tem"],
+      "medos_e_objecoes": ["entrega mais lenta que a dos apps grandes", "interface ruim"],
+      "gatilhos_de_adocao": ["experiência parecida com iFood", "acompanhar o pedido", "entrega no mesmo dia"],
+      "sensibilidade_a_preco": "média a alta",
+      "fonte_da_premissa": "Hipótese do pesquisador sobre jovem usuário de apps; validar em campo."
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "_versao": "v1.0",
+  "_changelog": [
+    {
+      "versao": "v1.0",
+      "data": "2026-11-04",
+      "mudanca": "Criação a partir dos questionários originais do grupo (texto das perguntas e alternativas preservado)."
+    }
+  ],
+  "id": "lojista",
+  "titulo": "Questionário para Comerciantes",
+  "perguntas": [
+    {
+      "id": "Q1",
+      "secao": null,
+      "texto": "Sua empresa está presente hoje em alguma plataforma digital de vendas ou divulgação (site, marketplace, redes sociais para vender)?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Sim — Qual?"
+        },
+        {
+          "cod": "b",
+          "texto": "Não"
+        }
+      ],
+      "pede_texto_nas_opcoes": [
+        "a"
+      ]
+    },
+    {
+      "id": "Q2",
+      "secao": null,
+      "texto": "Nos últimos 3 meses, com que frequência você percebeu ter perdido uma venda porque o cliente não sabia que sua loja tinha aquele produto?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Nunca"
+        },
+        {
+          "cod": "b",
+          "texto": "Raramente"
+        },
+        {
+          "cod": "c",
+          "texto": "Às vezes"
+        },
+        {
+          "cod": "d",
+          "texto": "Frequentemente"
+        },
+        {
+          "cod": "e",
+          "texto": "Sempre"
+        }
+      ]
+    },
+    {
+      "id": "Q3",
+      "secao": null,
+      "texto": "Você sente que concorre com lojas ou plataformas digitais na hora de vender?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Sim"
+        },
+        {
+          "cod": "b",
+          "texto": "Não"
+        },
+        {
+          "cod": "c",
+          "texto": "Não sei dizer"
+        }
+      ]
+    },
+    {
+      "id": "Q4",
+      "secao": null,
+      "texto": "O quanto você estaria disposto a colocar seus produtos numa plataforma digital que reúne o comércio local da cidade?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "1 — Nada disposto"
+        },
+        {
+          "cod": "b",
+          "texto": "2 — Pouco disposto"
+        },
+        {
+          "cod": "c",
+          "texto": "3 — Indiferente / neutro"
+        },
+        {
+          "cod": "d",
+          "texto": "4 — Disposto"
+        },
+        {
+          "cod": "e",
+          "texto": "5 — Totalmente disposto"
+        }
+      ]
+    },
+    {
+      "id": "Q5",
+      "secao": null,
+      "texto": "O que mais te impede hoje de ter mais presença digital?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Custo"
+        },
+        {
+          "cod": "b",
+          "texto": "Falta de tempo"
+        },
+        {
+          "cod": "c",
+          "texto": "Não sei usar"
+        },
+        {
+          "cod": "d",
+          "texto": "Não vejo necessidade"
+        },
+        {
+          "cod": "e",
+          "texto": "Outro"
+        }
+      ],
+      "pede_texto_nas_opcoes": [
+        "e"
+      ]
+    },
+    {
+      "id": "Q6",
+      "secao": null,
+      "texto": "Quanto você estaria disposto a pagar para vender seus produtos em uma plataforma digital que conecta sua loja a clientes da cidade?",
+      "tipo": "unica",
+      "opcoes": [
+        {
+          "cod": "a",
+          "texto": "Não estaria disposto a pagar"
+        },
+        {
+          "cod": "b",
+          "texto": "Até 3% do valor de cada venda"
+        },
+        {
+          "cod": "c",
+          "texto": "De 4% a 6% do valor de cada venda"
+        },
+        {
+          "cod": "d",
+          "texto": "De 7% a 10% do valor de cada venda"
+        },
+        {
+          "cod": "e",
+          "texto": "Mais de 10% do valor de cada venda"
+        }
+      ]
+    }
+  ]
+}
