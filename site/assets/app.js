@@ -1,11 +1,11 @@
-/* Vizin — funções comuns do site | Versão v1.2 (2026-11-04)
-   Histórico: v1.2 criação. */
+/* Vizin — funções comuns do site | Versão v1.3 (2026-11-04)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. */
 "use strict";
-const VERSAO = "v1.2";
+const VERSAO = "v1.3";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"],
-  ["resultados", "Resultados"], ["transcricoes", "Entrevistas"], ["comparar", "Sintético × Real"],
+  ["resultados", "Resultados"], ["transcricoes", "Entrevistas"], ["cenario", "Cenário multiagente"], ["comparar", "Sintético × Real"],
 ];
 
 function esc(s) {
@@ -43,6 +43,7 @@ function montarTopo(atual) {
     `<header class="topo"><div class="wrap"><a class="marca" href="index.html">Vizin<span>·</span>pesquisa</a><nav class="menu" aria-label="Principal">${menu}</nav></div></header>`;
   document.getElementById("rodape").innerHTML =
     `<footer class="rodape"><div class="wrap"><p>Dados <strong>sintéticos</strong> gerados por IA a partir de personas fictícias, para explorar hipóteses e mapear atritos de adoção. Não medem a demanda real do mercado.</p>` +
+    `<p>Equipe: Bruno Duda Dantas Matos, Kamilly Vitória Oliveira Araujo, Lukas Ramos Rezende e Victor Hugo Borsato Xavier (simulação multiagente).</p>` +
     `<p>Projeto da pós-graduação em Gestão e Inovação (UNEMAT) · Site ${VERSAO} · <a href="${REPO}">Código e dados no GitHub</a></p></div></footer>`;
 }
 

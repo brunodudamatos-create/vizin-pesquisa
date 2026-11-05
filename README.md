@@ -1,12 +1,13 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v1.2 — 2026-11-04**
+**Versão v1.3 — 2026-11-04**
 
 | Versão | Data | Mudança |
 |---|---|---|
 | v1.0 | 2026-11-04 | Criação: 15 personas, questionários estruturados, simulador e analisador. |
 | v1.1 | 2026-11-04 | Entrevistas isoladas feitas pelo Claude (pasta `simulacao_claude/`), importador e análise separada por modelo. |
 | v1.2 | 2026-11-04 | Site estático (pasta `site/`) com metodologia, personas, resultados, entrevistas e comparação sintético × real; montagem automática para o Vercel. |
+| v1.3 | 2026-11-04 | Nova home (plataforma de validação prévia, duas ferramentas), página Cenário multiagente (simulação qualitativa do Victor Hugo Borsato Xavier), folder ilustrativo e créditos da equipe. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.

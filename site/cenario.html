@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Vizin — Cenário multiagente | Versão v1.3 (2026-11-04) | Histórico: v1.3 criação (material de Victor Hugo Borsato Xavier). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cenário multiagente · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="cenario">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:860px">
+  <h1>Cenário multiagente</h1>
+  <p class="lead">Uma segunda simulação, qualitativa: doze personagens fictícios conversam numa rede social imaginária e reagem a eventos que o grupo escolheu. Serve para levantar perguntas e hipóteses para o piloto, e não para medir o mercado.</p>
+
+  <div class="aviso"><strong>Simulação qualitativa, não é pesquisa de mercado</strong>
+    Feita pelo colega <b>Victor Hugo Borsato Xavier</b> com o MiroFish Lite, uma versão simplificada inspirada no MiroFish, gerada com apoio de IA. Os personagens e as falas são fictícios. Os eventos de cada rodada foram escolhidos pelo grupo, então o resultado mostra como os personagens reagem a essas hipóteses, e não o que vai acontecer.</div>
+
+  <div id="conteudo"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("conteudo");
+  let d;
+  try { d = await pegaJSON("data/dados/cenario_multiagente.json"); }
+  catch (e) { el.innerHTML = '<div class="vazio">O cenário ainda não foi publicado.</div>'; return; }
+
+  const semente = (d.semente_texto || "").trim();  // preencher "semente_texto" no JSON quando o texto completo chegar
+
+  const p = d.parametros;
+  let h = "";
+  h += `<h2>A pergunta</h2><div class="card"><p style="margin:0"><b>${esc(d.pergunta)}</b></p>` +
+       `<p style="margin:8px 0 0;color:var(--muted);font-size:.9rem">${p.agentes} personagens · ${p.rodadas_executadas} rodadas executadas (de ${p.rodadas_planejadas} planejadas) · ferramenta: ${esc(d.ferramenta)}</p></div>`;
+
+  h += `<h2>Como ler</h2><div class="card"><ul style="margin:0;padding-left:20px">${d.como_ler.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
+
+  h += `<h2>Material semente</h2>`;
+  if (semente) h += `<div class="card"><pre style="white-space:pre-wrap;margin:0;font:inherit">${esc(semente)}</pre></div>`;
+  else h += `<div class="card"><p style="margin:0">${esc(d.semente_resumo)}</p></div>`;
+
+  h += `<h2>Os 12 personagens</h2><div class="grade">` +
+    d.agentes.map((a) => `<article class="card agente"><h3>${esc(a.nome)}</h3><div class="papel">${esc(a.papel)}</div><p style="margin:8px 0 0">${esc(a.postura)}</p></article>`).join("") + `</div>`;
+
+  h += `<h2>As rodadas</h2>`;
+  d.rodadas.forEach((r) => {
+    h += `<details class="rel"${r.n === 1 ? " open" : ""}><summary>Rodada ${r.n}</summary>` +
+      `<div class="evento"><b>Evento injetado:</b> ${esc(r.evento)}</div>` +
+      r.posts.map((x) => `<div class="post"><div class="quem">${esc(x.autor)} · ${x.tipo === "reply" ? "resposta" : "post"}</div><p>${esc(x.texto)}</p></div>`).join("") + `</details>`;
+  });
+
+  h += `<h2>${esc(d.relatorio.titulo)}</h2><p style="color:var(--muted);font-size:.9rem">Relatório gerado pela própria ferramenta. Leia a seção 8 (limitações) primeiro.</p>`;
+  d.relatorio.secoes.forEach((s, i) => {
+    h += `<details class="rel"${i === 0 || i === d.relatorio.secoes.length - 1 ? " open" : ""}><summary>${esc(s.titulo)}</summary>` +
+      s.paragrafos.map((t) => `<p>${esc(t)}</p>`).join("") + `</details>`;
+  });
+
+  h += `<h2>Créditos e ajustes</h2><div class="card"><p style="margin-top:0">Simulação: <b>${esc(d.autor)}</b>.</p><p style="margin-bottom:0;color:var(--muted);font-size:.9rem">${esc(d.nota_editorial)}</p></div>`;
+  el.innerHTML = h;
+})();
+</script>
+</body>
+</html>

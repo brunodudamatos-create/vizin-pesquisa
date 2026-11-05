@@ -1,0 +1,152 @@
+{
+  "versao": "v1.3",
+  "titulo": "Cenário multiagente (simulação qualitativa)",
+  "autor": "Victor Hugo Borsato Xavier",
+  "ferramenta": "MiroFish Lite, versão simplificada inspirada no MiroFish, gerada com apoio de IA (Claude). Não é o MiroFish original.",
+  "pergunta": "Como seria a aceitação deste projeto, se ele vingaria e qual seria a melhor maneira de monetizar?",
+  "parametros": { "agentes": 12, "rodadas_planejadas": 8, "rodadas_executadas": 4 },
+  "semente_resumo": "Material semente com premissas do projeto. O texto completo ainda será adicionado. Trechos finais: operação concentrada inicialmente em poucos bairros ou categorias de produtos; integração gradual com sistemas de estoque de lojas que já os utilizam.",
+  "nota_editorial": "Ajustes feitos na publicação: (1) a agente Camila Ferreira foi renomeada para Carla Ferreira, para não coincidir com o nome da orientadora; (2) a agente que aparecia como presidente da CDL passou a ser descrita como representante de uma entidade de classe local fictícia, e as menções a “CDL” viraram “entidade de classe”, para não atribuir falas a uma instituição real; (3) um erro de digitação no evento da rodada 1 foi corrigido (MVP). O conteúdo das falas não foi alterado.",
+  "agentes": [
+    { "nome": "Marlene Souza", "papel": "Dona de loja de roupas e calçados no centro, 25 anos de mercado", "postura": "Cética: teme perder tempo atualizando estoque e ter de dar desconto para aparecer na plataforma." },
+    { "nome": "Rafael Tomazini", "papel": "Gerente de loja de material de construção com ERP próprio", "postura": "Favorável condicionado: só adere se houver integração automática com o sistema dele." },
+    { "nome": "Dona Cida Alves", "papel": "Proprietária de mercearia e hortifrúti de bairro, sem sistema digital", "postura": "Indiferente a curiosa: toparia se alguém cadastrasse por ela e fosse simples." },
+    { "nome": "Thiago Brandão", "papel": "Dono de loja de eletrônicos e celulares, 3 unidades", "postura": "Interessado, mas pressiona por destaque pago e visibilidade; reclama se estoque de rival aparecer melhor." },
+    { "nome": "Carla Ferreira", "papel": "Moradora, 29 anos, servidora pública, compradora frequente de e-commerce nacional", "postura": "Aberta, mas só volta se encontrar o item com confiabilidade e preço próximo ao das plataformas." },
+    { "nome": "Seu Joaquim Pereira", "papel": "Morador aposentado, 67 anos, compra só em lojas físicas", "postura": "Resistente ao app, mas gostaria de saber onde há o produto sem andar pela cidade." },
+    { "nome": "Lucas Menezes", "papel": "Estudante universitário, 21 anos, usuário intenso de apps e redes sociais", "postura": "Entusiasta potencial se houver retirada rápida e cupons; abandona após um ou dois erros de estoque." },
+    { "nome": "Patrícia Lima", "papel": "Representante de uma entidade de classe local (fictícia)", "postura": "Apoiadora estratégica, com ressalvas sobre taxas e sobre favorecer lojas grandes." },
+    { "nome": "Equipe de Trade e Marketplace Nacional", "papel": "Representante de e-commerce nacional (conta em redes e anúncios regionais)", "postura": "Ignora no início; reage com promoções direcionadas se a plataforma ganhar tração." },
+    { "nome": "Diego Rocha", "papel": "Dono de serviço de motoboy e entregas locais", "postura": "Favorável: vê oportunidade de renda, mas quer garantia de demanda mínima." },
+    { "nome": "Renata Vilela", "papel": "Jornalista e criadora de conteúdo do portal de notícias regional", "postura": "Neutra: cobre com simpatia o apoio ao comércio local, mas expõe falhas e promessas não cumpridas." },
+    { "nome": "Fábio Nascimento", "papel": "Fundador/empreendedor da plataforma", "postura": "Totalmente a favor; defende começar enxuto e testar monetização gradual." }
+  ],
+  "rodadas": [
+    {
+      "n": 1,
+      "evento": "Foi lançado o MVP da plataforma.",
+      "posts": [
+        { "autor": "Fábio Nascimento", "tipo": "post", "texto": "Hoje lançamos o MVP em Tangará da Serra! 🚀 Busque um produto e veja qual loja da cidade tem perto de você. Começamos enxutos, com poucas lojas e categorias. Queremos ouvir lojistas e moradores. Feedback é bem-vindo!" },
+        { "autor": "Marlene Souza", "tipo": "post", "texto": "Vi o tal marketplace. Olha, 25 anos vendendo e sempre foi na conversa com o cliente. Quem vai atualizar estoque todo dia? Eu que não tenho tempo. E desconto pra aparecer? Aí não." },
+        { "autor": "Rafael Tomazini", "tipo": "reply", "texto": "@Fábio Nascimento Parabéns pelo lançamento. Tenho ERP próprio. Vocês têm API ou aceitam importação de arquivo (CSV/XML) para estoque e preço? Qual a frequência de sincronização? Faço um piloto se for automático." },
+        { "autor": "Dona Cida Alves", "tipo": "post", "texto": "Gente, ouvi falar desse aplicativo da cidade. Parece bom, mas eu mexo só com caderninho e zap por áudio. Se alguém vier cadastrar minhas coisas e for fácil, eu topo, viu? 😊" },
+        { "autor": "Thiago Brandão", "tipo": "post", "texto": "Curti a ideia 👍📱 Quero entrar já com as 3 lojas. Mas e o destaque? Tem espaço pago pra aparecer no topo? Se o rival aparecer na minha frente com estoque pior, já aviso que vou reclamar 😅" },
+        { "autor": "Carla Ferreira", "tipo": "post", "texto": "Testei o marketplace local. Ideia boa: comprar perto, sem esperar frete. Mas só volto se o item estiver mesmo disponível e o preço for próximo ao das plataformas nacionais. Vou avaliar com calma e postar review." },
+        { "autor": "Seu Joaquim Pereira", "tipo": "post", "texto": "Meus amigos, me falaram desse aplicativo. Eu não confio em pagar pela internet, prefiro ligar na loja. Mas saber onde tem o produto sem rodar a cidade toda, isso me interessa. Vou ver com meu neto." },
+        { "autor": "Lucas Menezes", "tipo": "post", "texto": "Marketplace de Tangará no ar 👀 Se tiver retirada rápida e cupom, eu uso. Se disser que tem e a loja falar que acabou, eu desinstalo em dois minutos. Bora testar, não me decepcionem 😂" },
+        { "autor": "Patrícia Lima", "tipo": "post", "texto": "A entidade de classe acompanha com interesse o lançamento da plataforma. Fortalecer o comércio da cidade é nossa missão. Vamos dialogar sobre taxas e sobre a participação justa de lojas de todos os portes, grandes e pequenas." },
+        { "autor": "Diego Rocha", "tipo": "post", "texto": "Sobre o marketplace local: tenho motoboys disponíveis para entregas. Preciso saber o volume diário previsto, o valor por corrida e o prazo de pagamento. Com demanda mínima garantida, fecho parceria." },
+        { "autor": "Renata Vilela", "tipo": "post", "texto": "Marketplace de comércio local é lançado em Tangará da Serra. Boa notícia para o comércio, mas ficam perguntas: quantas lojas aderiram? Como o estoque é atualizado? Quanto vai custar para lojistas? Vamos acompanhar os dados." }
+      ]
+    },
+    {
+      "n": 2,
+      "evento": "Mercado em queda: novo governo anuncia impostos mais caros e mais taxas aos comerciantes.",
+      "posts": [
+        { "autor": "Fábio Nascimento", "tipo": "post", "texto": "Sabemos que o momento é difícil pro lojista: imposto maior e vendas fracas. Por isso, nos primeiros meses, cadastro grátis e sem comissão. Vamos testar monetização só depois de provar que traz cliente. Respondendo dúvidas hoje 👇" },
+        { "autor": "Marlene Souza", "tipo": "post", "texto": "Com imposto subindo e venda caindo, eu que não vou pagar taxa de aplicativo nem perder tempo digitando estoque. Se for de graça e alguém da plataforma vier fazer, até olho. Senão, fico no jeito antigo mesmo." },
+        { "autor": "Rafael Tomazini", "tipo": "reply", "texto": "@Fábio Nascimento Com margem apertada, só faz sentido se o custo de integração for zero pra mim. Preciso de endpoint ou CSV/XML com sincronização a cada 15 min, e a regra de preço. Me mande a documentação que eu monto o piloto." },
+        { "autor": "Dona Cida Alves", "tipo": "post", "texto": "Gente, tá difícil pra todo mundo, né? Imposto subindo e freguês apertando o bolso. Se alguém vier cadastrar meus produtos de graça, eu deixo. Mas eu não vou pagar nada agora não, viu? 🙏" },
+        { "autor": "Thiago Brandão", "tipo": "post", "texto": "Com imposto novo a margem vai embora 😩 Se a plataforma trouxer cliente de verdade, pago por destaque sim. Mas quero regra clara, sem rival comprando o topo com estoque furado. Transparência aí @Fábio Nascimento 🔥" },
+        { "autor": "Carla Ferreira", "tipo": "post", "texto": "Se as lojas locais vão repassar imposto no preço, a diferença pras plataformas nacionais aumenta. Vou comparar preço e prazo em alguns itens e posto o resultado. Retirada rápida e item garantido ainda são o que me fariam voltar." },
+        { "autor": "Seu Joaquim Pereira", "tipo": "post", "texto": "Meu neto me mostrou o aplicativo. Gostei de ver quais lojas têm o produto. Comprar pela internet eu não vou, vou ligar na loja mesmo. Se der o telefone certinho e o estoque estiver certo, eu falo bem pro pessoal da igreja." },
+        { "autor": "Lucas Menezes", "tipo": "post", "texto": "Governo aumentando imposto e eu aqui caçando cupom 😂 Se o app local tiver preço bom e retirada em 1h, tô dentro. Se disser que tem e não tiver, já era. Vou testar com um carregador e conto aqui." },
+        { "autor": "Patrícia Lima", "tipo": "post", "texto": "Diante do novo cenário tributário, a entidade de classe reforça a importância de iniciativas que ajudem o comércio local a vender mais sem aumentar custos. Vamos reunir lojistas e a plataforma para discutir isenção de taxas no início e regras justas para todos os portes." },
+        { "autor": "Diego Rocha", "tipo": "post", "texto": "Com a crise, entrega é renda. Mas combustível sobe e imposto também. Preciso de piso por corrida, volume estimado por dia e pagamento semanal. Sem esses números, não reservo motoboy exclusivo pra plataforma." },
+        { "autor": "Renata Vilela", "tipo": "post", "texto": "Com lojistas pressionados por mais impostos e taxas, a pergunta fica mais forte: quantas lojas já estão ativas, quantos produtos têm estoque atualizado e qual será a cobrança futura? Convidei a plataforma para divulgar esses números publicamente." }
+      ]
+    },
+    {
+      "n": 3,
+      "evento": "Lojas anunciam interação via WhatsApp com um agente que vai guiando o cliente sobre onde há estoque, compara valores e entrega no mesmo dia, com pagamento via Pix, cartão virtual, carteiras digitais e pagamento na hora da entrega.",
+      "posts": [
+        { "autor": "Fábio Nascimento", "tipo": "post", "texto": "Novidade: lojas podem atender por WhatsApp com um agente que mostra onde há estoque, compara valores e agenda entrega no mesmo dia. Pix, cartão virtual, carteira digital ou pagamento na entrega. Quem quiser piloto, chama aqui. 🚀" },
+        { "autor": "Marlene Souza", "tipo": "post", "texto": "WhatsApp eu sei usar, isso é o meu jeito de vender. Se o robô conversa com a cliente e eu só confirmo 'tem' ou 'não tem', já ajuda. Mas quero ver quanto custa e quem atualiza o estoque. Sem taxa, eu testo." },
+        { "autor": "Rafael Tomazini", "tipo": "reply", "texto": "@Fábio Nascimento O agente no WhatsApp consulta o estoque em tempo real via API ou usa cache? Se tem pagamento na entrega, como fica a conciliação? Preciso da documentação e do SLA de sincronização para fechar o piloto." },
+        { "autor": "Dona Cida Alves", "tipo": "post", "texto": "Ai, gente, pelo zap eu consigo! Se o cliente perguntar e eu responder por áudio, tá ótimo. Pagar na entrega também ajuda o povo do bairro. Mas alguém tem que me ensinar direitinho, viu? 😊" },
+        { "autor": "Thiago Brandão", "tipo": "post", "texto": "Agente no zap comparando preço?? 😳🔥 Então preciso saber a ordem das respostas. Se o rival aparecer primeiro com estoque furado, eu reclamo alto. Quero regra clara e destaque pago transparente. Preço eu cubro, só me dá visibilidade 📱" },
+        { "autor": "Carla Ferreira", "tipo": "post", "texto": "Atendimento por WhatsApp com comparação de preço e entrega no mesmo dia é o que eu queria. Vou testar e postar review: o item estava disponível? O preço ficou perto das plataformas? E o frete? Aviso o resultado." },
+        { "autor": "Seu Joaquim Pereira", "tipo": "post", "texto": "Pagar na entrega eu aceito, é como sempre foi. Se o zap me disser onde tem o produto e me der o telefone da loja, eu uso e falo pro pessoal da igreja. Só não quero máquina enrolando, tem que ter gente por trás." },
+        { "autor": "Lucas Menezes", "tipo": "post", "texto": "Pediu carregador no zap, veio resposta na hora e entrega hoje? Gostei 😂 Mas se o robô falar 'tem' e a loja disser 'acabou', eu volto pro app grande. Vou testar, e o cupom vem junto? 👀" },
+        { "autor": "Patrícia Lima", "tipo": "post", "texto": "A entidade de classe vê com bons olhos o atendimento por WhatsApp, pois facilita a adesão de lojas de todos os portes. Reforçamos a necessidade de regras transparentes de ordenação, isenção inicial de taxas e atendimento justo a pequenos e grandes comerciantes." },
+        { "autor": "Equipe de Trade e Marketplace Nacional", "tipo": "post", "texto": "Frete relâmpago chegou a Tangará da Serra! ⚡ Cupom de boas-vindas e entrega rápida em itens selecionados. Compre com segurança, avaliações reais e garantia na sua casa. Aproveite as ofertas da semana!" },
+        { "autor": "Diego Rocha", "tipo": "post", "texto": "Entrega no mesmo dia muda a conta. Preciso saber quantas corridas por dia, valor mínimo por corrida e quem paga a corrida quando o pagamento é na entrega. Com piso e pagamento semanal, separo motoboys para o piloto." },
+        { "autor": "Renata Vilela", "tipo": "post", "texto": "O agente de WhatsApp promete estoque, comparação de preços e entrega no mesmo dia. Perguntas: de onde vem a informação do estoque? Como a plataforma evita item indisponível? Como será a ordem das lojas? Cadê os números de adesão?" }
+      ]
+    },
+    {
+      "n": 4,
+      "evento": "Interação com comerciantes: permitiram que uma API rodasse em seu sistema para atualizar em tempo real o estoque e os valores (sem desconto); entregas realizadas por aplicativos parceiros de motoboys ou, se a loja tiver motoboys, por eles mesmos.",
+      "posts": [
+        { "autor": "Fábio Nascimento", "tipo": "post", "texto": "Atualização: lojistas que quiserem já podem liberar uma API/conector que roda no sistema da loja e sincroniza estoque e preço em tempo real, sem desconto obrigatório. Entrega por apps parceiros ou pelos motoboys da própria loja. Piloto aberto 🚀" },
+        { "autor": "Marlene Souza", "tipo": "post", "texto": "Meu sistema é simples e quem atualiza sou eu. Se o conector rodar sozinho e eu não tiver que dar desconto, converso. Entrega com motoboy meu eu topo. Mas quero ver quanto vai custar depois, não quero surpresa na taxa." },
+        { "autor": "Rafael Tomazini", "tipo": "reply", "texto": "@Fábio Nascimento Agora sim. Preciso de: documentação da API, autenticação, SLA de sincronização, tratamento de falha (se cair, o item sai do ar?) e conciliação do pagamento na entrega. Com isso monto o piloto na semana que vem com 200 SKUs." },
+        { "autor": "Dona Cida Alves", "tipo": "post", "texto": "Gente, essa parte de sistema eu não tenho não, só meu caderninho 😅 Mas se o povo do zap me chamar e eu responder por áudio, já tá bom. Alguém passa aqui pra me ajudar? E entrega com o motoboy do bairro seria uma bênção 🙏" },
+        { "autor": "Thiago Brandão", "tipo": "post", "texto": "Estoque em tempo real sem desconto obrigatório? Fechou 🔥 Mas quero saber: quem tem API atualizada ganha prioridade na ordem? Loja com estoque furado perde posição? Regra por escrito e destaque pago transparente que eu entro com as 3 lojas 📱" },
+        { "autor": "Carla Ferreira", "tipo": "post", "texto": "Estoque em tempo real é o que faltava pra eu confiar. Vou repetir meu teste com 5 itens: disponibilidade, preço vs. plataforma nacional, prazo e frete. Se bater o que prometem, volto. Se não, o review sai completo aqui." },
+        { "autor": "Seu Joaquim Pereira", "tipo": "post", "texto": "Se o estoque é do sistema da loja mesmo, melhora a confiança. Eu continuo querendo o telefone da loja junto e gente de verdade pra atender. Se acertar, eu falo na igreja no domingo." },
+        { "autor": "Lucas Menezes", "tipo": "post", "texto": "Estoque em tempo real = menos chance de levar um 'acabou' na cara 😂 Vou testar de novo com carregador e fone. Um erro e aviso o povo. Dois erros e eu vazo. Cadê o cupom de lançamento? 👀" },
+        { "autor": "Patrícia Lima", "tipo": "post", "texto": "A entidade de classe vê avanço na sincronização de estoque sem desconto obrigatório e na liberdade de entrega. Vamos apoiar capacitação dos lojistas sem sistema e pedir regras claras de ordenação e de cobrança futura, protegendo pequenos e grandes." },
+        { "autor": "Equipe de Trade e Marketplace Nacional", "tipo": "post", "texto": "Semana de ofertas em Tangará da Serra! 🛍️ Cupom de boas-vindas em eletrônicos e frete relâmpago grátis acima de R$99. Compre com garantia e avaliações reais. ⚡" },
+        { "autor": "Diego Rocha", "tipo": "post", "texto": "Entrega por app parceiro ou motoboy da loja: funciona, mas preciso de números. Piso por corrida, estimativa de corridas por dia e pagamento semanal. Quem paga a corrida na entrega com pagamento no ato? Com isso fechado, separo 5 motoboys no piloto." },
+        { "autor": "Renata Vilela", "tipo": "post", "texto": "Plataforma anuncia API de estoque em tempo real. Pergunto de novo: quantas lojas ativas, quantas com integração, qual a taxa de buscas com item disponível e qual será a cobrança? Vou publicar a resposta, ou a falta dela." }
+      ]
+    }
+  ],
+  "relatorio": {
+    "titulo": "Relatório de previsão: marketplace de comércio local em Tangará da Serra/MT",
+    "secoes": [
+      { "titulo": "1) Resumo da previsão", "paragrafos": [
+        "Na simulação, o projeto tem boa aceitação inicial, mas só vinga se resolver um problema central: a confiança no estoque. A ideia agrada a quase todos os atores (moradores, lojistas, entidade de classe, entregadores), mas a maioria declara apoio condicional. As condições recorrentes são: custo zero no início, estoque confiável, regras claras de ordenação e demanda mínima para os entregadores.",
+        "Probabilidade qualitativa de o negócio se tornar sustentável em 12 meses: moderada a baixa, com chance real de sucesso num nicho (poucas categorias, poucos bairros). A simulação cobriu apenas 4 rodadas, e os números de adesão, conversão e recorrência nunca apareceram. Tudo o que segue sobre os 12 meses é extrapolação.",
+        "Melhor caminho de monetização sugerido pela simulação: começar grátis e sem comissão, depois cobrar de quem tem prova de resultado. A ordem seria (a) destaque pago transparente para lojas com estoque sincronizado, (b) assinatura ou comissão sobre vendas concluídas pelo WhatsApp, (c) taxa de serviço de cadastro e capacitação para lojas sem sistema, (d) eventualmente, intermediação de entrega. Evitar cobrar antes de demonstrar clientes trazidos."
+      ]},
+      { "titulo": "2) Dinâmica observada", "paragrafos": [
+        "Rodada 1: curiosidade e ressalvas. Todos fizeram perguntas, e quase ninguém se comprometeu. As dúvidas se repetiram: quem atualiza o estoque, quanto custa, como será a ordem das lojas.",
+        "Rodada 2 (choque tributário): aumentou a sensibilidade a custo. Marlene e Dona Cida reforçaram que só participam se for gratuito e se alguém fizer o trabalho por elas. Carla apontou que o repasse de impostos amplia a diferença de preço para as plataformas nacionais. O fundador reagiu bem, adiando a monetização.",
+        "Rodada 3 (agente de WhatsApp): foi a virada mais positiva. Reduziu a barreira para lojistas sem sistema, porque o WhatsApp já é o canal deles, e aproximou Seu Joaquim, que aceita pagar na entrega. Também trouxe a primeira reação do concorrente nacional (frete relâmpago e cupom).",
+        "Rodada 4 (API em tempo real, sem desconto, entrega flexível): destravou o lojista organizado (Rafael propõe piloto com 200 SKUs) e convenceu Thiago. Carla e Lucas passaram a depender do teste prático. O nó restante é o lojista sem sistema, que a API não resolve.",
+        "Padrão geral: as posições mudaram de cética para condicionalmente favorável, mas pouca coisa virou ação concreta. Quase todos pedem documentação, números ou regras antes de agir."
+      ]},
+      { "titulo": "3) Atores-chave e coalizões", "paragrafos": [
+        "Coalizão pró-integração: Rafael (ERP e piloto de 200 SKUs) e Thiago (3 lojas, quer destaque). Eles geram a base de estoque confiável, mas Thiago pode gerar atrito por ordenação.",
+        "Coalizão do WhatsApp e do baixo atrito: Marlene, Dona Cida e Seu Joaquim. Aderem se for gratuito, simples e com gente por trás. Representam muitas lojas pequenas, mas com baixa capacidade de manter o estoque atualizado.",
+        "Coalizão institucional: Patrícia (entidade de classe) e Renata (imprensa). A entidade pode dar legitimidade e capacitação, mas exige neutralidade entre lojas grandes e pequenas. Renata cobra transparência e pode ampliar tanto o sucesso quanto uma falha.",
+        "Consumidores exigentes: Carla e Lucas são céticos testadores e formadores de opinião, com baixa tolerância a erro (Lucas: dois erros e sai). Seu Joaquim tem influência de boca a boca no bairro e na igreja.",
+        "Logística: Diego quer piso por corrida, volume estimado e pagamento semanal, com cinco motoboys no piloto se os números fecharem. Sem demanda garantida, não reserva exclusividade.",
+        "Concorrente: a equipe do marketplace nacional ignorou no início e reagiu a partir da rodada 3 com cupom e frete grátis acima de R$99, focando eletrônicos, que é justamente a categoria de Thiago."
+      ]},
+      { "titulo": "4) Pontos de inflexão e efeito dos eventos injetados", "paragrafos": [
+        "Choque tributário: elevou a exigência de gratuidade e adiou a monetização. Efeito negativo na disposição de pagar, positivo no discurso de apoio ao comércio local.",
+        "Agente de WhatsApp: principal ponto de inflexão para adesão de pequenos lojistas e para consumidores como Seu Joaquim. Efeito colateral: acirrou a questão da ordem das respostas e acionou o concorrente nacional.",
+        "API em tempo real: ponto de inflexão para a confiança. Muda o risco de item indisponível para lojas integradas, mas cria dois grupos (com e sem sistema), e a plataforma precisa decidir se premia os integrados na ordenação, o que pode desagradar à entidade de classe e aos pequenos.",
+        "Questões abertas após a rodada 4: tratamento de falha se a API cair, conciliação do pagamento na entrega, quem paga a corrida quando o pagamento é no ato, e publicação de métricas."
+      ]},
+      { "titulo": "5) Cenários", "paragrafos": [
+        "Provável (probabilidade média): crescimento lento e concentrado. Poucas lojas com integração (material de construção, eletrônicos) e um grupo de pequenas lojas atendidas via WhatsApp com confirmação manual. Boa parte do uso vem de consumidores que já valorizam o local (como Seu Joaquim e quem quer retirar rápido). Receita inicial pequena, vinda de destaque pago e eventual assinatura. A concorrência nacional pressiona preços em eletrônicos. A sustentabilidade depende de focar em categorias onde o comércio local tem vantagem real: urgência, retirada, itens volumosos, construção, farmácia e mercado.",
+        "Otimista (probabilidade baixa a média): o piloto com Rafael e Thiago entrega estoque confiável, a taxa de buscas que encontram item disponível sobe, e a entidade de classe ajuda a cadastrar lojas sem sistema. O boca a boca (igreja, grupos de lojistas, imprensa local) gera recorrência. Entregas ganham volume previsível e Diego fecha o piso por corrida. A monetização começa por destaque transparente e comissão leve, com adesão mantida.",
+        "Pessimista (probabilidade média): erros de estoque nas primeiras semanas, Lucas e Carla publicam críticas, Renata expõe falta de números. Lojas pequenas cadastram uma vez e deixam de atualizar. A campanha nacional com cupom e frete grátis desvia a demanda. Sem volume, Diego retira os motoboys, a entrega no mesmo dia falha e a plataforma entra num ciclo de perda de confiança. Disputa por ordenação com Thiago e protestos de pequenos aumentam o desgaste."
+      ]},
+      { "titulo": "6) Comparação das três estratégias", "paragrafos": [
+        "Cadastro simples com atualização manual: baixo custo de entrada, mas é o mais exposto a estoque defasado. Provavelmente gera o ciclo de perda de confiança se usado sozinho.",
+        "Foco em poucos bairros ou categorias: o mais coerente com o que a simulação mostrou. Facilita densidade de lojas, entrega viável para Diego e controle de qualidade do estoque.",
+        "Integração gradual com sistemas: a que mais aumenta a confiança (Rafael, Thiago), mas só cobre lojas que já têm sistema. Funciona bem como camada premium, combinada com o foco em categorias.",
+        "Combinação sugerida: começar concentrado em categorias e bairros, com integração para quem tem sistema e confirmação por WhatsApp (sim ou não) para os demais."
+      ]},
+      { "titulo": "7) Experimento inicial de baixo custo", "paragrafos": [
+        "Escolher uma ou duas categorias (por exemplo, material de construção e eletrônicos ou itens de uso urgente) e um conjunto pequeno de lojas, incluindo Rafael e Thiago. Operar por 4 a 6 semanas, com agente de WhatsApp, estoque sincronizado onde houver API e confirmação manual nas demais. Publicar métricas: lojas ativas, buscas, proporção de buscas com item disponível, conversão, recompra e erros de estoque. Definir critérios de sucesso antes (por exemplo, alta taxa de disponibilidade e volume mínimo de corridas) e só então testar destaque pago. Combinar com Diego um piso e um volume-piloto para validar a entrega."
+      ]},
+      { "titulo": "8) Limitações (do próprio relatório)", "paragrafos": [
+        "Isto é uma simulação gerada por LLM, não uma previsão estatística. Os agentes são personas e tendem a convergir para discursos coerentes e educados; reações reais podem ser mais erráticas, mais negativas ou simplesmente de silêncio. Não há dados de mercado, de volume de buscas, de preço ou de custo de aquisição. As probabilidades acima são qualitativas. A simulação cobriu 4 rodadas, não 12 meses, e os eventos injetados (choque tributário, agente de WhatsApp, API) moldaram a trajetória. A reação do concorrente nacional foi pouco explorada, e a monetização não foi testada de fato; o que aparece como preferência dos lojistas (destaque pago transparente) é hipótese a validar no mercado real.",
+        "Observação da simulação versus hipótese a validar: é observação que todos pedem gratuidade inicial, regras claras e estoque confiável. É hipótese que o destaque pago funcione, que lojas sem sistema mantenham o estoque via WhatsApp e que consumidores aceitem preços locais mais altos em troca de retirada rápida."
+      ]}
+    ]
+  },
+  "como_ler": [
+    "Os agentes e as falas são gerados por IA. Nenhuma fala é de pessoa real, e os nomes são fictícios.",
+    "Os eventos de cada rodada (imposto, WhatsApp, API) foram escolhidos pelo grupo. Por isso o relatório mostra como os personagens reagem a essas hipóteses, e não que esses eventos vão acontecer.",
+    "O fundador do Vizin aparece como agente e é totalmente a favor. A fala dele pesa na conversa e deve ser lida como a voz do projeto, não como evidência.",
+    "Probabilidades, quantidades (200 SKUs, 5 motoboys, R$99) e comportamentos citados são narrativa do modelo, não dados de mercado.",
+    "O uso mais forte desta simulação é gerar perguntas e hipóteses para o piloto, como as listadas no experimento da seção 7."
+  ]
+}

@@ -1,5 +1,5 @@
-/* Vizin — estilos do site | Versão v1.2 (2026-11-04)
-   Histórico: v1.2 criação. */
+/* Vizin — estilos do site | Versão v1.3 (2026-11-04)
+   Histórico: v1.2 criação. v1.3 blocos da home, figura, equipe e cenário multiagente. */
 :root {
   --bg: #f6f4ef; --surface: #ffffff; --ink: #1d2a2f; --muted: #5a6a70; --line: #dcd8cd;
   --brand: #0f6b66; --brand-ink: #ffffff; --brand-soft: #dff0ee;
@@ -92,3 +92,23 @@ footer.rodape { border-top: 1px solid var(--line); padding: 20px 0 40px; color: 
 }
 .barra-linha.duplo { grid-template-columns: minmax(120px, 38%) 1fr 96px; }
 @media (max-width: 560px) { .barra-linha.duplo { grid-template-columns: 1fr 96px; } }
+
+/* v1.3: home, figura, equipe, cenário multiagente */
+.bloco-vizin { background: var(--brand-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin: 26px 0; }
+.bloco-vizin h2 { margin-top: 0; }
+.duas { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 18px 0; }
+.duas .card h3 { margin-top: 0; }
+figure.folder { margin: 18px 0 0; }
+figure.folder img { width: 100%; height: auto; display: block; border-radius: var(--radius); border: 1px solid var(--line); }
+figure.folder figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+.equipe { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.equipe li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+.equipe small { display: block; color: var(--muted); }
+.evento { border-left: 4px solid var(--real); background: var(--warn-bg); color: var(--warn-ink); padding: 10px 14px; border-radius: 8px; margin: 14px 0 10px; }
+.post { border-left: 3px solid var(--brand); padding: 4px 0 4px 12px; margin: 10px 0; }
+.post .quem { font-size: .85rem; color: var(--muted); }
+.post p { margin: 2px 0 0; }
+.agente h3 { margin-top: 0; }
+.agente .papel { color: var(--muted); font-size: .9rem; }
+details.rel { margin-top: 10px; }
+details.rel > summary { cursor: pointer; font-weight: 600; padding: 6px 0; }

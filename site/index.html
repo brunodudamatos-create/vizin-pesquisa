@@ -1,23 +1,37 @@
 <!doctype html>
-<!-- Vizin — Início | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<!-- Vizin — Início | Versão v1.3 (2026-11-04) | Histórico: v1.2 criação. v1.3 novo texto (validação prévia, duas ferramentas), folder, equipe, KPIs ao final. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vizin · Pesquisa sintética</title>
-<meta name="description" content="Pesquisa sintética com personas de Tangará da Serra (MT) para explorar hipóteses de adoção do Vizin, com método, dados e código abertos.">
+<title>Vizin · Plataforma de validação prévia</title>
+<meta name="description" content="Plataforma de validação prévia do Vizin: simulação com personas fictícias e dados reais de Tangará da Serra (MT), lado a lado, com método, dados e código abertos.">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-pagina="index">
 <div id="topo"></div>
 <main><div class="wrap">
-  <h1>Vizin: o que 15 personas de Tangará da Serra nos ensinam antes do piloto</h1>
-  <p class="lead">O Vizin é uma vitrine digital hiperlocal que conecta lojistas de rua a consumidores da própria cidade, com entrega rápida pelo comércio local. Antes de ir a campo com 3 lojas parceiras, exploramos as hipóteses com personas sintéticas. Este site mostra o método, os dados e o código, para que qualquer pessoa possa auditar.</p>
+  <h1>Vizin: plataforma de validação prévia</h1>
+  <p class="lead">Esta plataforma é uma ferramenta de validação prévia do Vizin, antes da ida a campo com as lojas parceiras. Ela combina duas fontes de evidência: uma <b>simulação</b>, que antecipa reações e atritos de adoção com personas fictícias, e <b>dados reais</b>, coletados com lojistas e consumidores de Tangará da Serra. Primeiro simulamos, para saber onde olhar. Depois conferimos com a realidade, lado a lado.</p>
 
-  <div class="aviso"><strong>Leia antes dos números</strong>
-    Respostas de IA tendem a ser mais favoráveis do que as de pessoas reais. Por isso este material serve para <b>explorar hipóteses e mapear atritos</b>, e não para afirmar a aceitação do mercado. A validação de verdade vem dos questionários reais e do piloto, e a página <a href="comparar.html">Sintético × Real</a> faz essa comparação.</div>
+  <div class="duas">
+    <div class="card"><span class="etiqueta">Ferramenta 1</span><h3>Simulação</h3><p>Personas fictícias respondem aos mesmos questionários do grupo, e um cenário multiagente mostra como atores diferentes reagem a eventos hipotéticos. Mostra onde pode haver atrito.</p>
+      <p style="margin:0"><a href="resultados.html">Resultados</a> · <a href="cenario.html">Cenário multiagente</a></p></div>
+    <div class="card"><span class="etiqueta hip">Ferramenta 2</span><h3>Dados reais</h3><p>Questionários aplicados a lojistas e consumidores de Tangará da Serra e, depois, o piloto com lojas parceiras. É a evidência que vale para decidir.</p>
+      <p style="margin:0"><a href="comparar.html">Sintético × Real</a></p></div>
+  </div>
 
-  <div class="grade" id="kpis" aria-live="polite"><div class="vazio">Carregando…</div></div>
+  <div class="aviso"><strong>Leia antes dos resultados</strong>
+    Respostas de IA tendem a ser mais favoráveis do que as de pessoas reais. Por isso a simulação serve para <b>explorar hipóteses e mapear atritos</b>, e não para afirmar a aceitação do mercado. A validação de verdade vem dos dados reais.</div>
+
+  <section class="bloco-vizin" aria-labelledby="oquee">
+    <h2 id="oquee">O que é o Vizin</h2>
+    <p style="max-width:62ch">O Vizin é uma <b>vitrine digital hiperlocal</b>. Ele conecta lojistas de rua, que ainda não têm presença digital, a consumidores da própria cidade, com retirada ou entrega rápida. O dinheiro da cidade fica na cidade.</p>
+    <figure class="folder">
+      <img src="assets/folder-vizin.jpg" alt="Folder promocional do Vizin, com a ideia de vitrine digital para o comércio local" width="1400" height="933" loading="lazy">
+      <figcaption>Peça conceitual ilustrativa, criada com outra IA. Os números, lojas, avaliações e selos que aparecem nela são fictícios e não representam dados reais do projeto.</figcaption>
+    </figure>
+  </section>
 
   <h2>Por onde começar</h2>
   <div class="grade">
@@ -25,8 +39,20 @@
     <a class="card" href="personas.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Personas</h3><p>As 15 fichas fictícias, cada uma com a fonte de cada premissa.</p></a>
     <a class="card" href="resultados.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Resultados</h3><p>Gráficos por pergunta, estabilidade entre rodadas e alertas contra viés.</p></a>
     <a class="card" href="transcricoes.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Entrevistas</h3><p>Cada resposta bruta, com a justificativa da persona e o prompt exato.</p></a>
+    <a class="card" href="cenario.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Cenário multiagente</h3><p>Simulação qualitativa com 12 personagens reagindo a eventos, feita pelo Victor.</p></a>
     <a class="card" href="comparar.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Sintético × Real</h3><p>Carregue as respostas reais e veja onde a simulação acertou e errou.</p></a>
   </div>
+
+  <h2>Em números (simulação)</h2>
+  <div class="grade" id="kpis" aria-live="polite"><div class="vazio">Carregando…</div></div>
+
+  <h2>Equipe</h2>
+  <ul class="equipe">
+    <li>Bruno Duda Dantas Matos</li>
+    <li>Kamilly Vitória Oliveira Araujo</li>
+    <li>Lukas Ramos Rezende</li>
+    <li>Victor Hugo Borsato Xavier<small>Simulação multiagente</small></li>
+  </ul>
 </div></main>
 <div id="rodape"></div>
 <script src="assets/app.js"></script>
