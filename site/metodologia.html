@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Metodologia | Versão v2.0 (2026-11-05) | Histórico: v1.2 criação. v1.5 diagrama, seção sobre modelos (Gemini), cenário multiagente. v1.7 reestruturação acadêmica (objetivo, escopo, desenho, procedimento) e novo texto de abertura. v2.0 protocolo de criação das personas, controle de ficha neutra, hipóteses e critérios de decisão, plano de robustez e módulo complementar de perguntas. -->
+<!-- Vizin — Metodologia | Versão v2.1 (2026-11-05) | Histórico: v1.2 criação. v1.5 diagrama, seção sobre modelos (Gemini), cenário multiagente. v1.7 reestruturação acadêmica (objetivo, escopo, desenho, procedimento) e novo texto de abertura. v2.0 protocolo de criação das personas, controle de ficha neutra, hipóteses e critérios de decisão, plano de robustez e módulo complementar de perguntas. v2.1 calibração parcial com o IBGE (idade e tamanho do segmento). -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -38,7 +38,7 @@
     <li><b>Cobertura de perfis.</b> Os perfis foram escolhidos para variar porte e canal de venda (lojistas) e idade e ocupação (consumidores), em vez de repetir um perfil médio. <em>Feito.</em></li>
     <li><b>Redação das fichas.</b> Elaboradas com apoio de IA (Claude) a partir das hipóteses informadas pelo grupo, com campos fixos: idade, negócio ou ocupação, faturamento, maturidade digital, canais, perfil, dores, medos, gatilhos e sensibilidade a preço. <em>Feito.</em></li>
     <li><b>Rastreabilidade.</b> Cada premissa tem um campo <em>fonte da premissa</em>, que diz se foi informada pelo grupo ou se é hipótese ainda não validada em campo. Quase todas são hipóteses. <em>Feito.</em></li>
-    <li><b>Calibração com dados oficiais.</b> Conferir faixas etárias e perfil das unidades de comércio com dados do IBGE (Censo 2022 e cadastro de empresas) para Tangará da Serra. <em>Em andamento: enquanto não for concluída, as personas não devem ser lidas como representativas da população.</em></li>
+    <li><b>Calibração com dados oficiais.</b> Conferir faixas etárias e o tamanho do comércio do segmento com dados do IBGE (Censo 2022 e cadastro de empresas) para Tangará da Serra. <em>Feito em parte: a faixa etária dos consumidores foi conferida com o Censo 2022 e o tamanho do segmento com o cadastro de empresas de 2021 (ver <a href="personas.html">Personas</a> e <a href="diagnostico.html">Diagnóstico local</a>). A conferência mostrou que quem tem 46 anos ou mais está sub-representado. Ocupação e renda ainda não foram conferidas.</em></li>
     <li><b>Revisão pelo grupo e pela orientadora.</b> <em>Pendente.</em></li>
   </ol>
   <p>Os lojistas e os consumidores deste estudo não são amostras: são casos escolhidos para cobrir variações plausíveis. Por isso a análise olha padrões e diferenças entre perfis, e não percentuais de mercado.</p>
@@ -81,7 +81,7 @@
     <tr><td>Dois modelos de IA</td><td>Dependência de um modelo específico</td><td>Feito</td></tr>
     <tr><td>Ficha neutra, nos dois modelos</td><td>Circularidade (resposta decorrente da ficha)</td><td>Feito</td></tr>
     <tr><td>Diagnóstico local (Google Maps)</td><td>Ancora hipóteses em dados públicos reais</td><td>Feito (<a href="diagnostico.html">página própria</a>)</td></tr>
-    <tr><td>Calibração das personas com o IBGE</td><td>Representatividade de idade e perfil</td><td>Em andamento</td></tr>
+    <tr><td>Calibração das personas com o IBGE</td><td>Representatividade de idade e perfil</td><td>Parcial: idade conferida, ocupação e renda pendentes</td></tr>
     <tr><td>Ensaio dos roteiros de entrevista com agentes de IA (CAMEL-AI)</td><td>Qualidade e clareza dos roteiros antes do campo</td><td>Planejado antes do pitch</td></tr>
     <tr><td>Painel crítico simulado (AutoGen)</td><td>Pontos fracos do argumento antes da banca</td><td>Planejado antes do pitch</td></tr>
     <tr><td>Comparação com dados reais (treino e teste)</td><td>Quanto a simulação se aproxima do real</td><td>Depende da coleta do grupo</td></tr>

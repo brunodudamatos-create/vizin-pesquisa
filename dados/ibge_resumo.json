@@ -1,0 +1,58 @@
+{
+  "_cabecalho": "Vizin — Resumo de dados do IBGE | Versão v1.0 (2026-11-05) | Histórico: v1.0 criação, calculado a partir de dados/ibge/ (respostas brutas da API SIDRA coletadas em 05/11/2026).",
+  "municipio": "Tangará da Serra (MT), código 5107958",
+  "censo_2022": {
+    "fonte": "IBGE, Censo Demográfico 2022, tabela 9514 (SIDRA)",
+    "populacao_total": 106434,
+    "populacao_15_ou_mais": 83270,
+    "faixas_questionario": [
+      {
+        "faixa": "15 a 17 anos",
+        "pessoas": 4737,
+        "pct": 5.7,
+        "personas_consumidoras": 0
+      },
+      {
+        "faixa": "18 a 25 anos",
+        "pessoas": 14215,
+        "pct": 17.1,
+        "personas_consumidoras": 3
+      },
+      {
+        "faixa": "26 a 35 anos",
+        "pessoas": 18115,
+        "pct": 21.8,
+        "personas_consumidoras": 2
+      },
+      {
+        "faixa": "36 a 45 anos",
+        "pessoas": 16592,
+        "pct": 19.9,
+        "personas_consumidoras": 3
+      },
+      {
+        "faixa": "46 anos ou mais",
+        "pessoas": 29611,
+        "pct": 35.6,
+        "personas_consumidoras": 1
+      }
+    ]
+  },
+  "cempre_2021": {
+    "fonte": "IBGE, Cadastro Central de Empresas (CEMPRE) 2021, tabela 6450 (SIDRA)",
+    "unidades_locais_total": 3991,
+    "unidades_comercio_varejista": 923,
+    "pessoal_ocupado_comercio_varejista": 6400,
+    "varejo_vestuario_acessorios": {
+      "cnae": "47.81-4",
+      "unidades": 151,
+      "pessoal_ocupado": 727
+    },
+    "varejo_calcados_artigos_viagem": {
+      "cnae": "47.82-2",
+      "unidades": 26,
+      "pessoal_ocupado": 157
+    },
+    "unidades_segmento_vizin": 177
+  }
+}

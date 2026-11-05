@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Personas | Versão v1.9 (2026-11-05) | Histórico: v1.2 criação. v1.9 novo título e texto de abertura. -->
+<!-- Vizin — Personas | Versão v2.1 (2026-11-05) | Histórico: v1.2 criação. v1.9 novo título e texto de abertura. v2.1 conferência da faixa etária dos consumidores com o Censo 2022. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -18,6 +18,7 @@
     <button type="button" data-f="consumidor" aria-pressed="false">Consumidores</button>
   </div>
   <div class="grade" id="lista"><div class="vazio">Carregando…</div></div>
+  <div id="calibracao"></div>
 </div></main>
 <div id="rodape"></div>
 <script src="assets/app.js"></script>
@@ -45,6 +46,15 @@
     todas = [...d.lojistas, ...d.consumidores];
     desenhar("todas");
   } catch (e) { lista.innerHTML = '<div class="vazio">Não foi possível carregar as personas.</div>'; }
+  try {
+    const ib = await pegaJSON("data/dados/ibge_resumo.json");
+    const c = ib.censo_2022, nP = c.faixas_questionario.reduce((a, f) => a + f.personas_consumidoras, 0);
+    document.getElementById("calibracao").innerHTML = `<h2>Conferência com o Censo 2022</h2>` +
+      `<p>As faixas etárias dos 9 consumidores foram comparadas com a população de Tangará da Serra com 15 anos ou mais (${c.populacao_15_ou_mais.toLocaleString("pt-BR")} pessoas, de um total de ${c.populacao_total.toLocaleString("pt-BR")}), nas mesmas faixas do questionário.</p>` +
+      `<div class="card tabela-rolavel"><table><thead><tr><th>Faixa etária</th><th>População (Censo 2022)</th><th>Personas consumidoras</th></tr></thead><tbody>` +
+      c.faixas_questionario.map((f) => `<tr><td>${esc(f.faixa)}</td><td>${String(f.pct).replace(".", ",")}%</td><td>${Math.round(f.personas_consumidoras / nP * 100)}% (${f.personas_consumidoras} de ${nP})</td></tr>`).join("") + `</tbody></table></div>` +
+      `<p><b>Como ler.</b> As personas concentram jovens de 18 a 25 anos e pessoas de 36 a 45 anos, e <b>sub-representam quem tem 46 anos ou mais</b>, que são cerca de um terço dos adultos da cidade. Com 9 personas não há como espelhar a população, e esse não é o objetivo, mas a distorção deve ser lembrada ao ler os resultados dos consumidores. Quem responde aos questionários reais também pode ser mais jovem que a cidade, e é por isso que vale comparar a idade dos respondentes reais com esta tabela. Fonte: ${esc(c.fonte)}.</p>`;
+  } catch (e) { /* sem resumo do IBGE: a seção não aparece */ }
   document.querySelectorAll(".abas button").forEach((b) => b.addEventListener("click", () => {
     document.querySelectorAll(".abas button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
     desenhar(b.dataset.f);

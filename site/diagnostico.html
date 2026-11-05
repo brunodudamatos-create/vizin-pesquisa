@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Diagnóstico local | Versão v2.0 (2026-11-05) | Histórico: v2.0 criação (presença no Google e horários de 19 lojas de Tangará da Serra). -->
+<!-- Vizin — Diagnóstico local | Versão v2.1 (2026-11-05) | Histórico: v2.0 criação (presença no Google e horários de 19 lojas de Tangará da Serra). v2.1 tamanho do segmento pelo cadastro de empresas do IBGE (CEMPRE 2021). -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -28,7 +28,13 @@
   catch (e) { el.innerHTML = '<div class="vazio">O diagnóstico ainda não foi publicado.</div>'; return; }
   const n = d.total_lojas, pct = (x) => Math.round((x / n) * 100) + "%";
   const bloco = (titulo, linhas, leitura) => `<h2>${titulo}</h2><div class="card"><div class="barras"></div></div><p>${leitura}</p>`;
-  let h = `<p style="color:var(--muted);font-size:.9rem">Fonte: ${esc(d.fonte)}. Consultas: ${d.consultas.map(esc).join("; ")}.</p>`;
+  let ib = null; try { ib = await pegaJSON("data/dados/ibge_resumo.json"); } catch (e) {}
+  let h = ib ? `<h2>O tamanho do segmento</h2><div class="grade">` +
+    `<div class="card"><div class="kpi">${ib.cempre_2021.unidades_segmento_vizin}<small>unidades locais de comércio varejista de vestuário, acessórios e calçados (CNAE 47.81-4 e 47.82-2)</small></div></div>` +
+    `<div class="card"><div class="kpi">${ib.cempre_2021.varejo_vestuario_acessorios.pessoal_ocupado + ib.cempre_2021.varejo_calcados_artigos_viagem.pessoal_ocupado}<small>pessoas ocupadas nessas unidades</small></div></div>` +
+    `<div class="card"><div class="kpi">${Math.round(ib.cempre_2021.unidades_segmento_vizin / ib.cempre_2021.unidades_comercio_varejista * 100)}%<small>do comércio varejista da cidade (${ib.cempre_2021.unidades_comercio_varejista} unidades)</small></div></div></div>` +
+    `<p>Segundo o ${esc(ib.cempre_2021.fonte)}, Tangará da Serra tinha ${ib.cempre_2021.unidades_segmento_vizin} unidades locais de comércio no segmento do Vizin. Este diagnóstico olhou ${n} delas no Google, ou seja, cerca de ${Math.round(n / ib.cempre_2021.unidades_segmento_vizin * 100)}%. Os números abaixo descrevem o que aparece no Google, e não o conjunto das lojas. O cadastro é de 2021 e traz apenas empresas formais, então lojas informais não aparecem nele.</p>` : "";
+  h += `<p style="color:var(--muted);font-size:.9rem">Fonte: ${esc(d.fonte)}. Consultas: ${d.consultas.map(esc).join("; ")}.</p>`;
   h += bloco("1. Como o cliente fala com a loja", null,
     `${d.telefone.celular} das ${n} lojas listam número com formato de celular (${pct(d.telefone.celular)}), o que costuma indicar atendimento por WhatsApp. É um sinal, e não uma confirmação.`);
   h += bloco("2. Quanto a loja aparece no Google", null,

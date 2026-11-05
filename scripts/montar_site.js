@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /*
  * Vizin — Montagem dos dados do site
- * Versão: v1.4 (2026-11-05)
+ * Versão: v1.5 (2026-11-05)
  * Histórico de mudanças:
+ *   v1.5 (2026-11-05) Não copia dados/ibge/ (respostas brutas pesadas) para o site.
  *   v1.4 (2026-11-05) Versão do manifest passa a v2.0 (site v2.0).
  *   v1.3 (2026-11-05) Também copia simulacao_claude_neutro/ (controle com ficha neutra).
  *   v1.2 (2026-11-04) Criação. Copia dados/, resultados/ e simulacao_claude/ para site/data/ e gera manifest.json.
@@ -24,7 +25,8 @@ function copiar(origem, destino, filtro) {
 }
 
 // Dados de entrada (personas e questionários)
-copiar(path.join(RAIZ, "dados"), path.join(DESTINO, "dados"));
+// dados/ibge/ guarda respostas brutas pesadas da API (3 MB): ficam só no repositório. O site usa dados/ibge_resumo.json.
+copiar(path.join(RAIZ, "dados"), path.join(DESTINO, "dados"), (src) => !src.split(path.sep).join("/").includes("/dados/ibge/") && !src.endsWith("/dados/ibge"));
 
 // Resultados: só pastas de origem com resumo.json, e nunca MOCK
 const origens = [];
@@ -54,6 +56,6 @@ copiar(path.join(RAIZ, "simulacao_claude_neutro"), path.join(DESTINO, "simulacao
 
 fs.writeFileSync(
   path.join(DESTINO, "manifest.json"),
-  JSON.stringify({ versao: "v2.0", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
+  JSON.stringify({ versao: "v2.1", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
 );
 console.log(`Site montado. Origens publicadas: ${origens.join(", ") || "(nenhuma)"}`);
