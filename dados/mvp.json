@@ -1,0 +1,27 @@
+{
+  "_cabecalho": "Vizin — Requisitos do MVP e tração | Versão v1.0 (2026-11-05) | Histórico: v1.0 criação. Metas e valores de tração ficam em branco até o grupo preencher; a data de cada preenchimento é a do histórico do Git deste arquivo.",
+  "aviso": "Requisitos propostos com apoio de IA a partir das evidências desta plataforma, para o grupo e a orientadora validarem. Cada linha diz de onde vem e quão forte é a evidência.",
+  "requisitos": [
+    {"id": "R1", "exigencia": "Cadastro de loja mínimo, feito pelo WhatsApp, sem exigir site nem sistema.", "evidencia": "75% das 102 lojas encontradas no Google Maps listam número de celular.", "forca": "Real (público)", "limite": "Indica o canal usado, e não confirma que os lojistas queiram aderir.", "teste": "Lojas convidadas que concluem o cadastro.", "meta": ""},
+    {"id": "R2", "exigencia": "Vitrine com foto, preço, tamanho e disponibilidade de cada produto.", "evidencia": "A dificuldade de achar o produto específico aparece nas simulações dos dois modelos e é o problema que o questionário do consumidor mede. O módulo complementar pergunta o que o lojista consegue manter atualizado.", "forca": "Simulada + hipótese", "limite": "A intensidade da dor depende da ficha escrita pelo grupo (controle neutro).", "teste": "Produtos publicados por loja e parcela atualizada em 7 dias.", "meta": ""},
+    {"id": "R3", "exigencia": "Botão para falar com a loja no WhatsApp em cada produto.", "evidencia": "As lojas já atendem por celular, e o consumidor precisa confirmar se o produto existe antes de sair de casa.", "forca": "Hipótese", "limite": "Nenhum dado mede se o consumidor prefere esse canal. A pergunta C4 do módulo complementar cobre isso.", "teste": "Cliques no botão por visita.", "meta": ""},
+    {"id": "R4", "exigencia": "Funcionar fora do horário das lojas, à noite e no domingo.", "evidencia": "63% das lojas com horário cadastrado fecham até as 13h no sábado, e só 11% abrem aos domingos.", "forca": "Real (público)", "limite": "Mostra a janela, e não que o consumidor queira comprar nela.", "teste": "Parcela dos acessos e das conversas fora do expediente das lojas.", "meta": ""},
+    {"id": "R5", "exigencia": "Reservar o produto e retirar na loja em poucas horas.", "evidencia": "Hipótese H6. Nenhuma fonte mediu isso ainda.", "forca": "Hipótese", "limite": "O MVP é o teste. A pergunta C2 do módulo complementar mede a intenção.", "teste": "Reservas feitas e retiradas concluídas.", "meta": ""},
+    {"id": "R6", "exigencia": "Período de teste sem custo e preço testado em faixas, sem a âncora de 3%.", "evidencia": "A simulação não sustenta quanto o lojista paga: as respostas se concentram na faixa mais baixa, o que pode ser efeito do questionário.", "forca": "Hipótese", "limite": "Só lojistas reais respondem a isso. As perguntas L2 e L3 do módulo complementar cobrem.", "teste": "Lojistas que aceitam continuar depois do teste e a faixa aceita.", "meta": ""},
+    {"id": "R7", "exigencia": "Incluir lojas de bairros além do Centro no piloto.", "evidencia": "65% das lojas estão no Centro, e 58% têm menos de 10 avaliações no Google.", "forca": "Real (público) + hipótese", "limite": "Que lojas pequenas ganhem mais com uma vitrine coletiva é hipótese a perguntar ao lojista.", "teste": "Comparar resultado de loja do Centro com loja de bairro.", "meta": ""},
+    {"id": "R8", "exigencia": "Atender consumidores de todas as idades, não só jovens.", "evidencia": "O Censo 2022 mostra que 36% dos adultos de Tangará têm 46 anos ou mais, e só 1 de 9 personas consumidoras tem essa idade.", "forca": "Real (IBGE)", "limite": "Quem responde aos formulários pode ser mais jovem que a cidade.", "teste": "Faixa etária dos usuários e dos respondentes.", "meta": ""}
+  ],
+  "tracao": {
+    "periodo": "",
+    "indicadores": [
+      {"id": "lojas", "rotulo": "Lojas cadastradas", "valor": null},
+      {"id": "produtos", "rotulo": "Produtos publicados", "valor": null},
+      {"id": "visitas", "rotulo": "Visitas à vitrine", "valor": null},
+      {"id": "cliques", "rotulo": "Cliques para falar com a loja", "valor": null},
+      {"id": "reservas", "rotulo": "Reservas feitas", "valor": null},
+      {"id": "vendas", "rotulo": "Vendas concluídas", "valor": null},
+      {"id": "valor", "rotulo": "Valor vendido (R$)", "valor": null}
+    ],
+    "nota": "Preencher só com números reais do piloto. Valores em branco aparecem como “a preencher”."
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- Vizin — MVP | Versão v2.5 (2026-11-05) | Histórico: v2.5 criação (requisitos do MVP derivados das evidências e quadro de tração real). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MVP · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="mvp">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:980px">
+  <h1>MVP: o que construir e como provar</h1>
+  <p class="lead">Esta página transforma as evidências da plataforma em exigências para o MVP. Cada linha diz o que o MVP precisa ter, de onde vem essa exigência, quão forte ela é e como o piloto vai testá-la. No fim, o quadro de tração reúne os números reais do piloto, que são o que sustenta o pitch.</p>
+
+  <div class="nota"><strong>Como ler</strong>
+    A simulação e o diagnóstico orientam o que construir, mas <b>quem prova é o MVP funcionando</b>, com lojas cadastradas e vendas reais. Evidência “real (público)” vem de IBGE e Google Maps. “Simulada” vem das personas de IA. “Hipótese” ainda não tem dado.</div>
+
+  <div id="conteudo"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("conteudo");
+  let d;
+  try { d = await pegaJSON("data/dados/mvp.json"); }
+  catch (e) { el.innerHTML = '<div class="vazio">A página ainda não foi publicada.</div>'; return; }
+  const classe = (f) => /^Real/.test(f) ? "ok" : /^Simulada/.test(f) ? "mid" : "bad";
+  const vazio = '<span style="color:var(--muted)">A definir pelo grupo</span>';
+  let h = `<p style="color:var(--muted);font-size:.9rem">${esc(d.aviso)}</p><h2>1. O que o MVP precisa ter</h2>` +
+    d.requisitos.map((r) => `<section class="card" style="margin-top:12px">
+      <h3>${esc(r.id)} · ${esc(r.exigencia)}</h3>
+      <p style="margin:0 0 6px"><span class="faixa ${classe(r.forca)}">${esc(r.forca)}</span></p>
+      <p style="margin:0 0 6px"><b>De onde vem:</b> ${esc(r.evidencia)}</p>
+      <p style="margin:0 0 6px"><b>Limite da evidência:</b> ${esc(r.limite)}</p>
+      <p style="margin:0 0 6px"><b>Como o piloto testa:</b> ${esc(r.teste)}</p>
+      <p style="margin:0"><b>Meta para seguir:</b> ${r.meta ? esc(r.meta) : vazio}</p></section>`).join("");
+  h += `<h2>2. Tração real do piloto</h2><p>${esc(d.tracao.nota)}${d.tracao.periodo ? ` Período: ${esc(d.tracao.periodo)}.` : ""}</p><div class="grade">` +
+    d.tracao.indicadores.map((i) => `<div class="card"><div class="kpi">${i.valor === null || i.valor === undefined ? "–" : esc(String(i.valor).replace(".", ","))}<small>${esc(i.rotulo)}${i.valor === null || i.valor === undefined ? " · a preencher" : ""}</small></div></div>`).join("") + `</div>`;
+  h += `<h2>3. Como atualizar</h2><p>Os números e as metas ficam no arquivo <code>dados/mvp.json</code> do <a href="${REPO}">repositório</a>. A data de cada alteração fica no histórico do Git, o que mostra à banca que as metas foram definidas antes dos resultados.</p>`;
+  el.innerHTML = h;
+})();
+</script>
+</body>
+</html>

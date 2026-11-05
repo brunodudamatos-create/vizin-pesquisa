@@ -1,11 +1,11 @@
-/* Vizin — funções comuns do site | Versão v2.4 (2026-11-05)
-   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. v2.0 página Diagnóstico local no menu e versão do site. v2.1 versão do site. v2.2 versão do site. v2.3 novo texto do rodapé. v2.4 rodapé sem a versão do site e sem o parêntese do nome do Victor (a versão fica só no repositório). */
+/* Vizin — funções comuns do site | Versão v2.5 (2026-11-05)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. v2.0 página Diagnóstico local no menu e versão do site. v2.1 versão do site. v2.2 versão do site. v2.3 novo texto do rodapé. v2.4 rodapé sem a versão do site e sem o parêntese do nome do Victor (a versão fica só no repositório). v2.5 página MVP no menu. */
 "use strict";
-const VERSAO = "v2.4";
+const VERSAO = "v2.5";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"], ["transcricoes", "Entrevistas"],
-  ["cenario", "Cenário multiagente"], ["diagnostico", "Diagnóstico local"], ["resultados", "Resultados"], ["modelos", "Claude × Gemini"], ["comparar", "Sintético × Real"],
+  ["cenario", "Cenário multiagente"], ["diagnostico", "Diagnóstico local"], ["resultados", "Resultados"], ["modelos", "Claude × Gemini"], ["comparar", "Sintético × Real"], ["mvp", "MVP"],
 ];
 
 function esc(s) {

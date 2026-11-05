@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v2.4 — 2026-11-05**
+**Versão v2.5 — 2026-11-05**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -19,6 +19,7 @@
 | v2.2 | 2026-11-05 | Diagnóstico local ampliado de 19 para 102 lojas (32 buscas em 4 rodadas no Google Maps), com o método, o limite de 10 resultados por busca e a queda de lojas novas por rodada (46, 29, 8) explicados; texto de abertura reescrito; trecho do IBGE em destaque. |
 | v2.3 | 2026-11-05 | Novo texto do rodapé: dados simulados por ferramentas de IA guiadas, como ferramenta adicional aos formulários reais. |
 | v2.4 | 2026-11-05 | Rodapé sem a versão do site (ela fica só no repositório) e sem o parêntese depois do nome do Victor. |
+| v2.5 | 2026-11-05 | Página MVP: 8 requisitos derivados das evidências (com força e limite de cada uma), como o piloto testa cada um, metas em branco para o grupo e quadro de tração real (`dados/mvp.json`). |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
