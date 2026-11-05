@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Sintético × Real | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<!-- Vizin — Sintético × Real | Versão v1.8 (2026-11-04) | Histórico: v1.2 criação. v1.8 passo a passo, explicação do botão de download e download mais robusto. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -17,13 +17,24 @@
     O arquivo é lido apenas no seu navegador e <b>não é enviado a nenhum servidor</b>. Não publique respostas individuais de pessoas reais neste repositório: use só dados agregados.</div>
 
   <div class="card">
+    <h3 style="margin-top:0">Como usar, em 4 passos</h3>
+    <ol style="margin:0;padding-left:20px">
+      <li><b>Escolha o questionário</b> que os dados reais respondem (Lojistas ou Consumidores).</li>
+      <li><b>Escolha o modelo</b> da simulação que será comparado (Claude ou Gemini).</li>
+      <li><b>Carregue o arquivo CSV</b> exportado do formulário. As respostas reais ficam só no seu navegador.</li>
+      <li><b>Leia a comparação</b> pergunta a pergunta: a barra de cima é a simulação e a de baixo é o real.</li>
+    </ol>
+    <p style="margin:10px 0 0;color:var(--muted);font-size:.9rem">Para guardar o resultado, use o botão de baixar depois do passo 3. Ele grava um arquivo com <b>apenas os totais por pergunta</b>, sem nenhuma resposta individual, e pode ser publicado no repositório com segurança.</p>
+  </div>
+
+  <div class="card" style="margin-top:14px">
     <div class="controles" style="margin-top:0">
       <label>Questionário: <select id="tipo"><option value="lojista">Lojistas</option><option value="consumidor">Consumidores</option></select></label>
       <label>Simulação: <select id="origem"></select></label>
     </div>
     <div class="controles" style="margin-bottom:0">
       <input type="file" id="arquivo" accept=".csv,text/csv" aria-label="Arquivo CSV das respostas reais">
-      <button type="button" class="sec" id="baixar" disabled>Baixar resumo agregado (JSON)</button>
+      <button type="button" class="sec" id="baixar" disabled title="Disponível depois de carregar o arquivo CSV">Baixar resumo agregado (JSON)</button><span id="dica-baixar" style="color:var(--muted);font-size:.85rem">Disponível depois de carregar o CSV.</span>
     </div>
     <p style="color:var(--muted);font-size:.9rem;margin:10px 0 0">Aceita o CSV do Google Forms (colunas com o texto da pergunta, respostas com o texto da alternativa) ou o mesmo formato da planilha deste projeto. Respostas de consumidores que não moram em Tangará da Serra (funil) são descartadas.</p>
   </div>
@@ -174,7 +185,7 @@
     nota.style.cssText = "color:var(--muted);font-size:.85rem;margin-top:16px";
     nota.textContent = "As faixas (menos de 15, de 15 a 30 e mais de 30 pontos) são referências do grupo para leitura rápida, e não um teste estatístico. Cada barra mostra a simulação (em cima) e o real (embaixo).";
     res.appendChild(nota);
-    ultimoAgregado = agreg; btnBaixar.disabled = false;
+    ultimoAgregado = agreg; btnBaixar.disabled = false; btnBaixar.title = "Baixa só os totais por pergunta"; document.getElementById("dica-baixar").textContent = "Pronto para baixar: só os totais, sem respostas individuais.";
   }
 
   document.getElementById("arquivo").addEventListener("change", (ev) => {
@@ -188,7 +199,9 @@
     if (!ultimoAgregado) return;
     const blob = new Blob([JSON.stringify(ultimoAgregado, null, 2)], { type: "application/json" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
-    a.download = `agregado_real_${ultimoAgregado.tipo}.json`; a.click(); URL.revokeObjectURL(a.href);
+    a.download = `agregado_real_${ultimoAgregado.tipo}.json`; a.style.display = "none";
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
   });
 })();
 </script>

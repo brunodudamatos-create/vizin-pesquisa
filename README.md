@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v1.7 — 2026-11-04**
+**Versão v1.8 — 2026-11-04**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -12,6 +12,7 @@
 | v1.5 | 2026-11-04 | Visual acadêmico (paleta azul-marinho e cinza, títulos serifados), hero na home e diagrama do processo na Metodologia. |
 | v1.6 | 2026-11-04 | Logotipo da UNEMAT no topo da home, brasão e aviso de trabalho acadêmico no rodapé, faixa de título azul-marinho em todas as páginas internas. |
 | v1.7 | 2026-11-04 | Novo texto de abertura da home e reestruturação acadêmica da Metodologia (objetivo, escopo, desenho, procedimento). |
+| v1.8 | 2026-11-04 | Menu na ordem do método (Entrevistas e Cenário antes de Resultados); página Sintético × Real com passo a passo e download do resumo agregado mais robusto. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
