@@ -1,7 +1,7 @@
-/* Vizin — funções comuns do site | Versão v1.5 (2026-11-04)
-   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. */
+/* Vizin — funções comuns do site | Versão v1.6 (2026-11-04)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. */
 "use strict";
-const VERSAO = "v1.5";
+const VERSAO = "v1.6";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"],
@@ -43,8 +43,10 @@ function montarTopo(atual) {
     `<header class="topo"><div class="wrap"><a class="marca" href="index.html">Vizin<span>·</span>pesquisa</a><nav class="menu" aria-label="Principal">${menu}</nav></div></header>`;
   document.getElementById("rodape").innerHTML =
     `<footer class="rodape"><div class="wrap"><p>Dados <strong>sintéticos</strong> gerados por IA a partir de personas fictícias, para explorar hipóteses e mapear atritos de adoção. Não medem a demanda real do mercado.</p>` +
+    `<div class="rodape-inst"><img src="assets/brasao-unemat.png" alt="Brasão da UNEMAT" height="64"><div>` +
     `<p>Equipe: Bruno Duda Dantas Matos, Kamilly Vitória Oliveira Araujo, Lukas Ramos Rezende e Victor Hugo Borsato Xavier (simulação multiagente).</p>` +
-    `<p>Projeto da pós-graduação em Gestão e Inovação (UNEMAT) · Site ${VERSAO} · <a href="${REPO}">Código e dados no GitHub</a></p></div></footer>`;
+    `<p>Projeto desenvolvido no âmbito da pós-graduação em Gestão e Inovação da UNEMAT. Trabalho acadêmico de estudantes, e não um site oficial da universidade.</p>` +
+    `<p>Site ${VERSAO} · <a href="${REPO}">Código e dados no GitHub</a></p></div></div></div></footer>`;
 }
 
 /* Barras horizontais. linhas = [{rot, s, r}] em porcentagem (0-100). */
@@ -61,6 +63,27 @@ function opcaoTexto(pergunta, cod) {
   return o ? o.texto : cod;
 }
 
+/* Faixa de título das páginas internas (a Início já tem a sua). Move o h1 e o .lead para uma faixa azul-marinho. */
+function montarFaixa(atual) {
+  if (atual === "index") return;
+  const h1 = document.querySelector("main h1"); if (!h1) return;
+  const lead = document.querySelector("main .lead");
+  const wrapOrig = h1.closest(".wrap");
+  const nome = (PAGINAS.find((p) => p[0] === atual) || [, ""])[1];
+  const faixa = document.createElement("section");
+  faixa.className = "hero hero-menor";
+  const wrap = document.createElement("div");
+  wrap.className = "wrap";
+  if (wrapOrig && wrapOrig.style.maxWidth) wrap.style.maxWidth = wrapOrig.style.maxWidth;
+  const eb = document.createElement("p");
+  eb.className = "eyebrow"; eb.textContent = `Vizin · plataforma de validação prévia · ${nome}`;
+  wrap.appendChild(eb); wrap.appendChild(h1); if (lead) wrap.appendChild(lead);
+  faixa.appendChild(wrap);
+  document.querySelector("main").before(faixa);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  montarTopo(document.body.dataset.pagina || "");
+  const atual = document.body.dataset.pagina || "";
+  montarTopo(atual);
+  montarFaixa(atual);
 });
