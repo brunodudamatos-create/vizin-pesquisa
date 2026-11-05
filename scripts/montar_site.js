@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /*
  * Vizin — Montagem dos dados do site
- * Versão: v1.3 (2026-11-05)
+ * Versão: v1.4 (2026-11-05)
  * Histórico de mudanças:
+ *   v1.4 (2026-11-05) Versão do manifest passa a v2.0 (site v2.0).
  *   v1.3 (2026-11-05) Também copia simulacao_claude_neutro/ (controle com ficha neutra).
  *   v1.2 (2026-11-04) Criação. Copia dados/, resultados/ e simulacao_claude/ para site/data/ e gera manifest.json.
  *                     Dados de TESTE (origem MOCK) nunca entram no site.
@@ -53,6 +54,6 @@ copiar(path.join(RAIZ, "simulacao_claude_neutro"), path.join(DESTINO, "simulacao
 
 fs.writeFileSync(
   path.join(DESTINO, "manifest.json"),
-  JSON.stringify({ versao: "v1.9", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
+  JSON.stringify({ versao: "v2.0", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
 );
 console.log(`Site montado. Origens publicadas: ${origens.join(", ") || "(nenhuma)"}`);

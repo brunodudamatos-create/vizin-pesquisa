@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- Vizin — Diagnóstico local | Versão v2.0 (2026-11-05) | Histórico: v2.0 criação (presença no Google e horários de 19 lojas de Tangará da Serra). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico local · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="diagnostico">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:920px">
+  <h1>Diagnóstico local: como as lojas de Tangará aparecem hoje no Google</h1>
+  <p class="lead">Esta página não depende de simulação. Ela resume dados públicos do Google Maps sobre 19 lojas de roupas, calçados e acessórios da cidade: como podem ser contatadas, quanto aparecem e em que horário atendem. Serve de ponto de partida real para as hipóteses do Vizin.</p>
+
+  <div class="nota"><strong>Como interpretar</strong>
+    É uma amostra do que o Google mostra para quatro buscas, e não um censo do comércio. A página não afirma nada sobre site, Instagram ou loja virtual, porque essa informação não veio na consulta. Nomes de lojas e avaliações individuais não são publicados.</div>
+
+  <div id="conteudo"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("conteudo");
+  let d;
+  try { d = await pegaJSON("data/dados/diagnostico_presenca.json"); }
+  catch (e) { el.innerHTML = '<div class="vazio">O diagnóstico ainda não foi publicado.</div>'; return; }
+  const n = d.total_lojas, pct = (x) => Math.round((x / n) * 100) + "%";
+  const bloco = (titulo, linhas, leitura) => `<h2>${titulo}</h2><div class="card"><div class="barras"></div></div><p>${leitura}</p>`;
+  let h = `<p style="color:var(--muted);font-size:.9rem">Fonte: ${esc(d.fonte)}. Consultas: ${d.consultas.map(esc).join("; ")}.</p>`;
+  h += bloco("1. Como o cliente fala com a loja", null,
+    `${d.telefone.celular} das ${n} lojas listam número com formato de celular (${pct(d.telefone.celular)}), o que costuma indicar atendimento por WhatsApp. É um sinal, e não uma confirmação.`);
+  h += bloco("2. Quanto a loja aparece no Google", null,
+    `A mediana é de ${d.avaliacoes_no_google.mediana} avaliações por loja. ${d.avaliacoes_no_google.menos_de_10} lojas têm menos de 10, enquanto ${d.avaliacoes_no_google["100_ou_mais"]} concentram 100 ou mais. A visibilidade é desigual: poucas lojas aparecem muito e várias aparecem pouco.`);
+  h += bloco("3. Quando a loja atende", null,
+    `${d.horario.abre_domingo} das ${n} lojas abrem aos domingos e ${d.horario.fecha_sabado_ate_13h} fecham ao redor do meio-dia no sábado. Só ${d.horario.funciona_ate_22h} funcionam até as 22h. Quem trabalha em horário comercial tem pouca janela para ver os produtos presencialmente.`);
+  h += `<h2>O que isso sugere para o Vizin (hipóteses a validar)</h2><div class="card"><ol style="margin:0;padding-left:20px">` + [
+    "<b>O WhatsApp já é o canal natural.</b> A maioria das lojas usa número de celular. Um Vizin que parta do WhatsApp encontra o hábito pronto.",
+    "<b>Existe espaço para a vitrine fora do expediente.</b> Com atendimento concentrado em dias úteis e sábado de manhã, ver produtos à noite e no domingo pode ser um benefício. Só as entrevistas e os formulários dizem se o consumidor valoriza isso.",
+    "<b>A visibilidade é desigual.</b> Lojas pequenas com poucas avaliações podem ter mais a ganhar com uma vitrine coletiva. Também é hipótese: precisa ser perguntada ao lojista.",
+  ].map((t) => `<li style="margin-bottom:6px">${t}</li>`).join("") + `</ol></div>`;
+  h += `<h2>Limites do diagnóstico</h2><div class="card"><ul style="margin:0;padding-left:20px">${d.limites.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
+  el.innerHTML = h;
+  const cont = document.querySelectorAll(".barras");
+  barras(cont[0], [
+    { rot: "Telefone com formato de celular", s: d.telefone.celular / n * 100 },
+    { rot: "Telefone fixo", s: d.telefone.fixo / n * 100 },
+    { rot: "Central 0800 (rede)", s: d.telefone.central_0800 / n * 100 }], false);
+  barras(cont[1], [
+    { rot: "Menos de 10 avaliações", s: d.avaliacoes_no_google.menos_de_10 / n * 100 },
+    { rot: "De 10 a 99 avaliações", s: d.avaliacoes_no_google.de_10_a_99 / n * 100 },
+    { rot: "100 ou mais avaliações", s: d.avaliacoes_no_google["100_ou_mais"] / n * 100 }], false);
+  barras(cont[2], [
+    { rot: "Abre aos domingos", s: d.horario.abre_domingo / n * 100 },
+    { rot: "Fecha por volta do meio-dia no sábado", s: d.horario.fecha_sabado_ate_13h / n * 100 },
+    { rot: "Funciona até as 22h", s: d.horario.funciona_ate_22h / n * 100 }], false);
+})();
+</script>
+</body>
+</html>

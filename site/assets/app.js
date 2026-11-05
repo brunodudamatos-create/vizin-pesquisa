@@ -1,11 +1,11 @@
-/* Vizin — funções comuns do site | Versão v1.9 (2026-11-05)
-   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. */
+/* Vizin — funções comuns do site | Versão v2.0 (2026-11-05)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. v2.0 página Diagnóstico local no menu e versão do site. */
 "use strict";
-const VERSAO = "v1.9";
+const VERSAO = "v2.0";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"], ["transcricoes", "Entrevistas"],
-  ["cenario", "Cenário multiagente"], ["resultados", "Resultados"], ["modelos", "Claude × Gemini"], ["comparar", "Sintético × Real"],
+  ["cenario", "Cenário multiagente"], ["diagnostico", "Diagnóstico local"], ["resultados", "Resultados"], ["modelos", "Claude × Gemini"], ["comparar", "Sintético × Real"],
 ];
 
 function esc(s) {

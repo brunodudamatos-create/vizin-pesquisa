@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Metodologia | Versão v1.7 (2026-11-04) | Histórico: v1.2 criação. v1.5 diagrama, seção sobre modelos (Gemini), cenário multiagente. v1.7 reestruturação acadêmica (objetivo, escopo, desenho, procedimento) e novo texto de abertura. -->
+<!-- Vizin — Metodologia | Versão v2.0 (2026-11-05) | Histórico: v1.2 criação. v1.5 diagrama, seção sobre modelos (Gemini), cenário multiagente. v1.7 reestruturação acadêmica (objetivo, escopo, desenho, procedimento) e novo texto de abertura. v2.0 protocolo de criação das personas, controle de ficha neutra, hipóteses e critérios de decisão, plano de robustez e módulo complementar de perguntas. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -31,9 +31,17 @@
 
 
   <h2>4. Procedimento</h2>
-  <h3>4.1 Escolha das personas</h3>
-  <p>Foram criadas 15 personas fictícias de Tangará da Serra (MT), focadas em roupas, calçados e acessórios, o mesmo recorte dos questionários do grupo. São 6 lojistas (boutique da Avenida Brasil, calçados no centro, acessórios em galeria, loja de bairro, MEI de moda masculina e comerciante veterano do público do agro) e 9 consumidores (estudantes da UNEMAT, mães de família, trabalhador do agro, aposentada, servidor público e jovem usuário de apps).</p>
-  <p>Cada característica de cada persona tem um campo <em>fonte da premissa</em>, que diz se ela foi informada pelo grupo ou é uma hipótese ainda não validada em campo. Quase todas são hipóteses.</p>
+  <h3>4.1 Protocolo de criação das personas</h3>
+  <p>As 15 personas (6 lojistas e 9 consumidores de Tangará da Serra) seguiram os passos abaixo. A situação de cada passo está declarada, inclusive o que ainda falta.</p>
+  <ol>
+    <li><b>Recorte.</b> Roupas, calçados e acessórios em Tangará da Serra, o mesmo recorte dos questionários do grupo. <em>Feito.</em></li>
+    <li><b>Cobertura de perfis.</b> Os perfis foram escolhidos para variar porte e canal de venda (lojistas) e idade e ocupação (consumidores), em vez de repetir um perfil médio. <em>Feito.</em></li>
+    <li><b>Redação das fichas.</b> Elaboradas com apoio de IA (Claude) a partir das hipóteses informadas pelo grupo, com campos fixos: idade, negócio ou ocupação, faturamento, maturidade digital, canais, perfil, dores, medos, gatilhos e sensibilidade a preço. <em>Feito.</em></li>
+    <li><b>Rastreabilidade.</b> Cada premissa tem um campo <em>fonte da premissa</em>, que diz se foi informada pelo grupo ou se é hipótese ainda não validada em campo. Quase todas são hipóteses. <em>Feito.</em></li>
+    <li><b>Calibração com dados oficiais.</b> Conferir faixas etárias e perfil das unidades de comércio com dados do IBGE (Censo 2022 e cadastro de empresas) para Tangará da Serra. <em>Em andamento: enquanto não for concluída, as personas não devem ser lidas como representativas da população.</em></li>
+    <li><b>Revisão pelo grupo e pela orientadora.</b> <em>Pendente.</em></li>
+  </ol>
+  <p>Os lojistas e os consumidores deste estudo não são amostras: são casos escolhidos para cobrir variações plausíveis. Por isso a análise olha padrões e diferenças entre perfis, e não percentuais de mercado.</p>
 
   <h3>4.2 Questionários</h3>
   <p>As personas respondem aos mesmos dois questionários que o grupo aplica a pessoas reais (lojistas e consumidores de Tangará da Serra), com o texto original e as mesmas alternativas. Assim a comparação entre simulado e real é feita pergunta a pergunta.</p>
@@ -49,7 +57,9 @@
   <p><b>Cenário multiagente.</b> Em paralelo, o colega Victor Hugo Borsato Xavier rodou uma simulação qualitativa com 12 personagens que conversam e reagem a eventos escolhidos pelo grupo (página <a href="cenario.html">Cenário multiagente</a>). Ela não produz números de mercado. Serve para levantar hipóteses e perguntas para o piloto.</p>
 
   <h2>5. Controles contra viés</h2>
-  <p>O programa de análise emite um alerta quando mais de 80% das respostas de lojistas indicam disposição em aderir (sinal de simulação “viciada”) e quando quase todos os consumidores concordam que o problema é grave. As perguntas hipotéticas sobre disposição e quanto pagar são marcadas como de menor confiança.</p>
+  <p><b>Alertas automáticos.</b> O programa de análise emite alerta quando mais de 80% das respostas de lojistas indicam disposição em aderir (sinal de simulação “viciada”) e quando quase todos os consumidores concordam que o problema é grave. As perguntas hipotéticas sobre disposição e quanto pagar são marcadas como de menor confiança.</p>
+  <p><b>Dois modelos.</b> O mesmo procedimento foi executado com Claude e com Gemini. Se os dois chegam a padrões parecidos, o resultado é mais robusto.</p>
+  <p><b>Controle com ficha neutra.</b> Uma crítica natural é a circularidade: se a ficha da persona já diz que ela tem dificuldade para encontrar produtos, é de se esperar que ela responda que tem. Para testar isso, as mesmas 15 personas responderam de novo, nos dois modelos, com uma ficha que mantém só nome, idade, negócio ou ocupação, faixa de faturamento, maturidade digital e canais atuais, e <b>remove dores, medos, objeções e gatilhos</b>. O que se mantém quando a ficha não diz o que sentir é um sinal mais forte. O que desaparece dependia da ficha. Os resultados estão na página <a href="modelos.html">Claude × Gemini</a>.</p>
 
   <h2>6. Limitações</h2>
   <ul>
@@ -60,13 +70,81 @@
     <li><b>Questionário do consumidor.</b> Mede a dor de encontrar produtos, mas não pergunta se a pessoa usaria o Vizin nem a entrega rápida. O piloto com as 3 lojas é que testa o diferencial.</li>
   </ul>
 
-  <h2>7. Validação com dados reais</h2>
+  <h2>7. Hipóteses e critérios de decisão</h2>
+  <p>Para que o estudo não apenas confirme o que o grupo já acredita, cada hipótese precisa de um indicador e de um critério definidos <b>antes</b> de ver os dados reais. A tabela abaixo propõe as hipóteses, o indicador e a fonte real de cada uma. Os campos de limiar e de decisão são do grupo e da orientadora. A data de cada preenchimento fica registrada no histórico do Git do arquivo <code>dados/hipoteses.json</code>.</p>
+  <div id="hipoteses"><div class="vazio">Carregando…</div></div>
+
+  <h2>8. Plano de robustez</h2>
+  <p>A força da simulação vem de conferir os mesmos achados por caminhos diferentes. O plano abaixo mostra o que já foi feito e o que falta, sem tratar nada como pronto antes da hora.</p>
+  <div class="card tabela-rolavel"><table><thead><tr><th>Teste</th><th>O que verifica</th><th>Situação</th></tr></thead><tbody>
+    <tr><td>Três rodadas por persona</td><td>Estabilidade das respostas</td><td>Feito</td></tr>
+    <tr><td>Dois modelos de IA</td><td>Dependência de um modelo específico</td><td>Feito</td></tr>
+    <tr><td>Ficha neutra, nos dois modelos</td><td>Circularidade (resposta decorrente da ficha)</td><td>Feito</td></tr>
+    <tr><td>Diagnóstico local (Google Maps)</td><td>Ancora hipóteses em dados públicos reais</td><td>Feito (<a href="diagnostico.html">página própria</a>)</td></tr>
+    <tr><td>Calibração das personas com o IBGE</td><td>Representatividade de idade e perfil</td><td>Em andamento</td></tr>
+    <tr><td>Ensaio dos roteiros de entrevista com agentes de IA (CAMEL-AI)</td><td>Qualidade e clareza dos roteiros antes do campo</td><td>Planejado antes do pitch</td></tr>
+    <tr><td>Painel crítico simulado (AutoGen)</td><td>Pontos fracos do argumento antes da banca</td><td>Planejado antes do pitch</td></tr>
+    <tr><td>Comparação com dados reais (treino e teste)</td><td>Quanto a simulação se aproxima do real</td><td>Depende da coleta do grupo</td></tr>
+  </tbody></table></div>
+  <p style="color:var(--muted);font-size:.9rem;margin-top:8px">As ferramentas CAMEL-AI e AutoGen só serão citadas como usadas se de fato forem executadas, com a versão registrada.</p>
+
+  <h2>9. Módulo complementar de perguntas</h2>
+  <p>Os questionários atuais medem a dor, mas não perguntam se a pessoa usaria o Vizin, se valoriza retirada ou entrega rápida, nem quanto pagaria sem a âncora de 3%. O módulo abaixo preenche essa lacuna. Para não misturar versões durante a coleta, ele deve ir num <b>segundo formulário curto</b> ou ser enviado como complemento, e não alterar os formulários que já estão recebendo respostas.</p>
+  <div id="modulo"></div>
+
+  <h2>10. Validação com dados reais</h2>
   <p>Quando as respostas reais chegarem, a página <a href="comparar.html">Sintético × Real</a> compara as distribuições. O arquivo carregado é processado apenas no navegador de quem usa e não é enviado a nenhum servidor. Nenhuma resposta individual de pessoa real deve ser publicada neste repositório, apenas dados agregados e anônimos.</p>
 
-  <h2>8. Reprodutibilidade</h2>
+  <h2>11. Reprodutibilidade</h2>
   <p>Todo o código, as personas, os questionários, os prompts e as respostas estão no <a href="https://github.com/brunodudamatos-create/vizin-pesquisa">repositório público</a>, com número de versão e histórico de mudanças em cada arquivo.</p>
 </div></main>
 <div id="rodape"></div>
 <script src="assets/app.js"></script>
+<script>
+(async () => {
+  /* hipóteses */
+  const hel = document.getElementById("hipoteses");
+  try {
+    const d = await pegaJSON("data/dados/hipoteses.json");
+    const vazio = '<span style="color:var(--muted)">A definir pelo grupo</span>';
+    hel.innerHTML = `<p style="color:var(--muted);font-size:.9rem">${esc(d.status)}</p>` + d.hipoteses.map((h) =>
+      `<section class="card" style="margin-top:12px"><h3>${esc(h.id)} · ${h.tipo === "lojista" ? "Lojistas" : "Consumidores"}</h3>` +
+      `<p style="margin:0 0 8px"><b>${esc(h.enunciado)}</b></p>` +
+      `<p style="margin:0 0 6px"><b>Indicador:</b> ${esc(h.indicador)}</p>` +
+      `<p style="margin:0 0 6px"><b>Fonte real:</b> ${esc(h.fonte_real)}</p>` +
+      `<p style="margin:0 0 6px"><b>O que a simulação mostra (só como referência):</b> ${esc(h.referencia_simulada)}</p>` +
+      `<p style="margin:0 0 6px"><b>Limiar para apoiar a hipótese:</b> ${h.limiar_apoia ? esc(h.limiar_apoia) : vazio}</p>` +
+      `<p style="margin:0 0 6px"><b>Limiar para refutar:</b> ${h.limiar_refuta ? esc(h.limiar_refuta) : vazio}</p>` +
+      `<p style="margin:0"><b>Decisão para o MVP:</b> ${h.decisao ? esc(h.decisao) : vazio}</p></section>`).join("");
+  } catch (e) { hel.innerHTML = '<div class="vazio">As hipóteses ainda não foram publicadas.</div>'; }
+
+  /* módulo complementar */
+  const MOD = [
+    { titulo: "Consumidores (módulo C)", itens: [
+      ["C1. Você usaria uma vitrine digital que reúne produtos das lojas de Tangará da Serra para ver o que existe antes de sair de casa?", ["Com certeza usaria", "Provavelmente usaria", "Talvez", "Provavelmente não usaria", "Não usaria"]],
+      ["C2. Se você pudesse reservar o produto e retirar na loja em até 2 horas, isso faria diferença para você?", ["Faria muita diferença", "Faria alguma diferença", "Faria pouca diferença", "Não faria diferença"]],
+      ["C3. Se o produto chegasse na sua casa no mesmo dia, quanto você aceitaria pagar de taxa de entrega?", ["Nada, só se fosse grátis", "Até R$ 5", "De R$ 5 a R$ 10", "De R$ 10 a R$ 15", "Mais de R$ 15"]],
+      ["C4. Por qual canal você preferiria falar com a loja a partir da vitrine?", ["WhatsApp", "Instagram", "Site ou aplicativo", "Ligação"]],
+    ]},
+    { titulo: "Lojistas (módulo L)", itens: [
+      ["L1. Você colocaria seus produtos em uma vitrine digital local, sem pagar nada, durante 30 dias de teste?", ["Sim, com certeza", "Provavelmente sim", "Talvez", "Provavelmente não", "Não"]],
+      ["L2. Se a vitrine trouxesse clientes, de que forma você preferiria pagar?", ["Percentual sobre cada venda", "Mensalidade fixa", "Valor por cliente que chegou à loja", "Não pagaria"]],
+      ["L3. Até quanto do valor de cada venda você aceitaria pagar à plataforma?", ["Nada", "Até 2%", "De 2% a 5%", "De 5% a 8%", "De 8% a 12%", "Mais de 12%"]],
+      ["L4. Que informações dos produtos você teria facilidade de manter atualizadas? (pode marcar mais de uma)", ["Fotos", "Preços", "Disponibilidade em estoque", "Tamanhos e cores"]],
+    ]},
+  ];
+  const mel = document.getElementById("modulo");
+  const texto = (g) => g.itens.map((it) => it[0] + "\n" + it[1].map((o, i) => String.fromCharCode(97 + i) + ") " + o).join("\n")).join("\n\n");
+  mel.innerHTML = MOD.map((g, gi) => `<details class="rel"><summary>${esc(g.titulo)}</summary>` +
+    g.itens.map((it) => `<p style="margin:10px 0 4px"><b>${esc(it[0])}</b></p><ul style="margin:0;padding-left:20px">${it[1].map((o) => `<li>${esc(o)}</li>`).join("")}</ul>`).join("") +
+    `<p style="margin-top:12px"><button type="button" data-copiar="${gi}">Copiar texto para o Google Forms</button> <span class="ok-copia" style="color:var(--muted);font-size:.9rem"></span></p></details>`).join("") +
+    `<p style="color:var(--muted);font-size:.9rem">Não peça nome, telefone nem outro dado pessoal. As faixas de L3 começam em zero e não repetem a âncora de 3% dos formulários atuais.</p>`;
+  mel.querySelectorAll("button[data-copiar]").forEach((b) => b.addEventListener("click", async () => {
+    const msg = b.parentElement.querySelector(".ok-copia");
+    try { await navigator.clipboard.writeText(texto(MOD[+b.dataset.copiar])); msg.textContent = "Copiado."; }
+    catch (e) { msg.textContent = "Não foi possível copiar automaticamente. Selecione o texto acima e copie."; }
+  }));
+})();
+</script>
 </body>
 </html>

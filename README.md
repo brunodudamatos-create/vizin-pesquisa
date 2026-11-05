@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v1.9 — 2026-11-05**
+**Versão v2.0 — 2026-11-05**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -14,6 +14,7 @@
 | v1.7 | 2026-11-04 | Novo texto de abertura da home e reestruturação acadêmica da Metodologia (objetivo, escopo, desenho, procedimento). |
 | v1.8 | 2026-11-04 | Menu na ordem do método (Entrevistas e Cenário antes de Resultados); página Sintético × Real com passo a passo e download do resumo agregado mais robusto. |
 | v1.9 | 2026-11-05 | Novos títulos e textos de abertura em Personas, Entrevistas, Cenário, Resultados e Claude × Gemini; quadros de leitura neutros no lugar dos avisos amarelos. |
+| v2.0 | 2026-11-05 | Controle com ficha neutra nos dois modelos (45 entrevistas Claude e 45 Gemini, origens `claude-isolado-neutro` e `gemini-neutro`); página Diagnóstico local (Google Maps, 19 lojas, só indicadores agregados); Metodologia com protocolo das personas, hipóteses e critérios de decisão (`dados/hipoteses.json`), plano de robustez e módulo complementar de perguntas; caixa "Síntese e recomendações para o MVP" em Resultados; script `simulacao/coletar_ibge.py` (ainda não testado contra o IBGE); `rodar_gemini.sh` v1.1 com `FICHA=neutra`. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.

@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Resultados | Versão v1.9 (2026-11-05) | Histórico: v1.2 criação. v1.9 novo título e texto de abertura. -->
+<!-- Vizin — Resultados | Versão v2.0 (2026-11-05) | Histórico: v1.2 criação. v1.9 novo título e texto de abertura. v2.0 caixa de síntese e recomendações para o MVP (números lidos dos resumos publicados, sem ajuste manual). -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -12,6 +12,7 @@
 <main><div class="wrap">
   <h1>Resultados da simulação: distribuição das respostas</h1>
   <p class="lead">Distribuição das respostas simuladas em cada pergunta dos questionários, por modelo de IA. O “n” efetivo é o número de personas, e as rodadas servem para medir a estabilidade das respostas. Os resultados indicam hipóteses a verificar, e não a demanda do mercado.</p>
+  <div id="sintese"></div>
   <div class="controles">
     <label>Modelo que gerou as respostas: <select id="origem" aria-label="Modelo"></select></label>
   </div>
@@ -38,6 +39,51 @@
   if (!m.origens.length) { document.getElementById("perguntas").innerHTML = '<div class="vazio">Os resultados ainda não foram publicados.</div>'; return; }
   sel.innerHTML = m.origens.map((o) => `<option value="${esc(o)}">${esc(nomeOrigem(o))}</option>`).join("");
   let resumo = null, tipo = "lojista";
+
+  /* ---------- síntese e recomendações para o MVP (números lidos dos resumos) ---------- */
+  (async () => {
+    const el = document.getElementById("sintese");
+    try {
+      const rs = {};
+      for (const o of m.origens) rs[o] = await pegaJSON(`data/resultados/${o}/resumo.json`);
+      const v = (f) => Object.values(rs).map(f).filter((x) => typeof x === "number");
+      const faixa = (a, d = 0) => { const lo = Math.min(...a), hi = Math.max(...a); const f = (x) => x.toFixed(d).replace(".", ","); return lo === hi ? f(lo) : `${f(lo)} a ${f(hi)}`; };
+      const completas = m.origens.filter((o) => !o.endsWith("-neutro")), neutras = m.origens.filter((o) => o.endsWith("-neutro"));
+      const q12c = completas.map((o) => rs[o].consumidor.media_q12_atrapalha), q12n = neutras.map((o) => rs[o].consumidor.media_q12_atrapalha);
+      const temControle = neutras.length > 0;
+      el.innerHTML = `<section class="card" style="border-left:4px solid var(--accent,#c8611e);margin:18px 0">
+        <h2 style="margin-top:0">Síntese e recomendações para o MVP</h2>
+        <p style="color:var(--muted);font-size:.9rem;margin-top:0">Síntese elaborada com apoio de IA a partir dos resultados publicados nesta plataforma (${m.origens.length} conjuntos: ${m.origens.map((o) => esc(nomeOrigem(o))).join("; ")}). Deve ser validada pelo grupo e pela orientadora. Os números abaixo são lidos dos arquivos de resultado, sem ajuste manual.</p>
+        <h3>O que a simulação sustenta</h3>
+        <ul>
+          <li><b>Há abertura dos lojistas para uma vitrine local.</b> De ${faixa(v((r) => r.lojista.indicador_disposicao_pct))}% dos lojistas simulados se dizem dispostos ou totalmente dispostos, e de ${faixa(v((r) => r.lojista.indicador_aceita_pagar_pct))}% aceitariam pagar algum percentual, ${temControle ? "mesmo quando a ficha não descreve dores nem gatilhos" : "nos modelos testados"}.</li>
+          <li><b>Esse padrão aparece nos dois modelos de IA.</b> Isso reduz a chance de ser um capricho de um único modelo, mas não prova que seja verdade no mercado.</li>
+        </ul>
+        <h3>O que ela não sustenta</h3>
+        <ul>
+          ${temControle ? `<li><b>A intensidade da dor do consumidor.</b> A média de 1 a 5 de “a dificuldade atrapalha” vai de ${faixa(q12c, 1)} com a ficha completa para ${faixa(q12n, 1)} com a ficha neutra. Parte do que aparece vem da ficha escrita pelo grupo, e só o dado real confirma a intensidade.</li>` : ""}
+          <li><b>Demanda e valor de mercado.</b> Dados sintéticos não medem quantas pessoas usariam o Vizin nem quanto pagariam.</li>
+          <li><b>Intenção de uso do consumidor e valor da retirada ou entrega rápida.</b> Os questionários atuais não perguntam isso. O módulo complementar da <a href="metodologia.html">Metodologia</a> cobre essa lacuna.</li>
+          <li><b>Quanto o lojista pagaria sem a âncora de 3%.</b> As respostas simuladas se concentram na faixa mais baixa, o que pode ser efeito do próprio questionário.</li>
+        </ul>
+        <h3>O que fazer</h3>
+        <ul>
+          <li>Construir o MVP como o <b>experimento que mede o que a simulação não consegue</b>: cadastro e permanência de lojistas, reservas e retiradas, e disposição a pagar.</li>
+          <li>Começar pelo lado do lojista, com cadastro mínimo e período de teste sem custo, pois é onde a simulação mostra abertura mais estável.</li>
+          <li>Partir do WhatsApp como canal, que o <a href="diagnostico.html">diagnóstico local</a> indica ser o contato mais comum das lojas.</li>
+          <li>Aplicar o módulo complementar e ir a campo em paralelo, antes de fixar preço ou percentual.</li>
+        </ul>
+        <h3>O que evitar</h3>
+        <ul>
+          <li>Apresentar números simulados como prova de demanda.</li>
+          <li>Tratar a intensidade da dor do consumidor como fato antes dos dados reais.</li>
+          <li>Fixar o percentual de 3% antes de testar faixas sem âncora.</li>
+        </ul>
+        <h3>Critérios para seguir, ajustar ou parar</h3>
+        <p style="margin-bottom:0">Dependem de limiares que o grupo define antes de ver os dados reais. Eles estão em <a href="metodologia.html">Hipóteses e critérios de decisão</a>, onde cada campo continua em branco até o grupo preencher.</p>
+      </section>`;
+    } catch (e) { el.innerHTML = ""; }
+  })();
 
   async function carregar() {
     resumo = await pegaJSON(`data/resultados/${sel.value}/resumo.json`);

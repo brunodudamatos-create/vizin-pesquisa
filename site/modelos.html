@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Claude × Gemini | Versão v1.9 (2026-11-05) | Histórico: v1.4 criação (comparação entre dois modelos de IA). v1.9 novo título e texto de abertura. -->
+<!-- Vizin — Claude × Gemini | Versão v2.0 (2026-11-05) | Histórico: v1.4 criação (comparação entre dois modelos de IA). v1.9 novo título e texto de abertura. v2.0 seção 6, controle com ficha neutra. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -117,8 +117,28 @@
     `<b>Amostra pequena.</b> São ${fA.personas} personas, e as 45 entrevistas de cada modelo são medidas repetidas das mesmas personas, e não 45 pessoas.`,
     "<b>Sem teste estatístico.</b> As faixas (menos de 15, de 15 a 30 e mais de 30 pontos percentuais) são referências do grupo para leitura rápida.",
     "<b>Concordância não é validade.</b> Dois modelos podem concordar e ainda assim errar o mercado real. A confirmação depende dos questionários reais e do piloto.",
-  ].map((t) => `<li style="margin-bottom:6px">${t}</li>`).join("") + `</ol></div>` +
-  `<h2>Reprodução</h2><p>Para repetir a comparação: o texto exato dos prompts está em <code>simulacao_claude/prompts/</code>, o programa em <code>simulacao/simular.py</code> e os dados brutos em <code>resultados/respostas_brutas.jsonl</code>, todos no <a href="${REPO}">repositório do projeto</a>. Versão do site: ${VERSAO}.</p>`;
+  ].map((t) => `<li style="margin-bottom:6px">${t}</li>`).join("") + `</ol></div>`;
+
+  /* ---------- 6. controle com ficha neutra ---------- */
+  const ON = { c: "claude-isolado-neutro", g: "gemini-neutro" };
+  if (m.origens.includes(ON.c) || m.origens.includes(ON.g)) {
+    const rCn = m.origens.includes(ON.c) ? await pegaJSON(`data/resultados/${ON.c}/resumo.json`) : null;
+    const rGn = m.origens.includes(ON.g) ? await pegaJSON(`data/resultados/${ON.g}/resumo.json`) : null;
+    const col = [["Claude, ficha completa", rA], ["Claude, ficha neutra", rCn], ["Gemini, ficha completa", rB], ["Gemini, ficha neutra", rGn]].filter((c) => c[1]);
+    const ctl = [
+      ["Lojistas dispostos (Q4), %", (r) => r.lojista.indicador_disposicao_pct],
+      ["Lojistas que aceitam pagar algo (Q6), %", (r) => r.lojista.indicador_aceita_pagar_pct],
+      ["Consumidores: a dificuldade atrapalha (Q12), média 1–5", (r) => r.consumidor.media_q12_atrapalha],
+      ["Consumidores: a demora faz desistir (Q13), média 1–5", (r) => r.consumidor.media_q13_desiste],
+    ];
+    h += `<h2>6. Controle com ficha neutra</h2><p>Para testar se as respostas decorrem do que a própria ficha diz, as mesmas 15 personas responderam de novo com uma ficha sem dores, medos, objeções e gatilhos (ficam nome, idade, negócio ou ocupação, faturamento, maturidade digital e canais). A tabela mostra o que muda.</p>` +
+      `<div class="card tabela-rolavel"><table><thead><tr><th>Indicador</th>${col.map((c) => `<th>${esc(c[0])}</th>`).join("")}</tr></thead><tbody>` +
+      ctl.map((l) => `<tr><td>${esc(l[0])}</td>${col.map((c) => `<td>${num(l[1](c[1]), 1)}</td>`).join("")}</tr>`).join("") + `</tbody></table></div>` +
+      `<p><b>Como ler.</b> A disposição e o aceite dos lojistas se mantêm na mesma faixa sem a ficha descrever dores, então esse sinal não depende do que escrevemos nelas. A intensidade da dor do consumidor cai nos dois modelos, então parte dela vinha da ficha e deve ser confirmada com dados reais. Na ficha neutra as personas também ficam menos diferentes entre si, e isso limita o que a simulação consegue mostrar.</p>` +
+      `<p style="color:var(--muted);font-size:.9rem">Os prompts da ficha neutra estão em <code>simulacao_claude_neutro/prompts/</code> e as respostas na página <a href="transcricoes.html">Entrevistas</a>. Registro do modelo: nos dados do Claude em ficha neutra, o identificador exato do modelo não foi retornado pela ferramenta (apenas o apelido “sonnet”).</p>`;
+  }
+
+  h += `<h2>Reprodução</h2><p>Para repetir a comparação: o texto exato dos prompts está em <code>simulacao_claude/prompts/</code>, o programa em <code>simulacao/simular.py</code> e os dados brutos em <code>resultados/respostas_brutas.jsonl</code>, todos no <a href="${REPO}">repositório do projeto</a>. Versão do site: ${VERSAO}.</p>`;
 
   el.innerHTML = h;
   const cont = document.getElementById("perguntas");
