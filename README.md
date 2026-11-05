@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v1.3 — 2026-11-04**
+**Versão v1.4 — 2026-11-04**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -8,6 +8,7 @@
 | v1.1 | 2026-11-04 | Entrevistas isoladas feitas pelo Claude (pasta `simulacao_claude/`), importador e análise separada por modelo. |
 | v1.2 | 2026-11-04 | Site estático (pasta `site/`) com metodologia, personas, resultados, entrevistas e comparação sintético × real; montagem automática para o Vercel. |
 | v1.3 | 2026-11-04 | Nova home (plataforma de validação prévia, duas ferramentas), página Cenário multiagente (simulação qualitativa do Victor Hugo Borsato Xavier), folder ilustrativo e créditos da equipe. |
+| v1.4 | 2026-11-04 | Resultados da simulação com Gemini (`gemini-3.5-flash-lite`), página de comparação Claude × Gemini e script `simulacao/rodar_gemini.sh` (simula, analisa e envia ao GitHub a partir do servidor). |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
@@ -79,3 +80,17 @@ Depois abra `http://localhost:8000` no navegador.
 
 Páginas: Início, Metodologia, Personas, Resultados, Entrevistas e Sintético × Real (o CSV com respostas reais é lido
 só no navegador e nunca é enviado a servidor algum).
+
+
+## Rodar a simulação com Gemini no servidor (v1.4)
+
+Pré-requisitos no servidor: `.env` com `GEMINI_API_KEY` e `GEMINI_MODEL` (o `.env` nunca vai para o GitHub),
+chave de escrita do GitHub (*deploy key*) e `python3-openpyxl` instalado.
+
+```
+cd ~/vizin-pesquisa
+./simulacao/rodar_gemini.sh
+```
+
+O script atualiza o código, simula (3 rodadas por persona, retomando de onde parou), analisa e envia `resultados/` ao GitHub.
+O site publica sozinho em 1 a 2 minutos. Limites do plano gratuito mudam: confira o modelo e os limites diários no Google AI Studio.

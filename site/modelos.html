@@ -1,0 +1,136 @@
+<!doctype html>
+<!-- Vizin — Claude × Gemini | Versão v1.4 (2026-11-04) | Histórico: v1.4 criação (comparação entre dois modelos de IA). -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude × Gemini · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="modelos">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:920px">
+  <h1>Comparação entre dois modelos de IA</h1>
+  <p class="lead">As mesmas 15 personas fictícias responderam aos mesmos questionários com dois modelos de linguagem diferentes. Comparar os dois mostra onde a simulação é estável e onde ela depende do modelo usado.</p>
+
+  <div class="aviso"><strong>Como ler esta página</strong>
+    Nenhum dos dois modelos mede o mercado real. Concordância entre eles indica <b>robustez da simulação</b>, e não validade. A validade só vem da comparação com os dados reais, na página <a href="comparar.html">Sintético × Real</a>.</div>
+
+  <div id="conteudo"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("conteudo");
+  const A = "claude-isolado", B = "gemini";
+  const num = (x, d = 1) => (x === null || x === undefined || Number.isNaN(x) ? "–" : Number(x).toFixed(d).replace(".", ","));
+  let m, rA, rB, regs, quest;
+  try {
+    m = await manifest();
+    if (!m.origens.includes(A) || !m.origens.includes(B)) throw new Error("faltam origens");
+    rA = await pegaJSON(`data/resultados/${A}/resumo.json`);
+    rB = await pegaJSON(`data/resultados/${B}/resumo.json`);
+    regs = await pegaJSONL("data/resultados/respostas_brutas.jsonl");
+    quest = { lojista: await pegaJSON("data/dados/questionario_lojista.json"), consumidor: await pegaJSON("data/dados/questionario_consumidor.json") };
+  } catch (e) {
+    el.innerHTML = '<div class="vazio">A comparação aparece quando os resultados dos dois modelos estiverem publicados.</div>'; return;
+  }
+
+  /* ---------- 1. procedimento (lido dos próprios registros) ---------- */
+  function ficha(o) {
+    const rs = regs.filter((r) => r.origem === o);
+    const datas = rs.map((r) => r.data).sort();
+    const modelos = [...new Set(rs.map((r) => r.modelo))];
+    const temps = [...new Set(rs.map((r) => r.temperatura))];
+    return { n: rs.length, personas: new Set(rs.map((r) => r.persona_id)).size, modelo: modelos.join("; "),
+      temp: temps.map((t) => (t === null ? "não registrada" : String(t).replace(".", ","))).join("; "),
+      ini: datas[0], fim: datas[datas.length - 1] };
+  }
+  const fA = ficha(A), fB = ficha(B);
+  const linhas = [
+    ["Modelo (como registrado nos dados)", fA.modelo, fB.modelo],
+    ["Forma de execução", "Sessões isoladas: uma sessão nova por persona e por rodada, lendo só o seu prompt", "Chamada de API, uma por persona e rodada, executada em servidor próprio (script <code>simular.py</code>)"],
+    ["Texto de instruções e questionário", "Idênticos", "Idênticos"],
+    ["Personas", `${fA.personas}`, `${fB.personas}`],
+    ["Entrevistas (personas × rodadas)", `${fA.n}`, `${fB.n}`],
+    ["Temperatura", fA.temp, fB.temp],
+    ["Período de coleta", `${fA.ini} a ${fA.fim}`, `${fB.ini} a ${fB.fim}`],
+  ];
+  let h = `<h2>1. Procedimento</h2><div class="card tabela-rolavel"><table><thead><tr><th>Item</th><th>Claude</th><th>Gemini</th></tr></thead><tbody>` +
+    linhas.map((l) => `<tr><td>${l[0]}</td><td>${l[0].startsWith("Forma") || l[0].startsWith("Modelo") ? esc(l[1]) : l[1]}</td><td>${l[2].startsWith("Chamada") ? l[2] : esc(l[2])}</td></tr>`).join("") + `</tbody></table></div>` +
+    `<p style="color:var(--muted);font-size:.9rem;margin-top:8px">Horários conforme o relógio de cada máquina que executou a coleta. Os dados do Claude não registraram o identificador exato do modelo nem a temperatura, e isso está declarado como limitação na seção 5. Todos os registros brutos estão na página <a href="transcricoes.html">Entrevistas</a> e no repositório.</p>`;
+
+  /* ---------- 2. indicadores-síntese ---------- */
+  function mediaConsist(r) {
+    const v = [...Object.values(r.lojista.consistencia_por_persona_pct || {}), ...Object.values(r.consumidor.consistencia_por_persona_pct || {})];
+    return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null;
+  }
+  const ind = [
+    ["Lojistas “dispostos” ou “totalmente dispostos” (Q4), %", rA.lojista.indicador_disposicao_pct, rB.lojista.indicador_disposicao_pct],
+    ["Lojistas que aceitariam pagar algum percentual (Q6), %", rA.lojista.indicador_aceita_pagar_pct, rB.lojista.indicador_aceita_pagar_pct],
+    ["Consumidores: a dificuldade de achar produtos atrapalha (Q12), média de 1 a 5", rA.consumidor.media_q12_atrapalha, rB.consumidor.media_q12_atrapalha],
+    ["Consumidores: a demora faz desistir (Q13), média de 1 a 5", rA.consumidor.media_q13_desiste, rB.consumidor.media_q13_desiste],
+    ["Estabilidade média entre rodadas (mesma resposta nas 3 rodadas), %", mediaConsist(rA), mediaConsist(rB)],
+    ["Alertas antiviés disparados", (rA.alertas || []).length, (rB.alertas || []).length],
+  ];
+  h += `<h2>2. Indicadores-síntese</h2><div class="card tabela-rolavel"><table><thead><tr><th>Indicador</th><th>Claude</th><th>Gemini</th><th>Diferença</th></tr></thead><tbody>` +
+    ind.map((l) => { const d = l[0].startsWith("Alertas") ? 0 : 1; return `<tr><td>${esc(l[0])}</td><td>${num(l[1], d)}</td><td>${num(l[2], d)}</td><td>${num(l[2] - l[1], d)}</td></tr>`; }).join("") + `</tbody></table></div>` +
+    `<p style="color:var(--muted);font-size:.9rem;margin-top:8px">Diferença = Gemini menos Claude. Q4 e Q6 são hipotéticas e as mais sujeitas a otimismo, então têm menor confiança nos dois modelos.</p>`;
+
+  /* ---------- 3. pergunta a pergunta ---------- */
+  const faixaDe = (d) => (d < 15 ? ["ok", "próximo"] : d < 30 ? ["mid", "diferença moderada"] : ["bad", "diferença grande"]);
+  const contFaixas = { ok: 0, mid: 0, bad: 0 };
+  const blocos = [];
+  ["lojista", "consumidor"].forEach((tipo) => {
+    const pa = rA[tipo].perguntas, pb = rB[tipo].perguntas;
+    pa.forEach((qa) => {
+      const qb = pb.find((x) => x.id === qa.id); if (!qb) return;
+      const rows = qa.opcoes.map((o) => ({ rot: `${o.cod}) ${o.texto}`, s: o.pct, r: (qb.opcoes.find((x) => x.cod === o.cod) || { pct: 0 }).pct }));
+      const soma = rows.reduce((a, l) => a + Math.abs(l.s - l.r), 0);
+      const dif = qa.tipo === "multipla" ? soma / rows.length : soma / 2;
+      const f = faixaDe(dif); contFaixas[f[0]]++;
+      blocos.push({ tipo, qa, rows, dif, f });
+    });
+  });
+  const total = blocos.length;
+  const difMedia = blocos.reduce((a, b) => a + b.dif, 0) / (total || 1);
+  h += `<h2>3. Pergunta a pergunta</h2>` +
+    `<p>Das ${total} perguntas comparáveis, <b>${contFaixas.ok}</b> ficaram próximas (diferença menor que 15 pontos percentuais), <b>${contFaixas.mid}</b> com diferença moderada (15 a 30) e <b>${contFaixas.bad}</b> com diferença grande (acima de 30). A diferença média foi de <b>${num(difMedia)}</b> pontos percentuais.</p>` +
+    `<div class="legenda" style="display:flex"><span><b style="background:var(--sint)"></b>Claude (%)</span><span><b style="background:var(--real)"></b>Gemini (%)</span></div><div id="perguntas"></div>`;
+
+  /* ---------- 4. por persona ---------- */
+  const pers = (r, id) => r.por_persona[id] || {};
+  const ids = Object.keys(rA.por_persona).sort();
+  h += `<h2>4. Por persona</h2><div class="card tabela-rolavel"><table><thead><tr><th>ID</th><th>Persona</th><th>Indicador</th><th>Claude</th><th>Gemini</th></tr></thead><tbody>` +
+    ids.map((id) => {
+      const a = pers(rA, id), b = pers(rB, id);
+      const lj = a.tipo === "lojista";
+      return `<tr><td>${esc(id)}</td><td>${esc(a.nome_ficticio)}</td><td>${lj ? "Q4 média (1–5)" : "Q12 média (1–5)"}</td><td>${num(lj ? a.Q4_media : a.Q12_media, 2)}</td><td>${num(lj ? b.Q4_media : b.Q12_media, 2)}</td></tr>`;
+    }).join("") + `</tbody></table></div>`;
+
+  /* ---------- 5. limitações e leitura ---------- */
+  h += `<h2>5. Como interpretar e limitações</h2><div class="card"><ol style="margin:0;padding-left:20px">` + [
+    "<b>Modelos de portes diferentes.</b> O Gemini usado é uma versão leve (“Flash-Lite”) do plano gratuito, e o Claude é um modelo de uso geral. Uma diferença entre os dois pode vir do modelo ser mais concordante, do porte ou da forma de execução, e estes dados não permitem separar essas causas.",
+    "<b>Execução diferente.</b> O Claude respondeu em sessões isoladas e o Gemini por chamadas de API com temperatura 1,0. As instruções, o questionário e as personas são idênticos, mas a forma de execução não é.",
+    "<b>Registro incompleto do Claude.</b> Os dados do Claude não guardaram o identificador exato do modelo nem a temperatura. O Gemini registrou os dois.",
+    `<b>Amostra pequena.</b> São ${fA.personas} personas, e as 45 entrevistas de cada modelo são medidas repetidas das mesmas personas, e não 45 pessoas.`,
+    "<b>Sem teste estatístico.</b> As faixas (menos de 15, de 15 a 30 e mais de 30 pontos percentuais) são referências do grupo para leitura rápida.",
+    "<b>Concordância não é validade.</b> Dois modelos podem concordar e ainda assim errar o mercado real. A confirmação depende dos questionários reais e do piloto.",
+  ].map((t) => `<li style="margin-bottom:6px">${t}</li>`).join("") + `</ol></div>` +
+  `<h2>Reprodução</h2><p>Para repetir a comparação: o texto exato dos prompts está em <code>simulacao_claude/prompts/</code>, o programa em <code>simulacao/simular.py</code> e os dados brutos em <code>resultados/respostas_brutas.jsonl</code>, todos no <a href="${REPO}">repositório do projeto</a>. Versão do site: ${VERSAO}.</p>`;
+
+  el.innerHTML = h;
+  const cont = document.getElementById("perguntas");
+  blocos.forEach((b) => {
+    const sec = document.createElement("section");
+    sec.className = "card pergunta"; sec.style.marginTop = "14px";
+    sec.innerHTML = `<h3>${esc(b.qa.id)}. ${esc(b.qa.texto)} <span class="n">(${b.tipo === "lojista" ? "lojistas" : "consumidores"})</span></h3>` +
+      `<p><span class="faixa ${b.f[0]}">${b.f[1]}</span> <span style="color:var(--muted);font-size:.85rem">diferença média de ${num(b.dif)} pontos percentuais</span></p><div class="barras"></div>`;
+    cont.appendChild(sec);
+    barras(sec.querySelector(".barras"), b.rows, true);
+  });
+})();
+</script>
+</body>
+</html>

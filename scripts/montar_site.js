@@ -51,6 +51,6 @@ copiar(path.join(RAIZ, "simulacao_claude"), path.join(DESTINO, "simulacao_claude
 
 fs.writeFileSync(
   path.join(DESTINO, "manifest.json"),
-  JSON.stringify({ versao: "v1.3", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
+  JSON.stringify({ versao: "v1.4", gerado_em: new Date().toISOString(), origens: origens.sort() }, null, 2)
 );
 console.log(`Site montado. Origens publicadas: ${origens.join(", ") || "(nenhuma)"}`);

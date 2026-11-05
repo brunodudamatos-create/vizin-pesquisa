@@ -1,11 +1,11 @@
-/* Vizin — funções comuns do site | Versão v1.3 (2026-11-04)
-   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. */
+/* Vizin — funções comuns do site | Versão v1.4 (2026-11-04)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. */
 "use strict";
-const VERSAO = "v1.3";
+const VERSAO = "v1.4";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"],
-  ["resultados", "Resultados"], ["transcricoes", "Entrevistas"], ["cenario", "Cenário multiagente"], ["comparar", "Sintético × Real"],
+  ["resultados", "Resultados"], ["transcricoes", "Entrevistas"], ["cenario", "Cenário multiagente"], ["modelos", "Claude × Gemini"], ["comparar", "Sintético × Real"],
 ];
 
 function esc(s) {
