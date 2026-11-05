@@ -1,0 +1,19 @@
+﻿persona_id,nome_ficticio,rodada,origem,Q1,Q2,Q3,Q4,Q5,Q6
+L01,Patrícia,1,claude-isolado-neutro,a,c,a,d,b,c
+L01,Patrícia,2,claude-isolado-neutro,a,c,a,d,b,b
+L01,Patrícia,3,claude-isolado-neutro,a,c,a,d,b,b
+L02,Seu Ademir,1,claude-isolado-neutro,b,b,c,c,c,a
+L02,Seu Ademir,2,claude-isolado-neutro,b,b,c,c,c,a
+L02,Seu Ademir,3,claude-isolado-neutro,b,b,c,c,c,b
+L03,Juliana,1,claude-isolado-neutro,a,c,a,d,b,c
+L03,Juliana,2,claude-isolado-neutro,a,c,a,d,b,b
+L03,Juliana,3,claude-isolado-neutro,a,c,a,d,b,b
+L04,Dona Zilda,1,claude-isolado-neutro,b,b,c,d,c,b
+L04,Dona Zilda,2,claude-isolado-neutro,a,c,a,d,c,b
+L04,Dona Zilda,3,claude-isolado-neutro,a,c,a,d,c,b
+L05,Rafael,1,claude-isolado-neutro,a,c,a,d,b,b
+L05,Rafael,2,claude-isolado-neutro,a,c,a,d,b,b
+L05,Rafael,3,claude-isolado-neutro,a,c,a,d,b,b
+L06,Seu Waldemar,1,claude-isolado-neutro,b,b,b,b,c,a
+L06,Seu Waldemar,2,claude-isolado-neutro,b,b,c,c,c,a
+L06,Seu Waldemar,3,claude-isolado-neutro,b,a,b,b,c,a

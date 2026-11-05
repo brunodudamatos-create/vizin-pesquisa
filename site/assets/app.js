@@ -33,6 +33,7 @@ async function manifest() {
 }
 const NOME_ORIGEM = {
   "claude-isolado": "Claude (sessões isoladas)", gemini: "Gemini (servidor)", anthropic: "Claude via API",
+  "claude-isolado-neutro": "Claude, ficha neutra (controle)", "gemini-neutro": "Gemini, ficha neutra (controle)",
 };
 function nomeOrigem(o) { return NOME_ORIGEM[o] || o; }
 

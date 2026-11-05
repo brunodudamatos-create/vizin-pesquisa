@@ -2,8 +2,11 @@
 """
 Vizin — Simulador de pesquisa sintética (entrevista individual por persona)
 
-Versão: v1.0 (2026-11-04)
+Versão: v1.1 (2026-11-05)
 Histórico de mudanças:
+  v1.1 (2026-11-05) Opção --ficha neutra: controle contra circularidade. A ficha neutra tem só dados factuais
+                    (idade, ocupação ou negócio, canais), sem dores, objeções, gatilhos nem perfil narrativo.
+                    As respostas saem com origem "<provedor>-neutro".
   v1.0 (2026-11-04) Criação. Uma persona por vez, N rodadas, validação das respostas,
                     retomada automática, provedores Anthropic e Gemini, modo --mock para teste.
 
@@ -65,8 +68,16 @@ def montar_pergunta(p):
     return "\n".join(linhas)
 
 
-def montar_usuario(persona, questionario):
-    ficha = {k: v for k, v in persona.items() if k not in ("fonte_da_premissa",)}
+# Campos mantidos na ficha neutra (somente dados factuais; nada de dores, objeções, gatilhos ou perfil narrativo)
+CAMPOS_NEUTROS = ("nome_ficticio", "idade", "negocio", "faturamento_faixa", "maturidade_digital",
+                  "ocupacao", "faixa_etaria", "canais_atuais")
+
+
+def montar_usuario(persona, questionario, ficha_tipo="completa"):
+    if ficha_tipo == "neutra":
+        ficha = {k: v for k, v in persona.items() if k in CAMPOS_NEUTROS}
+    else:
+        ficha = {k: v for k, v in persona.items() if k not in ("fonte_da_premissa",)}
     texto = "FICHA DA PESSOA:\n" + json.dumps(ficha, ensure_ascii=False, indent=2)
     texto += f'\n\nPESQUISA: {questionario["titulo"]}\n\n'
     texto += "\n\n".join(montar_pergunta(p) for p in questionario["perguntas"])
@@ -194,6 +205,8 @@ def main():
     ap.add_argument("--temperatura", type=float, default=1.0)
     ap.add_argument("--so", help="rodar só uma persona, ex.: --so L02")
     ap.add_argument("--mock", action="store_true", help="MODO TESTE: respostas aleatórias, sem chamar IA")
+    ap.add_argument("--ficha", choices=["completa", "neutra"], default="completa",
+                    help="neutra = controle sem dores, objeções e gatilhos (origem recebe o sufixo -neutro)")
     a = ap.parse_args()
 
     carregar_env()
@@ -208,7 +221,7 @@ def main():
 
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     feitos = ja_feitos()
-    origem = "MOCK" if a.mock else a.provedor
+    origem = "MOCK" if a.mock else a.provedor + ("-neutro" if a.ficha == "neutra" else "")
     total = len(todas) * a.rodadas
     n = 0
     for persona in todas:
@@ -226,7 +239,7 @@ def main():
                         bruto, modelo = chamar_mock(persona, quest, f"{persona['id']}-{rodada}-{tentativa}")
                     else:
                         fn = chamar_anthropic if a.provedor == "anthropic" else chamar_gemini
-                        bruto, modelo = fn(SISTEMA, montar_usuario(persona, quest), a.temperatura)
+                        bruto, modelo = fn(SISTEMA, montar_usuario(persona, quest, a.ficha), a.temperatura)
                     respostas = validar(extrair_json(bruto), quest)
                     break
                 except (ValueError, KeyError, json.JSONDecodeError) as e:

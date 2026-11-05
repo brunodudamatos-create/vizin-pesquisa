@@ -58,8 +58,9 @@
       return `<div class="resp"><div class="q">${esc(p.id)}. ${esc(p.texto)}</div><div class="a">${esc(textos)}${a.texto_livre ? ` — “${esc(a.texto_livre)}”` : ""}</div>` +
         (a.porque ? `<div class="p">“${esc(a.porque)}”</div>` : "") + `</div>`;
     }).join("");
-    const base = `data/simulacao_claude`;
-    const temPrompt = r.origem === "claude-isolado";
+    const neutro = r.origem === "claude-isolado-neutro";
+    const base = neutro ? `data/simulacao_claude_neutro` : `data/simulacao_claude`;
+    const temPrompt = r.origem === "claude-isolado" || neutro;
     saida.innerHTML =
       `<div class="card"><p><span class="etiqueta">${esc(r.persona_id)}</span><span class="etiqueta">rodada ${esc(r.rodada)}</span><span class="etiqueta">${esc(r.data)}</span></p>` +
       `<p class="meta" style="color:var(--muted);font-size:.9rem">Gerado por: ${esc(r.modelo)}</p>${blocos}</div>` +
