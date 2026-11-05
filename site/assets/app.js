@@ -1,7 +1,7 @@
-/* Vizin — funções comuns do site | Versão v2.2 (2026-11-05)
-   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. v2.0 página Diagnóstico local no menu e versão do site. v2.1 versão do site. v2.2 versão do site. */
+/* Vizin — funções comuns do site | Versão v2.3 (2026-11-05)
+   Histórico: v1.2 criação. v1.3 página Cenário multiagente, créditos da equipe no rodapé. v1.4 página Claude × Gemini. v1.5 versão do site. v1.6 brasão da UNEMAT, aviso institucional no rodapé e faixa de título nas páginas internas. v1.7 versão do site. v1.8 nova ordem do menu (segue a lógica do método). v1.9 versão do site. v2.0 página Diagnóstico local no menu e versão do site. v2.1 versão do site. v2.2 versão do site. v2.3 novo texto do rodapé. */
 "use strict";
-const VERSAO = "v2.2";
+const VERSAO = "v2.3";
 const REPO = "https://github.com/brunodudamatos-create/vizin-pesquisa";
 const PAGINAS = [
   ["index", "Início"], ["metodologia", "Metodologia"], ["personas", "Personas"], ["transcricoes", "Entrevistas"],
@@ -43,7 +43,7 @@ function montarTopo(atual) {
   document.getElementById("topo").innerHTML =
     `<header class="topo"><div class="wrap"><a class="marca" href="index.html">Vizin<span>·</span>pesquisa</a><nav class="menu" aria-label="Principal">${menu}</nav></div></header>`;
   document.getElementById("rodape").innerHTML =
-    `<footer class="rodape"><div class="wrap"><p>Dados <strong>sintéticos</strong> gerados por IA a partir de personas fictícias, para explorar hipóteses e mapear atritos de adoção. Não medem a demanda real do mercado.</p>` +
+    `<footer class="rodape"><div class="wrap"><p>Parte dos dados desta plataforma é <strong>simulada</strong>: foi gerada por ferramentas de IA guiadas, que simulam respostas de formulário a partir de personas fictícias. É uma ferramenta adicional, para analisar em conjunto com os formulários aplicados a lojistas e consumidores, e não mede a demanda real do mercado.</p>` +
     `<div class="rodape-inst"><img src="assets/brasao-unemat.png" alt="Brasão da UNEMAT" height="64"><div>` +
     `<p>Equipe: Bruno Duda Dantas Matos, Kamilly Vitória Oliveira Araujo, Lukas Ramos Rezende e Victor Hugo Borsato Xavier (simulação multiagente).</p>` +
     `<p>Projeto desenvolvido no âmbito da pós-graduação em Gestão e Inovação da UNEMAT. Trabalho acadêmico de estudantes, e não um site oficial da universidade.</p>` +
