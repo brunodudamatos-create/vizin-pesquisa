@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Diagnóstico local | Versão v2.1 (2026-11-05) | Histórico: v2.0 criação (presença no Google e horários de 19 lojas de Tangará da Serra). v2.1 tamanho do segmento pelo cadastro de empresas do IBGE (CEMPRE 2021). -->
+<!-- Vizin — Diagnóstico local | Versão v2.2 (2026-11-05) | Histórico: v2.0 criação (presença no Google e horários de lojas de Tangará da Serra). v2.1 tamanho do segmento pelo cadastro de empresas do IBGE (CEMPRE 2021). v2.2 ampliação para 102 lojas em 32 buscas, com o método e a saturação explicados. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -10,11 +10,11 @@
 <body data-pagina="diagnostico">
 <div id="topo"></div>
 <main><div class="wrap" style="max-width:920px">
-  <h1>Diagnóstico local: como as lojas de Tangará aparecem hoje no Google</h1>
-  <p class="lead">Esta página não depende de simulação. Ela resume dados públicos do Google Maps sobre 19 lojas de roupas, calçados e acessórios da cidade: como podem ser contatadas, quanto aparecem e em que horário atendem. Serve de ponto de partida real para as hipóteses do Vizin.</p>
+  <h1>Diagnóstico local: como as lojas de Tangará aparecem no Google Maps</h1>
+  <p class="lead">Pesquisa sobre o comércio local de roupas, calçados e acessórios de Tangará da Serra. A página resume dados públicos do Google Maps sobre 102 lojas: como podem ser contatadas, quanto aparecem e em que horário atendem. É o ponto de partida, com dados reais, para as hipóteses do Vizin.</p>
 
   <div class="nota"><strong>Como interpretar</strong>
-    É uma amostra do que o Google mostra para quatro buscas, e não um censo do comércio. A página não afirma nada sobre site, Instagram ou loja virtual, porque essa informação não veio na consulta. Nomes de lojas e avaliações individuais não são publicados.</div>
+    É o que o Google Maps mostra para 32 buscas, e não um censo do comércio. Nada é afirmado sobre site, Instagram ou loja virtual, porque essa informação não veio na consulta. Nomes de lojas e avaliações individuais não são publicados.</div>
 
   <div id="conteudo"><div class="vazio">Carregando…</div></div>
 </div></main>
@@ -26,41 +26,43 @@
   let d;
   try { d = await pegaJSON("data/dados/diagnostico_presenca.json"); }
   catch (e) { el.innerHTML = '<div class="vazio">O diagnóstico ainda não foi publicado.</div>'; return; }
-  const n = d.total_lojas, pct = (x) => Math.round((x / n) * 100) + "%";
-  const bloco = (titulo, linhas, leitura) => `<h2>${titulo}</h2><div class="card"><div class="barras"></div></div><p>${leitura}</p>`;
+  const n = d.total_lojas, nh = d.horario.lojas_com_horario;
+  const pct = (x, b = n) => Math.round((x / b) * 100) + "%";
+  const bloco = (titulo, leitura) => `<h2>${titulo}</h2><div class="card"><div class="barras"></div></div><p>${leitura}</p>`;
   let ib = null; try { ib = await pegaJSON("data/dados/ibge_resumo.json"); } catch (e) {}
-  let h = ib ? `<h2>O tamanho do segmento</h2><div class="grade">` +
-    `<div class="card"><div class="kpi">${ib.cempre_2021.unidades_segmento_vizin}<small>unidades locais de comércio varejista de vestuário, acessórios e calçados (CNAE 47.81-4 e 47.82-2)</small></div></div>` +
-    `<div class="card"><div class="kpi">${ib.cempre_2021.varejo_vestuario_acessorios.pessoal_ocupado + ib.cempre_2021.varejo_calcados_artigos_viagem.pessoal_ocupado}<small>pessoas ocupadas nessas unidades</small></div></div>` +
-    `<div class="card"><div class="kpi">${Math.round(ib.cempre_2021.unidades_segmento_vizin / ib.cempre_2021.unidades_comercio_varejista * 100)}%<small>do comércio varejista da cidade (${ib.cempre_2021.unidades_comercio_varejista} unidades)</small></div></div></div>` +
-    `<p>Segundo o ${esc(ib.cempre_2021.fonte)}, Tangará da Serra tinha ${ib.cempre_2021.unidades_segmento_vizin} unidades locais de comércio no segmento do Vizin. Este diagnóstico olhou ${n} delas no Google, ou seja, cerca de ${Math.round(n / ib.cempre_2021.unidades_segmento_vizin * 100)}%. Os números abaixo descrevem o que aparece no Google, e não o conjunto das lojas. O cadastro é de 2021 e traz apenas empresas formais, então lojas informais não aparecem nele.</p>` : "";
-  h += `<p style="color:var(--muted);font-size:.9rem">Fonte: ${esc(d.fonte)}. Consultas: ${d.consultas.map(esc).join("; ")}.</p>`;
-  h += bloco("1. Como o cliente fala com a loja", null,
-    `${d.telefone.celular} das ${n} lojas listam número com formato de celular (${pct(d.telefone.celular)}), o que costuma indicar atendimento por WhatsApp. É um sinal, e não uma confirmação.`);
-  h += bloco("2. Quanto a loja aparece no Google", null,
-    `A mediana é de ${d.avaliacoes_no_google.mediana} avaliações por loja. ${d.avaliacoes_no_google.menos_de_10} lojas têm menos de 10, enquanto ${d.avaliacoes_no_google["100_ou_mais"]} concentram 100 ou mais. A visibilidade é desigual: poucas lojas aparecem muito e várias aparecem pouco.`);
-  h += bloco("3. Quando a loja atende", null,
-    `${d.horario.abre_domingo} das ${n} lojas abrem aos domingos e ${d.horario.fecha_sabado_ate_13h} fecham ao redor do meio-dia no sábado. Só ${d.horario.funciona_ate_22h} funcionam até as 22h. Quem trabalha em horário comercial tem pouca janela para ver os produtos presencialmente.`);
+  let h = "";
+  if (ib) {
+    const u = ib.cempre_2021.unidades_segmento_vizin;
+    h += `<h2>O tamanho do segmento</h2>
+      <div class="nota"><strong>Segundo o IBGE</strong> (Cadastro Central de Empresas, CEMPRE 2021, tabela 6450 do SIDRA), Tangará da Serra tinha <b>${u} unidades locais de comércio varejista de vestuário, acessórios e calçados</b>, com ${ib.cempre_2021.varejo_vestuario_acessorios.pessoal_ocupado + ib.cempre_2021.varejo_calcados_artigos_viagem.pessoal_ocupado} pessoas ocupadas. Isso é ${Math.round(u / ib.cempre_2021.unidades_comercio_varejista * 100)}% do comércio varejista da cidade (${ib.cempre_2021.unidades_comercio_varejista} unidades). Este diagnóstico encontrou <b>${n} lojas</b> no Google Maps, número equivalente a cerca de ${Math.round(n / u * 100)}% das unidades do cadastro. As duas contagens não são o mesmo conjunto: o cadastro traz só empresas formais e é de 2021, e o Google também lista lojas informais.</div>`;
+  }
+  h += `<h2>Como a busca foi feita</h2>
+    <p>Cada busca no Google Maps devolve <b>no máximo ${d.buscas.limite_por_busca} lojas</b>. Para encontrar mais, é preciso variar a busca por tipo de produto e por bairro. Foram feitas <b>${d.buscas.total} buscas em ${d.buscas.rodadas.length} rodadas</b>, e a cada rodada só entraram lojas ainda não encontradas.</p>
+    <div class="card tabela-rolavel"><table><thead><tr><th>Rodada</th><th>O que se buscou</th><th>Buscas</th><th>Lojas novas</th><th>Total acumulado</th></tr></thead><tbody>` +
+    d.buscas.rodadas.map((r) => `<tr><td>${r.n}</td><td>${esc(r.foco)}</td><td>${r.buscas}</td><td>${r.lojas_novas}</td><td>${r.acumulado}</td></tr>`).join("") + `</tbody></table></div>
+    <p><b>Por que parar em ${n}.</b> As lojas novas por rodada caíram de ${d.buscas.rodadas[1].lojas_novas} para ${d.buscas.rodadas[d.buscas.rodadas.length - 1].lojas_novas}, e as buscas por bairro passaram a repetir quase só lojas já encontradas. Isso mostra que a busca está perto do limite do que o Google devolve, mas <b>não prova que esgotou</b>: podem existir lojas que o Google não retornou. ${esc(d.excluidas)}</p>`;
+  h += `<p style="color:var(--muted);font-size:.9rem">Fonte: ${esc(d.fonte)}.</p>`;
+  h += bloco("1. Como o cliente fala com a loja",
+    `${d.telefone.celular} das ${n} lojas (${pct(d.telefone.celular)}) listam número com formato de celular, o que costuma indicar atendimento por WhatsApp. É um sinal, e não uma confirmação.`);
+  h += bloco("2. Quanto a loja aparece no Google",
+    `A mediana é de ${d.avaliacoes_no_google.mediana} avaliações por loja. ${d.avaliacoes_no_google.menos_de_10} lojas (${pct(d.avaliacoes_no_google.menos_de_10)}) têm menos de 10, ${d.avaliacoes_no_google.sem_nenhuma} não têm nenhuma, e só ${d.avaliacoes_no_google["100_ou_mais"]} chegam a 100 ou mais. A visibilidade é muito desigual: poucas lojas aparecem muito e a maioria aparece pouco.`);
+  h += bloco("3. Quando a loja atende",
+    `Entre as ${nh} lojas com horário cadastrado, ${d.horario.abre_domingo} abrem aos domingos e ${d.horario.fecha_sabado_ate_13h} fecham até as 13h no sábado ou nem abrem. Só ${d.horario.funciona_ate_21h_ou_mais} funcionam até as 21h ou mais em dia útil, em geral as de shopping. Quem trabalha em horário comercial tem pouca janela para ver os produtos presencialmente.`);
+  h += bloco("4. Onde ficam",
+    `${d.localizacao.centro} das ${n} lojas (${pct(d.localizacao.centro)}) estão no Centro. O restante se espalha por vários bairros, onde a visibilidade e o fluxo de clientes tendem a ser menores. Também é hipótese a ser perguntada aos lojistas.`);
   h += `<h2>O que isso sugere para o Vizin (hipóteses a validar)</h2><div class="card"><ol style="margin:0;padding-left:20px">` + [
     "<b>O WhatsApp já é o canal natural.</b> A maioria das lojas usa número de celular. Um Vizin que parta do WhatsApp encontra o hábito pronto.",
     "<b>Existe espaço para a vitrine fora do expediente.</b> Com atendimento concentrado em dias úteis e sábado de manhã, ver produtos à noite e no domingo pode ser um benefício. Só as entrevistas e os formulários dizem se o consumidor valoriza isso.",
-    "<b>A visibilidade é desigual.</b> Lojas pequenas com poucas avaliações podem ter mais a ganhar com uma vitrine coletiva. Também é hipótese: precisa ser perguntada ao lojista.",
+    "<b>A visibilidade é desigual.</b> Lojas pequenas com poucas avaliações podem ter mais a ganhar com uma vitrine coletiva, principalmente as fora do Centro. Também é hipótese: precisa ser perguntada ao lojista.",
   ].map((t) => `<li style="margin-bottom:6px">${t}</li>`).join("") + `</ol></div>`;
   h += `<h2>Limites do diagnóstico</h2><div class="card"><ul style="margin:0;padding-left:20px">${d.limites.map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div>`;
   el.innerHTML = h;
   const cont = document.querySelectorAll(".barras");
-  barras(cont[0], [
-    { rot: "Telefone com formato de celular", s: d.telefone.celular / n * 100 },
-    { rot: "Telefone fixo", s: d.telefone.fixo / n * 100 },
-    { rot: "Central 0800 (rede)", s: d.telefone.central_0800 / n * 100 }], false);
-  barras(cont[1], [
-    { rot: "Menos de 10 avaliações", s: d.avaliacoes_no_google.menos_de_10 / n * 100 },
-    { rot: "De 10 a 99 avaliações", s: d.avaliacoes_no_google.de_10_a_99 / n * 100 },
-    { rot: "100 ou mais avaliações", s: d.avaliacoes_no_google["100_ou_mais"] / n * 100 }], false);
-  barras(cont[2], [
-    { rot: "Abre aos domingos", s: d.horario.abre_domingo / n * 100 },
-    { rot: "Fecha por volta do meio-dia no sábado", s: d.horario.fecha_sabado_ate_13h / n * 100 },
-    { rot: "Funciona até as 22h", s: d.horario.funciona_ate_22h / n * 100 }], false);
+  const L = (rot, v, b = n) => ({ rot, s: v / b * 100 });
+  barras(cont[0], [L("Telefone com formato de celular", d.telefone.celular), L("Telefone fixo", d.telefone.fixo), L("Central 0800 (rede)", d.telefone.central_0800), L("Sem telefone no Google", d.telefone.sem_telefone)], false);
+  barras(cont[1], [L("Menos de 10 avaliações", d.avaliacoes_no_google.menos_de_10), L("De 10 a 99 avaliações", d.avaliacoes_no_google.de_10_a_99), L("100 ou mais avaliações", d.avaliacoes_no_google["100_ou_mais"])], false);
+  barras(cont[2], [L("Abre aos domingos", d.horario.abre_domingo, nh), L("Fecha até as 13h no sábado (ou não abre)", d.horario.fecha_sabado_ate_13h, nh), L("Funciona até as 21h ou mais", d.horario.funciona_ate_21h_ou_mais, nh)], false);
+  barras(cont[3], [L("No Centro", d.localizacao.centro), L("Em outros bairros", n - d.localizacao.centro)], false);
 })();
 </script>
 </body>

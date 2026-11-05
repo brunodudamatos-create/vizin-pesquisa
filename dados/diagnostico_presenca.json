@@ -1,34 +1,29 @@
 {
-  "_cabecalho": "Vizin — Diagnóstico de presença digital local | Versão v2.0 (2026-11-05) | Histórico: v2.0 criação (indicadores agregados a partir de busca no Google Maps/Places). Sem nomes de lojas, avaliações individuais ou textos de clientes.",
-  "fonte": "Google Maps (Places), consulta de 05/11/2026",
-  "consultas": [
-    "lojas de roupas",
-    "lojas de calçados",
-    "lojas de acessórios e bijuterias",
-    "boutique moda feminina masculina"
-  ],
+  "_cabecalho": "Vizin — Diagnóstico de presença digital local | Versão v2.2 (2026-11-05) | Histórico: v2.0 criação (19 lojas, 4 buscas). v2.2 ampliação para 102 lojas em 32 buscas e 4 rodadas, com registro do método e da saturação. Sem nomes de lojas, avaliações individuais ou textos de clientes.",
+  "fonte": "Google Maps (Places), consultas de 05/11/2026",
   "municipio": "Tangará da Serra (MT)",
-  "total_lojas": 19,
-  "telefone": {
-    "celular": 13,
-    "fixo": 5,
-    "central_0800": 1
+  "total_lojas": 102,
+  "buscas": {
+    "total": 32,
+    "limite_por_busca": 10,
+    "rodadas": [
+      {"n": 1, "foco": "categorias gerais (roupas, calçados, acessórios, boutique)", "buscas": 4, "lojas_novas": 19, "acumulado": 19},
+      {"n": 2, "foco": "tipos de produto (infantil, masculino e jeans, íntima e fitness, tênis, bolsas, plus size e evangélica) e dois bairros", "buscas": 8, "lojas_novas": 46, "acumulado": 65},
+      {"n": 3, "foco": "bairros, rua principal, moda country, brechó, calçados infantis, confecções", "buscas": 10, "lojas_novas": 29, "acumulado": 94},
+      {"n": 4, "foco": "mais bairros (roupas e calçados)", "buscas": 10, "lojas_novas": 8, "acumulado": 102}
+    ]
   },
-  "avaliacoes_no_google": {
-    "menos_de_10": 7,
-    "de_10_a_99": 8,
-    "100_ou_mais": 4,
-    "mediana": 18
-  },
-  "horario": {
-    "abre_domingo": 2,
-    "fecha_sabado_ate_13h": 12,
-    "funciona_ate_22h": 3
-  },
+  "excluidas": "Foram retiradas do total: shopping center, loja de presentes, lojas só de artigos esportivos, atacado ou fabricante sem varejo e anúncios repetidos (mesmo telefone).",
+  "telefone": {"celular": 77, "fixo": 20, "central_0800": 2, "sem_telefone": 3},
+  "avaliacoes_no_google": {"menos_de_10": 59, "de_10_a_99": 37, "100_ou_mais": 6, "sem_nenhuma": 5, "mediana": 8},
+  "horario": {"lojas_com_horario": 100, "abre_domingo": 11, "fecha_sabado_ate_13h": 63, "funciona_ate_21h_ou_mais": 13},
+  "localizacao": {"centro": 66},
   "limites": [
-    "A busca devolve as lojas que o Google mostra para essas consultas. Não é um censo do comércio de Tangará da Serra.",
+    "Cada busca no Google devolve no máximo 10 lojas, então o total só cresce variando a busca. Foram 32 buscas. As lojas novas por rodada caíram de 46 para 8, mas a busca não esgotou o que existe: provavelmente há lojas que o Google não retornou.",
+    "O Google lista também lojas informais, e o cadastro do IBGE (CEMPRE) traz só empresas formais e é de 2021. Por isso as duas contagens não são o mesmo conjunto e não devem ser tratadas como porcentagem de cobertura exata.",
     "O Google não informa nesta consulta se a loja tem site, Instagram ou loja virtual. Por isso nada é afirmado sobre esses canais.",
     "Telefone com formato de celular indica que a loja pode atender por WhatsApp, mas isso não foi confirmado.",
-    "Lojas sem avaliações no Google não são necessariamente invisíveis: podem ter outros canais."
+    "Lojas sem avaliações no Google não são necessariamente invisíveis: podem ter outros canais.",
+    "Horários são os cadastrados no Google e podem estar desatualizados. Em 2 lojas o horário não estava disponível."
   ]
 }

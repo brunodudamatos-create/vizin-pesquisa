@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v2.1 — 2026-11-05**
+**Versão v2.2 — 2026-11-05**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -16,6 +16,7 @@
 | v1.9 | 2026-11-05 | Novos títulos e textos de abertura em Personas, Entrevistas, Cenário, Resultados e Claude × Gemini; quadros de leitura neutros no lugar dos avisos amarelos. |
 | v2.0 | 2026-11-05 | Controle com ficha neutra nos dois modelos (45 entrevistas Claude e 45 Gemini, origens `claude-isolado-neutro` e `gemini-neutro`); página Diagnóstico local (Google Maps, 19 lojas, só indicadores agregados); Metodologia com protocolo das personas, hipóteses e critérios de decisão (`dados/hipoteses.json`), plano de robustez e módulo complementar de perguntas; caixa "Síntese e recomendações para o MVP" em Resultados; script `simulacao/coletar_ibge.py` (ainda não testado contra o IBGE); `rodar_gemini.sh` v1.1 com `FICHA=neutra`. |
 | v2.1 | 2026-11-05 | Dados reais do IBGE coletados no servidor (`dados/ibge/`, Censo 2022 e CEMPRE 2021) e resumidos em `dados/ibge_resumo.json`: conferência da faixa etária das personas na página Personas (46 anos ou mais sub-representados) e tamanho do segmento (177 lojas) no Diagnóstico local. O site não copia as respostas brutas do IBGE (3 MB). |
+| v2.2 | 2026-11-05 | Diagnóstico local ampliado de 19 para 102 lojas (32 buscas em 4 rodadas no Google Maps), com o método, o limite de 10 resultados por busca e a queda de lojas novas por rodada (46, 29, 8) explicados; texto de abertura reescrito; trecho do IBGE em destaque. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
