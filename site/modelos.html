@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- Vizin — Claude × Gemini | Versão v2.0 (2026-11-05) | Histórico: v1.4 criação (comparação entre dois modelos de IA). v1.9 novo título e texto de abertura. v2.0 seção 6, controle com ficha neutra. -->
+<!-- Vizin — Claude × Gemini | Versão v2.4 (2026-11-05) | Histórico: v1.4 criação (comparação entre dois modelos de IA). v1.9 novo título e texto de abertura. v2.0 seção 6, controle com ficha neutra. v2.4 removida a versão do site do texto. -->
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -138,7 +138,7 @@
       `<p style="color:var(--muted);font-size:.9rem">Os prompts da ficha neutra estão em <code>simulacao_claude_neutro/prompts/</code> e as respostas na página <a href="transcricoes.html">Entrevistas</a>. Registro do modelo: nos dados do Claude em ficha neutra, o identificador exato do modelo não foi retornado pela ferramenta (apenas o apelido “sonnet”).</p>`;
   }
 
-  h += `<h2>Reprodução</h2><p>Para repetir a comparação: o texto exato dos prompts está em <code>simulacao_claude/prompts/</code>, o programa em <code>simulacao/simular.py</code> e os dados brutos em <code>resultados/respostas_brutas.jsonl</code>, todos no <a href="${REPO}">repositório do projeto</a>. Versão do site: ${VERSAO}.</p>`;
+  h += `<h2>Reprodução</h2><p>Para repetir a comparação: o texto exato dos prompts está em <code>simulacao_claude/prompts/</code>, o programa em <code>simulacao/simular.py</code> e os dados brutos em <code>resultados/respostas_brutas.jsonl</code>, todos no <a href="${REPO}">repositório do projeto</a>.</p>`;
 
   el.innerHTML = h;
   const cont = document.getElementById("perguntas");

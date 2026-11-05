@@ -1,6 +1,6 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v2.3 — 2026-11-05**
+**Versão v2.4 — 2026-11-05**
 
 | Versão | Data | Mudança |
 |---|---|---|
@@ -18,6 +18,7 @@
 | v2.1 | 2026-11-05 | Dados reais do IBGE coletados no servidor (`dados/ibge/`, Censo 2022 e CEMPRE 2021) e resumidos em `dados/ibge_resumo.json`: conferência da faixa etária das personas na página Personas (46 anos ou mais sub-representados) e tamanho do segmento (177 lojas) no Diagnóstico local. O site não copia as respostas brutas do IBGE (3 MB). |
 | v2.2 | 2026-11-05 | Diagnóstico local ampliado de 19 para 102 lojas (32 buscas em 4 rodadas no Google Maps), com o método, o limite de 10 resultados por busca e a queda de lojas novas por rodada (46, 29, 8) explicados; texto de abertura reescrito; trecho do IBGE em destaque. |
 | v2.3 | 2026-11-05 | Novo texto do rodapé: dados simulados por ferramentas de IA guiadas, como ferramenta adicional aos formulários reais. |
+| v2.4 | 2026-11-05 | Rodapé sem a versão do site (ela fica só no repositório) e sem o parêntese depois do nome do Victor. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
