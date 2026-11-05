@@ -1,0 +1,867 @@
+{
+  "_versao": "v1.0",
+  "teste_mock": false,
+  "aviso": "Dados SINTÉTICOS gerados por IA a partir de personas fictícias. Servem para explorar hipóteses e mapear atritos; não medem a demanda real do mercado.",
+  "total_respostas": 45,
+  "lojista": {
+    "titulo": "Questionário para Comerciantes",
+    "n_respostas": 18,
+    "n_personas": 6,
+    "perguntas": [
+      {
+        "id": "Q1",
+        "texto": "Sua empresa está presente hoje em alguma plataforma digital de vendas ou divulgação (site, marketplace, redes sociais para vender)?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Sim — Qual?",
+            "qtd": 9,
+            "pct": 50.0
+          },
+          {
+            "cod": "b",
+            "texto": "Não",
+            "qtd": 9,
+            "pct": 50.0
+          }
+        ]
+      },
+      {
+        "id": "Q2",
+        "texto": "Nos últimos 3 meses, com que frequência você percebeu ter perdido uma venda porque o cliente não sabia que sua loja tinha aquele produto?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Nunca",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "b",
+            "texto": "Raramente",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "Às vezes",
+            "qtd": 8,
+            "pct": 44.4
+          },
+          {
+            "cod": "d",
+            "texto": "Frequentemente",
+            "qtd": 7,
+            "pct": 38.9
+          },
+          {
+            "cod": "e",
+            "texto": "Sempre",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q3",
+        "texto": "Você sente que concorre com lojas ou plataformas digitais na hora de vender?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Sim",
+            "qtd": 15,
+            "pct": 83.3
+          },
+          {
+            "cod": "b",
+            "texto": "Não",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "c",
+            "texto": "Não sei dizer",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q4",
+        "texto": "O quanto você estaria disposto a colocar seus produtos numa plataforma digital que reúne o comércio local da cidade?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "1 — Nada disposto",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "b",
+            "texto": "2 — Pouco disposto",
+            "qtd": 2,
+            "pct": 11.1
+          },
+          {
+            "cod": "c",
+            "texto": "3 — Indiferente / neutro",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "d",
+            "texto": "4 — Disposto",
+            "qtd": 11,
+            "pct": 61.1
+          },
+          {
+            "cod": "e",
+            "texto": "5 — Totalmente disposto",
+            "qtd": 2,
+            "pct": 11.1
+          }
+        ]
+      },
+      {
+        "id": "Q5",
+        "texto": "O que mais te impede hoje de ter mais presença digital?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Custo",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "b",
+            "texto": "Falta de tempo",
+            "qtd": 9,
+            "pct": 50.0
+          },
+          {
+            "cod": "c",
+            "texto": "Não sei usar",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "d",
+            "texto": "Não vejo necessidade",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "e",
+            "texto": "Outro",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q6",
+        "texto": "Quanto você estaria disposto a pagar para vender seus produtos em uma plataforma digital que conecta sua loja a clientes da cidade?",
+        "tipo": "unica",
+        "n_respostas": 18,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Não estaria disposto a pagar",
+            "qtd": 4,
+            "pct": 22.2
+          },
+          {
+            "cod": "b",
+            "texto": "Até 3% do valor de cada venda",
+            "qtd": 11,
+            "pct": 61.1
+          },
+          {
+            "cod": "c",
+            "texto": "De 4% a 6% do valor de cada venda",
+            "qtd": 3,
+            "pct": 16.7
+          },
+          {
+            "cod": "d",
+            "texto": "De 7% a 10% do valor de cada venda",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "e",
+            "texto": "Mais de 10% do valor de cada venda",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      }
+    ],
+    "consistencia_por_persona_pct": {
+      "L02": 50.0,
+      "L01": 100.0,
+      "L03": 66.7,
+      "L04": 100.0,
+      "L05": 83.3,
+      "L06": 100.0
+    },
+    "indicador_disposicao_pct": 72.2,
+    "indicador_aceita_pagar_pct": 77.8
+  },
+  "consumidor": {
+    "titulo": "Questionário do Consumidor",
+    "n_respostas": 27,
+    "n_personas": 9,
+    "perguntas": [
+      {
+        "id": "F0",
+        "texto": "Você reside em Tangará da Serra (MT)?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Sim",
+            "qtd": 27,
+            "pct": 100.0
+          },
+          {
+            "cod": "b",
+            "texto": "Não",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q1",
+        "texto": "Qual é a sua faixa etária?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "15 a 17 anos",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "b",
+            "texto": "18 a 25 anos",
+            "qtd": 9,
+            "pct": 33.3
+          },
+          {
+            "cod": "c",
+            "texto": "26 a 35 anos",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "d",
+            "texto": "36 a 45 anos",
+            "qtd": 9,
+            "pct": 33.3
+          },
+          {
+            "cod": "e",
+            "texto": "46 anos ou mais",
+            "qtd": 3,
+            "pct": 11.1
+          }
+        ]
+      },
+      {
+        "id": "Q2",
+        "texto": "Com que frequência você compra roupas, calçados ou acessórios?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Mais de uma vez por mês",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "b",
+            "texto": "Uma vez por mês",
+            "qtd": 3,
+            "pct": 11.1
+          },
+          {
+            "cod": "c",
+            "texto": "A cada 2 ou 3 meses",
+            "qtd": 9,
+            "pct": 33.3
+          },
+          {
+            "cod": "d",
+            "texto": "Algumas vezes por ano",
+            "qtd": 9,
+            "pct": 33.3
+          },
+          {
+            "cod": "e",
+            "texto": "Raramente",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q3",
+        "texto": "Onde você costuma realizar suas compras de roupas, calçados ou acessórios?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Apenas em lojas físicas",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "b",
+            "texto": "Apenas pela internet",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "c",
+            "texto": "Tanto em lojas físicas quanto pela internet",
+            "qtd": 15,
+            "pct": 55.6
+          }
+        ]
+      },
+      {
+        "id": "Q4",
+        "texto": "Com que frequência você compra em lojas da sua cidade?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Sempre",
+            "qtd": 12,
+            "pct": 44.4
+          },
+          {
+            "cod": "b",
+            "texto": "Frequentemente",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "Às vezes",
+            "qtd": 8,
+            "pct": 29.6
+          },
+          {
+            "cod": "d",
+            "texto": "Raramente",
+            "qtd": 7,
+            "pct": 25.9
+          },
+          {
+            "cod": "e",
+            "texto": "Nunca",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q5",
+        "texto": "Quando deseja comprar um produto específico, onde você costuma procurar primeiro? (Pode marcar mais de uma alternativa.)",
+        "tipo": "multipla",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Instagram",
+            "qtd": 18,
+            "pct": 66.7
+          },
+          {
+            "cod": "b",
+            "texto": "WhatsApp",
+            "qtd": 12,
+            "pct": 44.4
+          },
+          {
+            "cod": "c",
+            "texto": "Google",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "d",
+            "texto": "TikTok",
+            "qtd": 4,
+            "pct": 14.8
+          },
+          {
+            "cod": "e",
+            "texto": "Marketplace (Shopee, Shein, Mercado Livre etc.)",
+            "qtd": 15,
+            "pct": 55.6
+          },
+          {
+            "cod": "f",
+            "texto": "Loja física",
+            "qtd": 11,
+            "pct": 40.7
+          },
+          {
+            "cod": "g",
+            "texto": "Indicação de amigos ou familiares",
+            "qtd": 12,
+            "pct": 44.4
+          },
+          {
+            "cod": "h",
+            "texto": "Outro",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q6",
+        "texto": "Com que frequência você encontra dificuldade para localizar uma loja que venda o produto que procura?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Nunca",
+            "qtd": 1,
+            "pct": 3.7
+          },
+          {
+            "cod": "b",
+            "texto": "Raramente",
+            "qtd": 2,
+            "pct": 7.4
+          },
+          {
+            "cod": "c",
+            "texto": "Às vezes",
+            "qtd": 8,
+            "pct": 29.6
+          },
+          {
+            "cod": "d",
+            "texto": "Frequentemente",
+            "qtd": 16,
+            "pct": 59.3
+          },
+          {
+            "cod": "e",
+            "texto": "Sempre",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q7",
+        "texto": "Quanto tempo você costuma gastar procurando um produto específico?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Menos de 10 minutos",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "b",
+            "texto": "Entre 10 e 30 minutos",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "Entre 31 minutos e 1 hora",
+            "qtd": 4,
+            "pct": 14.8
+          },
+          {
+            "cod": "d",
+            "texto": "Mais de 1 hora",
+            "qtd": 17,
+            "pct": 63.0
+          }
+        ]
+      },
+      {
+        "id": "Q8",
+        "texto": "Quantas lojas você costuma consultar antes de encontrar o produto desejado?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Apenas uma",
+            "qtd": 5,
+            "pct": 18.5
+          },
+          {
+            "cod": "b",
+            "texto": "Duas ou três",
+            "qtd": 9,
+            "pct": 33.3
+          },
+          {
+            "cod": "c",
+            "texto": "Quatro ou cinco",
+            "qtd": 3,
+            "pct": 11.1
+          },
+          {
+            "cod": "d",
+            "texto": "Mais de cinco",
+            "qtd": 10,
+            "pct": 37.0
+          }
+        ]
+      },
+      {
+        "id": "Q9",
+        "texto": "Qual costuma ser a maior dificuldade ao procurar um produto específico?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Não saber quais lojas vendem o produto",
+            "qtd": 13,
+            "pct": 48.1
+          },
+          {
+            "cod": "b",
+            "texto": "Não encontrar o modelo desejado",
+            "qtd": 3,
+            "pct": 11.1
+          },
+          {
+            "cod": "c",
+            "texto": "Não encontrar meu tamanho",
+            "qtd": 6,
+            "pct": 22.2
+          },
+          {
+            "cod": "d",
+            "texto": "Encontrar preços muito diferentes",
+            "qtd": 3,
+            "pct": 11.1
+          },
+          {
+            "cod": "e",
+            "texto": "Demorar muito para pesquisar",
+            "qtd": 2,
+            "pct": 7.4
+          },
+          {
+            "cod": "f",
+            "texto": "Outra",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q10",
+        "texto": "O que você normalmente faz quando não encontra rapidamente o produto desejado?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Continuo procurando em outras lojas",
+            "qtd": 2,
+            "pct": 7.4
+          },
+          {
+            "cod": "b",
+            "texto": "Compro um produto semelhante",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "Compro pela internet",
+            "qtd": 13,
+            "pct": 48.1
+          },
+          {
+            "cod": "d",
+            "texto": "Adio a compra para outro momento",
+            "qtd": 12,
+            "pct": 44.4
+          },
+          {
+            "cod": "e",
+            "texto": "Desisto da compra",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q11",
+        "texto": "Como você avalia a facilidade de encontrar lojas que vendam o produto que procura?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "Muito fácil",
+            "qtd": 1,
+            "pct": 3.7
+          },
+          {
+            "cod": "b",
+            "texto": "Fácil",
+            "qtd": 2,
+            "pct": 7.4
+          },
+          {
+            "cod": "c",
+            "texto": "Nem fácil, nem difícil",
+            "qtd": 5,
+            "pct": 18.5
+          },
+          {
+            "cod": "d",
+            "texto": "Difícil",
+            "qtd": 19,
+            "pct": 70.4
+          },
+          {
+            "cod": "e",
+            "texto": "Muito difícil",
+            "qtd": 0,
+            "pct": 0.0
+          }
+        ]
+      },
+      {
+        "id": "Q12",
+        "texto": "Em uma escala de 1 a 5, quanto a dificuldade para encontrar uma loja com o produto desejado atrapalha sua experiência de compra?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "1 – Não atrapalha",
+            "qtd": 2,
+            "pct": 7.4
+          },
+          {
+            "cod": "b",
+            "texto": "2",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "3",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "d",
+            "texto": "4",
+            "qtd": 4,
+            "pct": 14.8
+          },
+          {
+            "cod": "e",
+            "texto": "5 – Atrapalha muito",
+            "qtd": 21,
+            "pct": 77.8
+          }
+        ]
+      },
+      {
+        "id": "Q13",
+        "texto": "Em uma escala de 1 a 5, o quanto a demora para encontrar um produto faz você desistir ou mudar de ideia na hora da compra?",
+        "tipo": "unica",
+        "n_respostas": 27,
+        "opcoes": [
+          {
+            "cod": "a",
+            "texto": "1 - Não afeta em nada (espero o tempo que for)",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "b",
+            "texto": "2 - Afeta pouco",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "c",
+            "texto": "3 - Afeta moderadamente",
+            "qtd": 0,
+            "pct": 0.0
+          },
+          {
+            "cod": "d",
+            "texto": "4 - Afeta muito",
+            "qtd": 19,
+            "pct": 70.4
+          },
+          {
+            "cod": "e",
+            "texto": "5 - Faz desistir imediatamente",
+            "qtd": 8,
+            "pct": 29.6
+          }
+        ]
+      }
+    ],
+    "consistencia_por_persona_pct": {
+      "C01": 92.9,
+      "C02": 71.4,
+      "C03": 92.9,
+      "C04": 57.1,
+      "C05": 78.6,
+      "C06": 71.4,
+      "C07": 78.6,
+      "C08": 100.0,
+      "C09": 92.9
+    },
+    "media_q12_atrapalha": 4.56,
+    "media_q13_desiste": 4.3
+  },
+  "alertas": [
+    "Consumidores: 93% dizem que a dificuldade 'atrapalha muito' (Q12). Possível viés de concordância com o problema.",
+    "Q4 e Q6 do lojista (disposição e quanto pagar) são hipotéticas e as mais sujeitas a otimismo; trate com menor confiança."
+  ],
+  "por_persona": {
+    "L02": {
+      "nome_ficticio": "Seu Ademir",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 2.67,
+      "Q6_mais_comum": "b"
+    },
+    "L01": {
+      "nome_ficticio": "Patrícia",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 4.0,
+      "Q6_mais_comum": "c"
+    },
+    "L03": {
+      "nome_ficticio": "Juliana",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 4.33,
+      "Q6_mais_comum": "b"
+    },
+    "L04": {
+      "nome_ficticio": "Dona Zilda",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 4.0,
+      "Q6_mais_comum": "b"
+    },
+    "L05": {
+      "nome_ficticio": "Rafael",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 4.33,
+      "Q6_mais_comum": "b"
+    },
+    "L06": {
+      "nome_ficticio": "Seu Waldemar",
+      "tipo": "lojista",
+      "rodadas": 3,
+      "Q4_media": 1.0,
+      "Q6_mais_comum": "a"
+    },
+    "C01": {
+      "nome_ficticio": "Beatriz",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 4.0
+    },
+    "C02": {
+      "nome_ficticio": "Lucas",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 4.33
+    },
+    "C03": {
+      "nome_ficticio": "Thaís",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 4.33
+    },
+    "C04": {
+      "nome_ficticio": "Fernanda",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 4.67,
+      "Q13_media": 4.0
+    },
+    "C05": {
+      "nome_ficticio": "Rosângela",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 4.33
+    },
+    "C06": {
+      "nome_ficticio": "Anderson",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 2.33,
+      "Q13_media": 4.67
+    },
+    "C07": {
+      "nome_ficticio": "Dona Marta",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 4.0
+    },
+    "C08": {
+      "nome_ficticio": "Cláudio",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 4.0,
+      "Q13_media": 4.0
+    },
+    "C09": {
+      "nome_ficticio": "Gabriel",
+      "tipo": "consumidor",
+      "rodadas": 3,
+      "Q12_media": 5.0,
+      "Q13_media": 5.0
+    }
+  },
+  "origem": "gemini"
+}

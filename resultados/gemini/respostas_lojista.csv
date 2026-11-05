@@ -1,0 +1,19 @@
+﻿persona_id,nome_ficticio,rodada,origem,Q1,Q2,Q3,Q4,Q5,Q6
+L02,Seu Ademir,1,gemini,b,d,a,b,c,b
+L01,Patrícia,1,gemini,a,c,a,d,b,c
+L01,Patrícia,2,gemini,a,c,a,d,b,c
+L01,Patrícia,3,gemini,a,c,a,d,b,c
+L02,Seu Ademir,2,gemini,b,d,a,b,c,a
+L02,Seu Ademir,3,gemini,b,c,a,d,c,b
+L03,Juliana,1,gemini,a,d,a,e,a,b
+L03,Juliana,2,gemini,a,c,a,d,a,b
+L03,Juliana,3,gemini,a,d,a,d,a,b
+L04,Dona Zilda,1,gemini,b,c,a,d,b,b
+L04,Dona Zilda,2,gemini,b,c,a,d,b,b
+L04,Dona Zilda,3,gemini,b,c,a,d,b,b
+L05,Rafael,1,gemini,a,d,a,d,b,b
+L05,Rafael,2,gemini,a,d,a,d,b,b
+L05,Rafael,3,gemini,a,d,a,e,b,b
+L06,Seu Waldemar,1,gemini,b,a,b,a,d,a
+L06,Seu Waldemar,2,gemini,b,a,b,a,d,a
+L06,Seu Waldemar,3,gemini,b,a,b,a,d,a

@@ -1,0 +1,28 @@
+﻿persona_id,nome_ficticio,rodada,origem,F0,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13
+C01,Beatriz,1,gemini,a,b,c,c,c,a|e,d,d,d,a,c,d,e,d
+C01,Beatriz,2,gemini,a,b,c,c,c,a|e,d,d,d,a,c,d,e,d
+C01,Beatriz,3,gemini,a,b,c,c,c,a|d|e,d,d,d,a,c,d,e,d
+C02,Lucas,1,gemini,a,b,c,c,c,a|c|e,d,d,d,b,c,d,e,d
+C02,Lucas,2,gemini,a,b,c,c,c,a|c|e,d,d,b,a,c,d,e,d
+C02,Lucas,3,gemini,a,b,c,c,d,a|c|e,d,d,d,b,c,d,e,e
+C03,Thaís,1,gemini,a,c,a,c,a,a|b|g,d,d,b,a,d,d,e,d
+C03,Thaís,2,gemini,a,c,a,c,a,a|b|g,d,d,b,a,d,d,e,e
+C03,Thaís,3,gemini,a,c,a,c,a,a|b|g,d,d,b,a,d,d,e,d
+C04,Fernanda,1,gemini,a,d,b,c,a,a|b|f|g,c,c,b,c,d,c,d,d
+C04,Fernanda,2,gemini,a,d,b,c,a,a|b|g,c,d,c,c,d,c,e,d
+C04,Fernanda,3,gemini,a,d,b,c,a,a|b|f|g,c,d,c,c,a,d,e,d
+C05,Rosângela,1,gemini,a,c,d,b,d,a|b|e,d,d,d,b,c,d,e,e
+C05,Rosângela,2,gemini,a,c,d,b,d,a|b|e,d,d,d,e,d,d,e,d
+C05,Rosângela,3,gemini,a,c,d,b,d,a|b|e,d,d,d,e,d,d,e,d
+C06,Anderson,1,gemini,a,d,d,a,a,b|f|g,a,a,a,c,d,a,a,e
+C06,Anderson,2,gemini,a,d,d,a,a,b|f|g,b,a,a,c,d,b,a,e
+C06,Anderson,3,gemini,a,d,d,a,a,b|f|g,b,a,a,c,d,b,e,d
+C07,Dona Marta,1,gemini,a,e,d,a,a,f|g,c,d,d,a,d,d,e,d
+C07,Dona Marta,2,gemini,a,e,d,a,a,f|g,d,d,d,a,a,d,e,d
+C07,Dona Marta,3,gemini,a,e,d,a,a,f|g,c,d,c,a,d,d,e,d
+C08,Cláudio,1,gemini,a,d,c,c,c,c|e|f,c,c,b,d,c,c,d,d
+C08,Cláudio,2,gemini,a,d,c,c,c,c|e|f,c,c,b,d,c,c,d,d
+C08,Cláudio,3,gemini,a,d,c,c,c,c|e|f,c,c,b,d,c,c,d,d
+C09,Gabriel,1,gemini,a,b,a,b,d,a|d|e,d,a,a,a,c,d,e,e
+C09,Gabriel,2,gemini,a,b,a,b,d,a|d|e,d,a,b,a,c,d,e,e
+C09,Gabriel,3,gemini,a,b,a,b,d,a|d|e,d,a,a,a,c,d,e,e
