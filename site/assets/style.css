@@ -1,5 +1,5 @@
-/* Vizin — estilos do site | Versão v1.7 (2026-11-04)
-   Histórico: v1.2 criação. v1.3 blocos da home, figura, equipe e cenário multiagente. v1.4 ajuste de versão. v1.5 visual acadêmico (paleta azul-marinho e cinza, títulos serifados), hero, diagrama. v1.6 selo e brasão institucionais. v1.7 quadro de escopo. */
+/* Vizin — estilos do site | Versão v1.9 (2026-11-05)
+   Histórico: v1.2 criação. v1.3 blocos da home, figura, equipe e cenário multiagente. v1.4 ajuste de versão. v1.5 visual acadêmico (paleta azul-marinho e cinza, títulos serifados), hero, diagrama. v1.6 selo e brasão institucionais. v1.7 quadro de escopo. v1.9 quadro de nota de leitura. */
 :root {
   --bg: #f3f5f8; --surface: #ffffff; --ink: #16202b; --muted: #4f5d6d; --line: #d3d9e1;
   --brand: #1f3a5f; --brand-ink: #ffffff; --brand-soft: #e6ecf4; --hero-bg: #14284a;
@@ -166,3 +166,7 @@ nav.menu a { padding: 6px 9px; font-size: .9rem; }
 .escopo .card { border-left: 4px solid var(--brand); }
 .escopo .card.nao { border-left-color: var(--muted); }
 .escopo .card h3 { margin-top: 0; }
+
+/* v1.9: nota de leitura (neutra, no lugar do aviso amarelo) */
+.nota { background: var(--brand-soft); border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 14px 16px; margin: 18px 0; }
+.nota strong { display: block; margin-bottom: 2px; }
