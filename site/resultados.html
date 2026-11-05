@@ -1,0 +1,93 @@
+<!doctype html>
+<!-- Vizin — Resultados | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="resultados">
+<div id="topo"></div>
+<main><div class="wrap">
+  <h1>Resultados da simulação</h1>
+  <p class="lead">Distribuição das respostas por pergunta. Lembre: o “n” efetivo é o número de personas, e as rodadas medem estabilidade.</p>
+  <div class="controles">
+    <label>Modelo que gerou as respostas: <select id="origem" aria-label="Modelo"></select></label>
+  </div>
+  <div id="alertas"></div>
+  <div class="abas" role="group" aria-label="Questionário">
+    <button type="button" data-t="lojista" aria-pressed="true">Lojistas</button>
+    <button type="button" data-t="consumidor" aria-pressed="false">Consumidores</button>
+  </div>
+  <div class="grade" id="kpis"></div>
+  <div id="perguntas"></div>
+  <h2>Por persona</h2>
+  <div class="card tabela-rolavel" id="porpersona"></div>
+  <h2>Estabilidade entre rodadas</h2>
+  <p>Porcentagem de perguntas em que a persona deu a mesma resposta nas 3 rodadas. Valores baixos indicam respostas instáveis (o modelo “muda de ideia”).</p>
+  <div class="card" id="consist"></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const m = await manifest();
+  const sel = document.getElementById("origem");
+  const alertas = document.getElementById("alertas");
+  if (!m.origens.length) { document.getElementById("perguntas").innerHTML = '<div class="vazio">Os resultados ainda não foram publicados.</div>'; return; }
+  sel.innerHTML = m.origens.map((o) => `<option value="${esc(o)}">${esc(nomeOrigem(o))}</option>`).join("");
+  let resumo = null, tipo = "lojista";
+
+  async function carregar() {
+    resumo = await pegaJSON(`data/resultados/${sel.value}/resumo.json`);
+    alertas.innerHTML = (resumo.alertas || []).map((a) => `<div class="aviso">${esc(a)}</div>`).join("");
+    desenhar();
+  }
+  function desenhar() {
+    const b = resumo[tipo];
+    const k = [];
+    k.push(`<div class="card"><div class="kpi">${b.n_personas}<small>personas</small></div></div>`);
+    k.push(`<div class="card"><div class="kpi">${b.n_respostas}<small>entrevistas (rodadas × personas)</small></div></div>`);
+    if (tipo === "lojista") {
+      k.push(`<div class="card"><div class="kpi">${b.indicador_disposicao_pct}%<small>“disposto” ou “totalmente disposto” (Q4)</small></div></div>`);
+      k.push(`<div class="card"><div class="kpi">${b.indicador_aceita_pagar_pct}%<small>aceitaria pagar algum percentual (Q6)</small></div></div>`);
+    } else {
+      k.push(`<div class="card"><div class="kpi">${b.media_q12_atrapalha}<small>média 1–5: a dificuldade atrapalha (Q12)</small></div></div>`);
+      k.push(`<div class="card"><div class="kpi">${b.media_q13_desiste}<small>média 1–5: a demora faz desistir (Q13)</small></div></div>`);
+    }
+    document.getElementById("kpis").innerHTML = k.join("");
+
+    const cont = document.getElementById("perguntas");
+    cont.innerHTML = "";
+    b.perguntas.forEach((p) => {
+      const card = document.createElement("section");
+      card.className = "card pergunta";
+      card.style.marginTop = "14px";
+      card.innerHTML = `<h3>${esc(p.id)}. ${esc(p.texto)} <span class="n">(${p.n_respostas} entrevistas${p.tipo === "multipla" ? ", múltipla escolha" : ""})</span></h3><div class="barras"></div>`;
+      cont.appendChild(card);
+      barras(card.querySelector(".barras"), p.opcoes.map((o) => ({ rot: `${o.cod}) ${o.texto}`, s: o.pct })), false);
+    });
+
+    const pp = Object.entries(resumo.por_persona).filter(([, v]) => v.tipo === tipo).sort();
+    const c1 = tipo === "lojista" ? "Q4 média (1–5)" : "Q12 média (1–5)";
+    const c2 = tipo === "lojista" ? "Q6 mais frequente" : "Q13 média (1–5)";
+    document.getElementById("porpersona").innerHTML =
+      `<table><thead><tr><th>ID</th><th>Persona</th><th>${c1}</th><th>${c2}</th></tr></thead><tbody>` +
+      pp.map(([id, v]) => `<tr><td>${esc(id)}</td><td>${esc(v.nome_ficticio)}</td><td>${tipo === "lojista" ? v.Q4_media : v.Q12_media}</td><td>${tipo === "lojista" ? esc(v.Q6_mais_comum) : v.Q13_media}</td></tr>`).join("") + "</tbody></table>";
+
+    const cs = Object.entries(b.consistencia_por_persona_pct || {}).sort();
+    document.getElementById("consist").innerHTML = '<div class="barras"></div>';
+    barras(document.querySelector("#consist .barras"), cs.map(([id, v]) => ({ rot: `${id} ${(resumo.por_persona[id] || {}).nome_ficticio || ""}`, s: v })), false);
+  }
+  sel.addEventListener("change", carregar);
+  document.querySelectorAll(".abas button").forEach((bt) => bt.addEventListener("click", () => {
+    tipo = bt.dataset.t;
+    document.querySelectorAll(".abas button").forEach((x) => x.setAttribute("aria-pressed", x === bt ? "true" : "false"));
+    desenhar();
+  }));
+  carregar().catch(() => { document.getElementById("perguntas").innerHTML = '<div class="vazio">Não foi possível carregar os resultados.</div>'; });
+})();
+</script>
+</body>
+</html>

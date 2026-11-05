@@ -1,0 +1,83 @@
+<!doctype html>
+<!-- Vizin — Entrevistas | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrevistas · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="transcricoes">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:820px">
+  <h1>Entrevistas, uma a uma</h1>
+  <p class="lead">Cada resposta bruta, com a justificativa que a persona deu. Dá para conferir o prompt exato que ela recebeu.</p>
+  <div class="controles">
+    <label>Modelo: <select id="origem"></select></label>
+    <label>Persona: <select id="persona"></select></label>
+    <label>Rodada: <select id="rodada"></select></label>
+  </div>
+  <div id="saida"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const saida = document.getElementById("saida");
+  const selO = document.getElementById("origem"), selP = document.getElementById("persona"), selR = document.getElementById("rodada");
+  let regs = [], quest = {};
+  try {
+    const m = await manifest();
+    if (!m.origens.length) throw new Error("sem dados");
+    regs = (await pegaJSONL("data/resultados/respostas_brutas.jsonl")).filter((r) => m.origens.includes(r.origem));
+    quest.lojista = await pegaJSON("data/dados/questionario_lojista.json");
+    quest.consumidor = await pegaJSON("data/dados/questionario_consumidor.json");
+    selO.innerHTML = m.origens.map((o) => `<option value="${esc(o)}">${esc(nomeOrigem(o))}</option>`).join("");
+  } catch (e) { saida.innerHTML = '<div class="vazio">As entrevistas ainda não foram publicadas.</div>'; return; }
+
+  function montaPersonas() {
+    const rs = regs.filter((r) => r.origem === selO.value);
+    const vistos = new Map();
+    rs.forEach((r) => vistos.set(r.persona_id, r.nome_ficticio));
+    selP.innerHTML = [...vistos.entries()].sort().map(([id, n]) => `<option value="${esc(id)}">${esc(id)} · ${esc(n)}</option>`).join("");
+    montaRodadas();
+  }
+  function montaRodadas() {
+    const rs = regs.filter((r) => r.origem === selO.value && r.persona_id === selP.value).map((r) => r.rodada).sort();
+    selR.innerHTML = rs.map((n) => `<option value="${n}">${n}</option>`).join("");
+    mostrar();
+  }
+  function mostrar() {
+    const r = regs.find((x) => x.origem === selO.value && x.persona_id === selP.value && String(x.rodada) === selR.value);
+    if (!r) { saida.innerHTML = '<div class="vazio">Sem entrevista para esta combinação.</div>'; return; }
+    const q = quest[r.tipo];
+    const blocos = q.perguntas.map((p) => {
+      const a = r.respostas[p.id]; if (!a) return "";
+      const cods = Array.isArray(a.resposta) ? a.resposta : [a.resposta];
+      const textos = cods.map((c) => `${c}) ${opcaoTexto(p, c)}`).join(" · ");
+      return `<div class="resp"><div class="q">${esc(p.id)}. ${esc(p.texto)}</div><div class="a">${esc(textos)}${a.texto_livre ? ` — “${esc(a.texto_livre)}”` : ""}</div>` +
+        (a.porque ? `<div class="p">“${esc(a.porque)}”</div>` : "") + `</div>`;
+    }).join("");
+    const base = `data/simulacao_claude`;
+    const temPrompt = r.origem === "claude-isolado";
+    saida.innerHTML =
+      `<div class="card"><p><span class="etiqueta">${esc(r.persona_id)}</span><span class="etiqueta">rodada ${esc(r.rodada)}</span><span class="etiqueta">${esc(r.data)}</span></p>` +
+      `<p class="meta" style="color:var(--muted);font-size:.9rem">Gerado por: ${esc(r.modelo)}</p>${blocos}</div>` +
+      (temPrompt ? `<details id="det"><summary>Ver o prompt exato que esta persona recebeu</summary><pre id="prompt">Carregando…</pre></details>` : "");
+    if (temPrompt) {
+      const det = document.getElementById("det");
+      det.addEventListener("toggle", async () => {
+        if (!det.open) return;
+        try { document.getElementById("prompt").textContent = await pegaTexto(`${base}/prompts/${r.persona_id}_r${r.rodada}.txt`); }
+        catch (e) { document.getElementById("prompt").textContent = "Prompt não encontrado."; }
+      }, { once: true });
+    }
+  }
+  selO.addEventListener("change", montaPersonas);
+  selP.addEventListener("change", montaRodadas);
+  selR.addEventListener("change", mostrar);
+  montaPersonas();
+})();
+</script>
+</body>
+</html>

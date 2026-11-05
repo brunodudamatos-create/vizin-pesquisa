@@ -1,0 +1,196 @@
+<!doctype html>
+<!-- Vizin — Sintético × Real | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sintético × Real · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="comparar">
+<div id="topo"></div>
+<main><div class="wrap">
+  <h1>Sintético × Real</h1>
+  <p class="lead">Carregue o arquivo CSV com as respostas reais (exportado do formulário do grupo) e veja, pergunta a pergunta, onde a simulação se aproximou e onde errou.</p>
+
+  <div class="aviso"><strong>Privacidade</strong>
+    O arquivo é lido apenas no seu navegador e <b>não é enviado a nenhum servidor</b>. Não publique respostas individuais de pessoas reais neste repositório: use só dados agregados.</div>
+
+  <div class="card">
+    <div class="controles" style="margin-top:0">
+      <label>Questionário: <select id="tipo"><option value="lojista">Lojistas</option><option value="consumidor">Consumidores</option></select></label>
+      <label>Simulação: <select id="origem"></select></label>
+    </div>
+    <div class="controles" style="margin-bottom:0">
+      <input type="file" id="arquivo" accept=".csv,text/csv" aria-label="Arquivo CSV das respostas reais">
+      <button type="button" class="sec" id="baixar" disabled>Baixar resumo agregado (JSON)</button>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;margin:10px 0 0">Aceita o CSV do Google Forms (colunas com o texto da pergunta, respostas com o texto da alternativa) ou o mesmo formato da planilha deste projeto. Respostas de consumidores que não moram em Tangará da Serra (funil) são descartadas.</p>
+  </div>
+
+  <div id="status" style="margin-top:16px" aria-live="polite"></div>
+  <div class="legenda" id="legenda" style="display:none"><span><b style="background:var(--sint)"></b>Simulação (%)</span><span><b style="background:var(--real)"></b>Real (%)</span></div>
+  <div id="resultado"></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const selT = document.getElementById("tipo"), selO = document.getElementById("origem");
+  const status = document.getElementById("status"), res = document.getElementById("resultado");
+  const btnBaixar = document.getElementById("baixar");
+  let quest = {}, resumos = {}, ultimoAgregado = null, ultimoTexto = null;
+
+  try {
+    const m = await manifest();
+    quest.lojista = await pegaJSON("data/dados/questionario_lojista.json");
+    quest.consumidor = await pegaJSON("data/dados/questionario_consumidor.json");
+    if (!m.origens.length) throw new Error("sem simulação");
+    selO.innerHTML = m.origens.map((o) => `<option value="${esc(o)}">${esc(nomeOrigem(o))}</option>`).join("");
+    for (const o of m.origens) resumos[o] = await pegaJSON(`data/resultados/${o}/resumo.json`);
+  } catch (e) { status.innerHTML = '<div class="vazio">A simulação ainda não foi publicada.</div>'; return; }
+
+  /* ---------- leitura de CSV (aspas, vírgula ou ponto e vírgula) ---------- */
+  function lerCSV(txt) {
+    txt = txt.replace(/^﻿/, "");
+    const primeira = txt.split(/\r?\n/)[0] || "";
+    const sep = (primeira.match(/;/g) || []).length > (primeira.match(/,/g) || []).length ? ";" : ",";
+    const linhas = []; let linha = [], campo = "", aspas = false;
+    for (let i = 0; i < txt.length; i++) {
+      const c = txt[i];
+      if (aspas) {
+        if (c === '"' && txt[i + 1] === '"') { campo += '"'; i++; }
+        else if (c === '"') aspas = false; else campo += c;
+      } else if (c === '"') aspas = true;
+      else if (c === sep) { linha.push(campo); campo = ""; }
+      else if (c === "\n") { linha.push(campo.replace(/\r$/, "")); linhas.push(linha); linha = []; campo = ""; }
+      else campo += c;
+    }
+    if (campo.length || linha.length) { linha.push(campo.replace(/\r$/, "")); linhas.push(linha); }
+    return linhas.filter((l) => l.some((x) => x.trim() !== ""));
+  }
+
+  /* ---------- ligar colunas às perguntas ---------- */
+  function limpaCab(s) { return norm(String(s).replace(/^\s*\d+\s*[\.\)\-]\s*/, "")); }
+  function prefixoComum(a, b) { let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++; return i; }
+  function ligarColunas(cab, q) {
+    const mapa = {};
+    cab.forEach((h, idx) => {
+      const hn = limpaCab(h); if (!hn) return;
+      // formato do projeto: coluna "Q1", "Q2"... (ou "F0")
+      const direto = q.perguntas.find((p) => norm(p.id) === norm(h));
+      if (direto) { mapa[direto.id] = { idx, codigos: true }; return; }
+      let melhor = null, pontos = 0;
+      q.perguntas.forEach((p) => {
+        const s = prefixoComum(hn, norm(p.texto));
+        if (s > pontos) { pontos = s; melhor = p; }
+      });
+      if (melhor && pontos >= Math.min(30, Math.floor(norm(melhor.texto).length * 0.9)) && !mapa[melhor.id]) mapa[melhor.id] = { idx, codigos: false };
+    });
+    return mapa;
+  }
+
+  /* ---------- converter uma célula em códigos de alternativa ---------- */
+  function chaveOpcao(o) { return norm(o.texto.split(/ — | – /)[0].replace(/\?$/, "").replace(/\s*qual$/i, "")); }
+  function celulaParaCodigos(cel, p, ehCodigo) {
+    cel = String(cel ?? "").trim(); if (!cel) return [];
+    if (ehCodigo) {
+      return cel.split(/[|;,]/).map((x) => x.trim().toLowerCase()).filter((x) => p.opcoes.some((o) => o.cod === x));
+    }
+    const cn = norm(cel);
+    if (p.tipo === "multipla") {
+      return p.opcoes.filter((o) => cn.includes(chaveOpcao(o))).map((o) => o.cod);
+    }
+    if (/^[1-5]$/.test(cel)) {   // escala só com número
+      const o = p.opcoes.find((x) => x.texto.trim().startsWith(cel)); if (o) return [o.cod];
+    }
+    let achada = p.opcoes.find((o) => norm(o.texto) === cn);
+    if (!achada) {
+      const cand = p.opcoes.filter((o) => cn.startsWith(chaveOpcao(o)) && chaveOpcao(o).length > 0)
+        .sort((a, b) => chaveOpcao(b).length - chaveOpcao(a).length);
+      achada = cand[0];
+    }
+    return achada ? [achada.cod] : [];
+  }
+
+  function processar(texto) {
+    const tipo = selT.value, q = quest[tipo];
+    const linhas = lerCSV(texto);
+    if (linhas.length < 2) { status.innerHTML = '<div class="aviso">O arquivo não tem respostas.</div>'; return; }
+    const cab = linhas[0], dados = linhas.slice(1);
+    const mapa = ligarColunas(cab, q);
+    const achadas = Object.keys(mapa);
+    if (!achadas.length) { status.innerHTML = '<div class="aviso"><strong>Não consegui reconhecer as colunas.</strong>Confira se o CSV é do questionário escolhido (Lojistas ou Consumidores).</div>'; res.innerHTML = ""; return; }
+
+    // funil do consumidor
+    let usadas = dados, descartadas = 0;
+    if (tipo === "consumidor" && mapa.F0) {
+      const f0 = q.perguntas.find((p) => p.id === "F0");
+      usadas = dados.filter((l) => celulaParaCodigos(l[mapa.F0.idx], f0, mapa.F0.codigos)[0] !== "b");  // "b" = não mora em Tangará
+      descartadas = dados.length - usadas.length;
+    }
+    const semAchar = q.perguntas.filter((p) => !mapa[p.id] && p.id !== "F0").map((p) => p.id);
+    const sint = resumos[selO.value][tipo].perguntas;
+    const agreg = { tipo, n_reais: usadas.length, perguntas: [] };
+    const blocos = [];
+    q.perguntas.forEach((p) => {
+      if (p.id === "F0" || !mapa[p.id]) return;
+      const contagem = Object.fromEntries(p.opcoes.map((o) => [o.cod, 0]));
+      let n = 0;
+      usadas.forEach((l) => {
+        const cods = celulaParaCodigos(l[mapa[p.id].idx], p, mapa[p.id].codigos);
+        if (cods.length) { n++; cods.forEach((c) => { contagem[c]++; }); }
+      });
+      const sp = sint.find((x) => x.id === p.id);
+      const linhasBarra = p.opcoes.map((o) => ({
+        rot: `${o.cod}) ${o.texto}`,
+        s: sp ? (sp.opcoes.find((x) => x.cod === o.cod) || { pct: 0 }).pct : 0,
+        r: n ? (100 * contagem[o.cod]) / n : 0,
+      }));
+      const soma = linhasBarra.reduce((a, l) => a + Math.abs(l.s - l.r), 0);
+      const dif = p.tipo === "multipla" ? soma / linhasBarra.length : soma / 2;  // pontos percentuais
+      const faixa = dif < 15 ? ["ok", "próximo"] : dif < 30 ? ["mid", "diferença moderada"] : ["bad", "diferença grande"];
+      agreg.perguntas.push({ id: p.id, n, contagem });
+      blocos.push({ p, n, linhasBarra, dif, faixa });
+    });
+
+    status.innerHTML =
+      `<div class="card"><b>${usadas.length}</b> respostas reais usadas` +
+      (descartadas ? ` (${descartadas} descartadas pelo funil de localidade)` : "") +
+      ` · <b>${achadas.length}</b> perguntas reconhecidas` +
+      (semAchar.length ? ` · sem coluna para: ${esc(semAchar.join(", "))}` : "") + `.</div>` +
+      (usadas.length < 30 ? `<div class="aviso" style="margin-top:12px"><strong>Poucas respostas reais</strong>Com menos de 30 respostas, as porcentagens oscilam muito. Use esta comparação como pista, e não como prova.</div>` : "");
+    document.getElementById("legenda").style.display = "flex";
+    res.innerHTML = "";
+    blocos.forEach((b) => {
+      const sec = document.createElement("section");
+      sec.className = "card pergunta"; sec.style.marginTop = "14px";
+      sec.innerHTML = `<h3>${esc(b.p.id)}. ${esc(b.p.texto)} <span class="n">(real: ${b.n} respostas)</span></h3>` +
+        `<p><span class="faixa ${b.faixa[0]}">${b.faixa[1]}</span> <span style="color:var(--muted);font-size:.85rem">diferença média de ${b.dif.toFixed(1).replace(".", ",")} pontos percentuais</span></p><div class="barras"></div>`;
+      res.appendChild(sec);
+      barras(sec.querySelector(".barras"), b.linhasBarra, true);
+    });
+    const nota = document.createElement("p");
+    nota.style.cssText = "color:var(--muted);font-size:.85rem;margin-top:16px";
+    nota.textContent = "As faixas (menos de 15, de 15 a 30 e mais de 30 pontos) são referências do grupo para leitura rápida, e não um teste estatístico. Cada barra mostra a simulação (em cima) e o real (embaixo).";
+    res.appendChild(nota);
+    ultimoAgregado = agreg; btnBaixar.disabled = false;
+  }
+
+  document.getElementById("arquivo").addEventListener("change", (ev) => {
+    const f = ev.target.files[0]; if (!f) return;
+    const rd = new FileReader();
+    rd.onload = () => { ultimoTexto = String(rd.result); processar(ultimoTexto); };
+    rd.readAsText(f, "utf-8");
+  });
+  [selT, selO].forEach((s) => s.addEventListener("change", () => { if (ultimoTexto) processar(ultimoTexto); }));
+  btnBaixar.addEventListener("click", () => {
+    if (!ultimoAgregado) return;
+    const blob = new Blob([JSON.stringify(ultimoAgregado, null, 2)], { type: "application/json" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob);
+    a.download = `agregado_real_${ultimoAgregado.tipo}.json`; a.click(); URL.revokeObjectURL(a.href);
+  });
+})();
+</script>
+</body>
+</html>

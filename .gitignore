@@ -8,3 +8,7 @@ __pycache__/
 .venv/
 # Respostas REAIS dos questionários (dados pessoais) — nunca no repositório público:
 dados_reais/
+
+# Gerado automaticamente pelo build (scripts/montar_site.js):
+site/data/
+node_modules/

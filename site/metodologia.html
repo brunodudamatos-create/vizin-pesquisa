@@ -1,0 +1,56 @@
+<!doctype html>
+<!-- Vizin — Metodologia | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodologia · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="metodologia">
+<div id="topo"></div>
+<main><div class="wrap" style="max-width:760px">
+  <h1>Metodologia</h1>
+  <p class="lead">Uma simulação com personas de IA é uma ferramenta de exploração. Esta página diz exatamente o que foi feito e onde o método é frágil.</p>
+
+  <div class="aviso"><strong>O que este estudo é e não é</strong>
+    É uma exploração de hipóteses e um mapeamento de atritos de adoção do Vizin. Não é pesquisa de mercado e não estima demanda. O “n” é o número de personas (6 lojistas e 9 consumidores), e não o número de entrevistas.</div>
+
+  <h2>1. Escolha das personas</h2>
+  <p>Foram criadas 15 personas fictícias de Tangará da Serra (MT), focadas em roupas, calçados e acessórios, o mesmo recorte dos questionários do grupo. São 6 lojistas (boutique da Avenida Brasil, calçados no centro, acessórios em galeria, loja de bairro, MEI de moda masculina e comerciante veterano do público do agro) e 9 consumidores (estudantes da UNEMAT, mães de família, trabalhador do agro, aposentada, servidor público e jovem usuário de apps).</p>
+  <p>Cada característica de cada persona tem um campo <em>fonte da premissa</em>, que diz se ela foi informada pelo grupo ou é uma hipótese ainda não validada em campo. Quase todas são hipóteses.</p>
+
+  <h2>2. Os questionários</h2>
+  <p>As personas respondem aos mesmos dois questionários que o grupo aplica a pessoas reais (lojistas e consumidores de Tangará da Serra), com o texto original e as mesmas alternativas. Assim a comparação entre simulado e real é feita pergunta a pergunta.</p>
+
+  <h2>3. Como cada entrevista é feita</h2>
+  <p><b>Isolamento.</b> Cada entrevista acontece em uma sessão separada, que recebe apenas a ficha de uma persona e o questionário, sem ver as outras personas nem as respostas anteriores.</p>
+  <p><b>Regras de resposta.</b> A instrução manda responder como aquela pessoa responderia, sem cortesia automática, e permite alternativas negativas (“nada disposto”, “não estaria disposto a pagar”). Cada resposta vem com uma frase curta de justificativa, na voz da persona.</p>
+  <p><b>Três rodadas.</b> Cada persona responde 3 vezes, em sessões independentes. A concordância entre as rodadas mostra o quanto a resposta é estável.</p>
+  <p><b>Validação.</b> As respostas precisam ser alternativas existentes no questionário. As inválidas são recusadas. Tudo é salvo, e os prompts e as respostas brutas estão na página <a href="transcricoes.html">Entrevistas</a>.</p>
+
+  <h2>4. Quem gerou as respostas</h2>
+  <p>As 45 entrevistas atuais foram geradas pelo modelo Claude (Anthropic), em sessões isoladas por persona e rodada. O código também suporta o modelo Gemini (Google), rodando em um servidor do grupo, para uma segunda base. Quando ela existir, as duas serão comparadas: se modelos diferentes chegam a padrões parecidos, o resultado é mais robusto; se divergem, isso mostra onde a IA é instável.</p>
+
+  <h2>5. Controles contra viés</h2>
+  <p>O programa de análise emite um alerta quando mais de 80% das respostas de lojistas indicam disposição em aderir (sinal de simulação “viciada”) e quando quase todos os consumidores concordam que o problema é grave. As perguntas hipotéticas sobre disposição e quanto pagar são marcadas como de menor confiança.</p>
+
+  <h2>6. Limitações</h2>
+  <ul>
+    <li><b>Não são pessoas.</b> Modelos de linguagem refletem padrões de texto e não o comportamento real de compra de Tangará da Serra.</li>
+    <li><b>Otimismo e ancoragem.</b> As respostas sobre quanto pagar tendem a se concentrar na faixa mais baixa, e as de disposição tendem a ser generosas.</li>
+    <li><b>Premissas não validadas.</b> As fichas dependem das hipóteses do grupo, que ainda precisam de conversas de campo.</li>
+    <li><b>Amostra pequena.</b> Com 15 personas, diferenças pequenas não significam nada. As faixas de comparação desta página são referências do grupo, e não um teste estatístico.</li>
+    <li><b>Questionário do consumidor.</b> Mede a dor de encontrar produtos, mas não pergunta se a pessoa usaria o Vizin nem a entrega rápida. O piloto com as 3 lojas é que testa o diferencial.</li>
+  </ul>
+
+  <h2>7. Validação com dados reais</h2>
+  <p>Quando as respostas reais chegarem, a página <a href="comparar.html">Sintético × Real</a> compara as distribuições. O arquivo carregado é processado apenas no navegador de quem usa e não é enviado a nenhum servidor. Nenhuma resposta individual de pessoa real deve ser publicada neste repositório, apenas dados agregados e anônimos.</p>
+
+  <h2>8. Reprodutibilidade</h2>
+  <p>Todo o código, as personas, os questionários, os prompts e as respostas estão no <a href="https://github.com/brunodudamatos-create/vizin-pesquisa">repositório público</a>, com número de versão e histórico de mudanças em cada arquivo.</p>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+</body>
+</html>

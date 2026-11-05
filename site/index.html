@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Vizin — Início | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vizin · Pesquisa sintética</title>
+<meta name="description" content="Pesquisa sintética com personas de Tangará da Serra (MT) para explorar hipóteses de adoção do Vizin, com método, dados e código abertos.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="index">
+<div id="topo"></div>
+<main><div class="wrap">
+  <h1>Vizin: o que 15 personas de Tangará da Serra nos ensinam antes do piloto</h1>
+  <p class="lead">O Vizin é uma vitrine digital hiperlocal que conecta lojistas de rua a consumidores da própria cidade, com entrega rápida pelo comércio local. Antes de ir a campo com 3 lojas parceiras, exploramos as hipóteses com personas sintéticas. Este site mostra o método, os dados e o código, para que qualquer pessoa possa auditar.</p>
+
+  <div class="aviso"><strong>Leia antes dos números</strong>
+    Respostas de IA tendem a ser mais favoráveis do que as de pessoas reais. Por isso este material serve para <b>explorar hipóteses e mapear atritos</b>, e não para afirmar a aceitação do mercado. A validação de verdade vem dos questionários reais e do piloto, e a página <a href="comparar.html">Sintético × Real</a> faz essa comparação.</div>
+
+  <div class="grade" id="kpis" aria-live="polite"><div class="vazio">Carregando…</div></div>
+
+  <h2>Por onde começar</h2>
+  <div class="grade">
+    <a class="card" href="metodologia.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Metodologia</h3><p>Como as personas foram criadas, como cada entrevista é feita e quais são as limitações.</p></a>
+    <a class="card" href="personas.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Personas</h3><p>As 15 fichas fictícias, cada uma com a fonte de cada premissa.</p></a>
+    <a class="card" href="resultados.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Resultados</h3><p>Gráficos por pergunta, estabilidade entre rodadas e alertas contra viés.</p></a>
+    <a class="card" href="transcricoes.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Entrevistas</h3><p>Cada resposta bruta, com a justificativa da persona e o prompt exato.</p></a>
+    <a class="card" href="comparar.html" style="text-decoration:none;color:inherit"><h3 style="margin-top:0">Sintético × Real</h3><p>Carregue as respostas reais e veja onde a simulação acertou e errou.</p></a>
+  </div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const el = document.getElementById("kpis");
+  try {
+    const m = await manifest();
+    const origem = m.origens.includes("claude-isolado") ? "claude-isolado" : m.origens[0];
+    if (!origem) throw new Error("sem dados");
+    const r = await pegaJSON(`data/resultados/${origem}/resumo.json`);
+    const nl = r.lojista.n_personas, nc = r.consumidor.n_personas;
+    el.innerHTML =
+      `<div class="card"><div class="kpi">${nl + nc}<small>personas fictícias (${nl} lojistas e ${nc} consumidores). Este é o “n” efetivo.</small></div></div>` +
+      `<div class="card"><div class="kpi">${r.total_respostas}<small>entrevistas, com ${Math.round(r.total_respostas / (nl + nc))} rodadas por persona, para medir estabilidade. Não são ${r.total_respostas} pessoas.</small></div></div>` +
+      `<div class="card"><div class="kpi">${r.lojista.indicador_disposicao_pct ?? "–"}%<small>das respostas de lojistas foram “disposto” a entrar numa plataforma local. Hipótese, não previsão.</small></div></div>` +
+      `<div class="card"><div class="kpi">${r.consumidor.media_q12_atrapalha ?? "–"}<small>de 5: quanto a dificuldade de achar produtos atrapalha o consumidor (média das respostas).</small></div></div>`;
+  } catch (e) {
+    el.innerHTML = '<div class="vazio">Os resultados ainda não foram publicados.</div>';
+  }
+})();
+</script>
+</body>
+</html>

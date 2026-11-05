@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Vizin — Personas | Versão v1.2 (2026-11-04) | Histórico: v1.2 criação. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personas · Vizin pesquisa</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-pagina="personas">
+<div id="topo"></div>
+<main><div class="wrap">
+  <h1>As 15 personas</h1>
+  <p class="lead">Todas são fictícias. Os nomes foram inventados e não representam pessoas reais. Cada ficha mostra de onde veio a premissa.</p>
+  <div class="abas" role="group" aria-label="Filtrar por tipo">
+    <button type="button" data-f="todas" aria-pressed="true">Todas</button>
+    <button type="button" data-f="lojista" aria-pressed="false">Lojistas</button>
+    <button type="button" data-f="consumidor" aria-pressed="false">Consumidores</button>
+  </div>
+  <div class="grade" id="lista"><div class="vazio">Carregando…</div></div>
+</div></main>
+<div id="rodape"></div>
+<script src="assets/app.js"></script>
+<script>
+(async () => {
+  const lista = document.getElementById("lista");
+  let todas = [];
+  const ul = (arr) => (arr && arr.length ? `<ul>${arr.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : "");
+  function desenhar(filtro) {
+    const ps = todas.filter((p) => filtro === "todas" || p.tipo === filtro);
+    lista.innerHTML = ps.map((p) => {
+      const hip = /hipótese/i.test(p.fonte_da_premissa || "");
+      const sub = p.tipo === "lojista" ? p.negocio : `${p.ocupacao} · ${p.faixa_etaria}`;
+      return `<article class="card persona"><h3>${esc(p.nome_ficticio)}, ${esc(p.idade)} anos</h3>` +
+        `<div class="meta"><span class="etiqueta">${esc(p.id)}</span><span class="etiqueta">${p.tipo === "lojista" ? "Lojista" : "Consumidor"}</span> ${esc(sub)}</div>` +
+        `<p>${esc(p.perfil)}</p>` +
+        (p.canais_atuais ? `<p class="meta"><b>Canais:</b> ${esc(p.canais_atuais)}</p>` : "") +
+        `<b>Dores</b>${ul(p.dores_principais)}<b>Objeções</b>${ul(p.medos_e_objecoes)}<b>O que faria adotar</b>${ul(p.gatilhos_de_adocao)}` +
+        `<p class="meta"><b>Sensibilidade a preço:</b> ${esc(p.sensibilidade_a_preco)}</p>` +
+        `<div class="fonte"><span class="etiqueta ${hip ? "hip" : ""}">Fonte da premissa</span>${esc(p.fonte_da_premissa)}</div></article>`;
+    }).join("") || '<div class="vazio">Nenhuma persona.</div>';
+  }
+  try {
+    const d = await pegaJSON("data/dados/personas.json");
+    todas = [...d.lojistas, ...d.consumidores];
+    desenhar("todas");
+  } catch (e) { lista.innerHTML = '<div class="vazio">Não foi possível carregar as personas.</div>'; }
+  document.querySelectorAll(".abas button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll(".abas button").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+    desenhar(b.dataset.f);
+  }));
+})();
+</script>
+</body>
+</html>

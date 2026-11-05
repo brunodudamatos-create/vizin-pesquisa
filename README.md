@@ -1,11 +1,12 @@
 # Vizin — Pesquisa sintética em Tangará da Serra (MT)
 
-**Versão v1.1 — 2026-11-04**
+**Versão v1.2 — 2026-11-04**
 
 | Versão | Data | Mudança |
 |---|---|---|
 | v1.0 | 2026-11-04 | Criação: 15 personas, questionários estruturados, simulador e analisador. |
 | v1.1 | 2026-11-04 | Entrevistas isoladas feitas pelo Claude (pasta `simulacao_claude/`), importador e análise separada por modelo. |
+| v1.2 | 2026-11-04 | Site estático (pasta `site/`) com metodologia, personas, resultados, entrevistas e comparação sintético × real; montagem automática para o Vercel. |
 
 Projeto da pós-graduação em Gestão e Inovação (UNEMAT). Este repositório reúne o método, o código e os dados
 da **simulação com personas sintéticas** usada para explorar hipóteses sobre o Vizin antes do piloto com lojas reais.
@@ -60,3 +61,20 @@ Se a execução parar no meio, rode o mesmo comando de novo: ele continua de ond
 * O arquivo `.env` (chaves) está no `.gitignore` e nunca deve ser enviado ao GitHub.
 * Respostas reais de participantes (pasta `dados_reais/`) também ficam fora do repositório. Só dados agregados e anônimos podem ser publicados.
 * O servidor só faz conexões de saída; nenhuma porta é aberta.
+
+## Site (Vercel)
+
+O site fica na pasta `site/` e é estático (sem dependências). A cada envio ao GitHub, o Vercel roda
+`node scripts/montar_site.js`, que copia os dados para `site/data/` (nunca inclui dados de teste) e publica.
+
+Para ver no computador (opcional):
+
+```bash
+node scripts/montar_site.js
+cd site && python3 -m http.server 8000
+```
+
+Depois abra `http://localhost:8000` no navegador.
+
+Páginas: Início, Metodologia, Personas, Resultados, Entrevistas e Sintético × Real (o CSV com respostas reais é lido
+só no navegador e nunca é enviado a servidor algum).

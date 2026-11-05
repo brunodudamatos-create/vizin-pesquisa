@@ -1,0 +1,9 @@
+{
+  "name": "vizin-pesquisa",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Pesquisa sintética do Vizin (Tangará da Serra, MT) — site estático",
+  "scripts": {
+    "build": "node scripts/montar_site.js"
+  }
+}
